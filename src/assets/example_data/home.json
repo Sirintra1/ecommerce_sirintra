@@ -1,0 +1,82 @@
+{
+    "images": [
+        "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
+        "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
+    ],
+    "popularproducts": [
+        {
+            "name": "NIKE",
+            "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
+            "unitprice": 100
+        },
+        {
+            "name": "ADIDAS",
+            "image": "http://th-live-01.slatic.net/p/7/adidas-men-run-shoe-duramo8-bb4656-2290-1493865078-91437671-31f932a8c992f98dc9ba8c6b4dec3f6e-catalog_233.jpg",
+            "unitprice": 100
+        },
+        {
+            "name": "PUMA",
+            "image": "http://gadgets.siamsport.co.th/wp-content/uploads/puma-nrgy-sneakers.jpg",
+            "unitprice": 100
+        },
+        {
+            "name": "ONITSUKA",
+            "image": "https://th-live-02.slatic.net/p/7/onitsuka-tiger-womens-serrano-shoes-d471l-1494928131-7120789-b60f98a3253f8a5230b4a0cf110588e1.jpg",
+            "unitprice": 100
+        }
+    ],
+    "popularshops": [
+        {
+            "name": "NIKE",
+            "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg"
+        },
+        {
+            "name": "ADIDAS",
+            "image": "http://th-live-01.slatic.net/p/7/adidas-men-run-shoe-duramo8-bb4656-2290-1493865078-91437671-31f932a8c992f98dc9ba8c6b4dec3f6e-catalog_233.jpg"
+        },
+        {
+            "name": "PUMA",
+            "image": "http://gadgets.siamsport.co.th/wp-content/uploads/puma-nrgy-sneakers.jpg"
+        },
+        {
+            "name": "ONITSUKA",
+            "image": "https://th-live-02.slatic.net/p/7/onitsuka-tiger-womens-serrano-shoes-d471l-1494928131-7120789-b60f98a3253f8a5230b4a0cf110588e1.jpg"
+        }
+    ],
+    "bestseller": [
+        {
+            "name": "NIKES",
+            "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg"
+        },
+        {
+            "name": "ADIDASY",
+            "image": "http://th-live-01.slatic.net/p/7/adidas-men-run-shoe-duramo8-bb4656-2290-1493865078-91437671-31f932a8c992f98dc9ba8c6b4dec3f6e-catalog_233.jpg"
+        },
+        {
+            "name": "PUMAY",
+            "image": "http://gadgets.siamsport.co.th/wp-content/uploads/puma-nrgy-sneakers.jpg"
+        },
+        {
+            "name": "ONITSUKAS",
+            "image": "https://th-live-02.slatic.net/p/7/onitsuka-tiger-womens-serrano-shoes-d471l-1494928131-7120789-b60f98a3253f8a5230b4a0cf110588e1.jpg"
+        }
+    ],
+    "lastvisit": [
+        {
+            "name": "NIKE2",
+            "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg"
+        },
+        {
+            "name": "ADIDAS2",
+            "image": "http://th-live-01.slatic.net/p/7/adidas-men-run-shoe-duramo8-bb4656-2290-1493865078-91437671-31f932a8c992f98dc9ba8c6b4dec3f6e-catalog_233.jpg"
+        },
+        {
+            "name": "PUMA2",
+            "image": "http://gadgets.siamsport.co.th/wp-content/uploads/puma-nrgy-sneakers.jpg"
+        },
+        {
+            "name": "ONITSUKA2",
+            "image": "https://th-live-02.slatic.net/p/7/onitsuka-tiger-womens-serrano-shoes-d471l-1494928131-7120789-b60f98a3253f8a5230b4a0cf110588e1.jpg"
+        }
+    ]
+}

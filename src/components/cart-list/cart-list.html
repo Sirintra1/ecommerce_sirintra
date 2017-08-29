@@ -1,0 +1,21 @@
+<ion-list>
+  <ion-item *ngFor="let data of carts.items">
+    <ion-avatar item-left>
+      <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image>
+    </ion-avatar>
+    <h2 class="item-title">{{data.product.name}}</h2>
+    <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
+    <p><b>{{data.amount}} Baht</b></p>
+    <button ion-button icon-only clear color="danger" class="circle-btn"> 
+          <ion-icon name="md-heart-outline"></ion-icon>
+        </button>
+    <button ion-button icon-only clear color="gray" class="circle-btn">
+          <ion-icon name="ios-trash-outline"></ion-icon>
+        </button>
+    <div class="counter-list">
+      <ion-item no-lines class="counter-item">
+        <counter-input [counterValue]="data.qty"></counter-input>
+      </ion-item>
+    </div>
+  </ion-item>
+</ion-list>

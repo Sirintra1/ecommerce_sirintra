@@ -1,0 +1,21 @@
+{
+    "title": "Shop List",
+    "items": [
+        {
+            "name": "Shop 1",
+            "image": "https://www.onsite.org/assets/images/teaser/online-e-shop.jpg"
+        },
+        {
+            "name": "Shop 2",
+            "image": "https://www.onsite.org/assets/images/teaser/online-e-shop.jpg"
+        },
+        {
+            "name": "Shop 3",
+            "image": "https://www.onsite.org/assets/images/teaser/online-e-shop.jpg"
+        },
+        {
+            "name": "Shop 4",
+            "image": "https://www.onsite.org/assets/images/teaser/online-e-shop.jpg"
+        }
+    ]
+}
