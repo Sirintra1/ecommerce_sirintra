@@ -11,9 +11,12 @@
     <ion-icon (click)="onClickF()" *ngIf="!status" name="ios-heart" style="color:red"></ion-icon>
     <ion-icon (click)="onClick()" *ngIf="status" name="ios-heart-outline" style="color:red"></ion-icon>
   </ion-col>
-  <ion-col no-padding width-100>
+  <ion-col no-padding width-65>
     <p class="contact-description">
       {{dataTopBar.detail}}
     </p>
+  </ion-col>
+  <ion-col no-padding width-35 class="rating-col">
+    <p class="color-gold-custom"><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> (19)</p>
   </ion-col>
 </ion-row> 

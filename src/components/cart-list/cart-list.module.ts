@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
-import { CartListComponent } from './cart-list';
+import { CartlistComponent } from './cart-list';
 
 @NgModule({
   declarations: [
-    CartListComponent,
+    CartlistComponent,
   ],
   imports: [
     IonicModule,
   ],
   exports: [
-    CartListComponent
+    CartlistComponent
   ]
 })
-export class CartListComponentModule {}
+export class CartlistComponentModule {}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProductDetailModel } from '../product-detail/product-detail.model';
 import { ProductDetailServiceProvider } from '../product-detail/product-detail.service';
+import { CartPage } from '../cart/cart';
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -35,6 +36,7 @@ export class ProductDetailPage {
   }
   addToCart() {
     alert('thank you');
+    this.navCtrl.push(CartPage);
   }
 
 }

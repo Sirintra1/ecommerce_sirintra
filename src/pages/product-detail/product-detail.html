@@ -25,9 +25,23 @@
 
     </ion-item>
     <ion-item class="detail-item" *ngIf="productdetailData.promotions">
+      <div *ngFor="let item of productdetailData.promotions">
+        <h3 class="categories-title-pomotion">
+          <ion-icon name="md-pricetags"></ion-icon> {{'Promotion' | translate}}</h3>
+          <p>ชื่อ โปรโมชั่น {{item.name}}</p>
+          <p>รายละเอียด {{item.desc}}</p>
+        
+        <!-- <span class="detail-text">เมือซื้อเสื้อยีนส์ 1 แถม กางเกงยีนส์ขาสั้น 1 ตัว</span> -->
+      </div>
+    </ion-item>
+    <ion-item class="detail-item" *ngIf="productdetailData.shipping">
       <h3 class="categories-title-pomotion">
-        <ion-icon name="md-pricetags"></ion-icon> {{' Promotion' | translate}}</h3>
-      <span class="detail-text">เมือซื้อเสื้อยีนส์ 1 แถม กางเกงยีนส์ขาสั้น 1 ตัว</span>
+        <!-- <ion-icon name="md-pricetags"></ion-icon>  -->
+        {{'Shipping' | translate}}</h3>
+      <div *ngFor="let item of productdetailData.shipping">
+        <span class="detail-text">{{item.shipping}}</span>
+        <!-- <span class="detail-text">เมือซื้อเสื้อยีนส์ 1 แถม กางเกงยีนส์ขาสั้น 1 ตัว</span> -->
+      </div>
     </ion-item>
 
     <ion-item class="detail-item" *ngIf="productdetailData.issize">
@@ -42,6 +56,13 @@
       </ion-item>
     </ion-list>
 
+    <ion-item class="detail-item" *ngIf="productdetailData.shop">
+      <h3 class="categories-title-pomotion">
+        <!-- <ion-icon name="md-pricetags"></ion-icon>  -->
+        {{'SHOP' | translate}}</h3>
+      <span class="detail-text">{{productdetailData.shop.shop}}</span>
+    </ion-item>
+
   </ion-list>
   <h4 class="categories-title" *ngIf="productdetailData.relationProducts">Relation products</h4>
   <list-scoll-x [populars]="productdetailData.relationProducts" *ngIf="productdetailData.relationProducts"></list-scoll-x>
@@ -49,10 +70,10 @@
 
 <ion-footer>
   <ion-row>
-      <ion-col>
-          
-      </ion-col>
+    <ion-col>
+
+    </ion-col>
   </ion-row>
-  <button ion-button block color="danger" (click) = "addToCart()">{{"ADDCART"| translate}}</button>
-  
+  <button ion-button block color="danger" (click)="addToCart()">{{"ADDCART"| translate}}</button>
+
 </ion-footer>
