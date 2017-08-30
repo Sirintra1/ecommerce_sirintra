@@ -1,5 +1,16 @@
 topbar {
-    $contact-card-slides-height: 45%;    
+    ul {
+        padding: 0px;
+        &.rating li {
+            padding: 0px 0px !important;
+            background: none;
+            color: #ffb400;
+            ion-icon {
+                font-size: 15px;
+            }
+        }
+    }
+    $contact-card-slides-height: 45%;
     .contact-slides {
         height: $contact-card-slides-height;
         ion-slide.contact-slide {
@@ -59,7 +70,7 @@ topbar {
             color: $white-d;
         }
     }
-    .color-gold-custom{
+    .color-gold-custom {
         color: gold;
     }
 }
