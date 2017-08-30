@@ -1,9 +1,10 @@
 export class SearchModel {
-    items: Array<Product>;
+    items: Array<SearchItemModel>;
 }
-export class Product {
+
+export class SearchItemModel {
     name: string;
-    detail: string;
-    price: string;
     image: string;
+    description: string;
 }
+

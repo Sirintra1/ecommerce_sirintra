@@ -84,6 +84,7 @@ import { ProductDetailServiceProvider } from '../pages/product-detail/product-de
 import { ShopDetailServiceProvider } from '../pages/shop-detail/shop-detail.service';
 import { CartListComponent } from '../components/cart-list/cart-list';
 import { LogServiceProvider } from '../providers/log-service/log-service';
+import { SearchbarComponent } from '../components/searchbar/searchbar';
 
 
 export function createTranslateLoader(http: Http) {
@@ -121,7 +122,8 @@ export function createTranslateLoader(http: Http) {
     ListProductPage,
     ListShopPage,
     ListShopsComponent,
-    CartListComponent
+    CartListComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,

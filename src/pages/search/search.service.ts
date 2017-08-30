@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { SearchModel } from '../search/search.model';
-import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { SearchModel } from './search.model';
+
 
 /*
   Generated class for the SearchServiceProvider provider.
@@ -14,11 +14,11 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 @Injectable()
 export class SearchServiceProvider {
 
-  constructor(public http: Http,public log: LogServiceProvider) {
-    this.log.info('Hello SearchServiceProvider Provider');
+  constructor(public http: Http) {
+    console.log('Hello SearchServiceProvider Provider');
   }
 
-  getSearch(): Promise<SearchModel> {
+  getData(): Promise<SearchModel> {
     return this.http.get('./assets/example_data/search.json')
       .toPromise()
       .then(response => response.json() as SearchModel)
@@ -26,7 +26,7 @@ export class SearchServiceProvider {
   }
 
   private handleError(error: any): Promise<any> {
-    this.log.errorService('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
