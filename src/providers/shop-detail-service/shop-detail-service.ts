@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /*
   Generated class for the ShopDetailServiceProvider provider.
 
@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ShopDetailServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ShopDetailServiceProvider Provider');
+  constructor(public http: Http,public log:LogServiceProvider) {
+    this.log.info('Hello ShopDetailServiceProvider Provider');
   }
 
 }

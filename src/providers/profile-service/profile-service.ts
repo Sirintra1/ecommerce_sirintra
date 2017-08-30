@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /*
   Generated class for the ProfileServiceProvider provider.
 
@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ProfileServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ProfileServiceProvider Provider');
+  constructor(public http: Http,public log:LogServiceProvider) {
+    this.log.info('Hello ProfileServiceProvider Provider');
   }
 
 }

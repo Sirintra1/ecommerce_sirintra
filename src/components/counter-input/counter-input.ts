@@ -1,7 +1,8 @@
 import { Component, forwardRef, Input, OnChanges } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
-const noop = () => {};
+const noop = () => { };
 
 export function counterRangeValidator(maxValue, minValue) {
   return (c: FormControl) => {
@@ -13,7 +14,7 @@ export function counterRangeValidator(maxValue, minValue) {
       }
     };
 
-  return (c.value > +maxValue || c.value < +minValue) ? err: null;
+    return (c.value > +maxValue || c.value < +minValue) ? err : null;
   }
 }
 
@@ -30,8 +31,8 @@ export function counterRangeValidator(maxValue, minValue) {
 })
 export class CounterInput implements ControlValueAccessor, OnChanges {
 
-  propagateChange:any = noop;
-  validateFn:any = noop;
+  propagateChange: any = noop;
+  validateFn: any = noop;
 
   @Input('counterValue') _counterValue = 0;
   @Input('max') counterRangeMax;
@@ -62,7 +63,7 @@ export class CounterInput implements ControlValueAccessor, OnChanges {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 
   increase() {
     this.counterValue++;

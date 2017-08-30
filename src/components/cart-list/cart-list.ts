@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the CartListComponent component.
  *
@@ -14,8 +14,8 @@ export class CartListComponent {
   @Input() carts: any;
   text: string;
 
-  constructor() {
-    console.log('Hello CartListComponent Component');
+  constructor(public log: LogServiceProvider) {
+    this.log.info('Hello CartListComponent Component');
     this.text = 'Hello World';
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /*
   Generated class for the FavoriteServiceProvider provider.
@@ -11,8 +12,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FavoriteServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello FavoriteServiceProvider Provider');
+  constructor(public http: Http, public log: LogServiceProvider) {
+    this.log.info('Hello FavoriteServiceProvider Provider');
   }
 
 }

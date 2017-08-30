@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the ListGridComponent component.
@@ -15,11 +16,11 @@ export class ListGridComponent {
   @Input() items: any;
   @Output() selectedItem: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
-    console.log('Hello ListGridComponent Component with: ' + this.items);
+  constructor(public log: LogServiceProvider) {
+    this.log.info('Hello ListGridComponent Component with: ' + this.items);
   }
 
-  _selectedItem(item){
+  _selectedItem(item) {
     this.selectedItem.emit(item);
   }
 
