@@ -1,4 +1,16 @@
 <div>
+  <div *ngIf="showSearch">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </div>
+  <ion-row class="filter-bar" *ngIf="showToolbar">
+    <ion-col col-5>
+      <ion-icon name="ios-funnel"></ion-icon> Filter</ion-col>
+    <ion-col col-5>
+      <ion-icon name="swap"></ion-icon> Sort</ion-col>
+    <ion-col col-2>
+      <ion-icon name="list"></ion-icon>
+    </ion-col>
+  </ion-row>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="onClick(item)">
           <ion-row>
