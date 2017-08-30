@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ListProductModel } from '../list-product/list-product.model';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /*
   Generated class for the ListProductServiceProvider provider.
@@ -12,8 +13,8 @@ import { ListProductModel } from '../list-product/list-product.model';
 @Injectable()
 export class ListProductServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ListProductServiceProvider Provider');
+  constructor(public http: Http, public log: LogServiceProvider) {
+    this.log.info('Hello ListProductServiceProvider Provider');
   }
 
   getListProfile(): Promise<ListProductModel> {
@@ -24,7 +25,7 @@ export class ListProductServiceProvider {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
 
   }

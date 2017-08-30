@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ProductDetailModel } from '../product-detail/product-detail.model';
 import { ProductDetailServiceProvider } from '../product-detail/product-detail.service';
 import { CartPage } from '../cart/cart';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -14,14 +15,14 @@ import { CartPage } from '../cart/cart';
   templateUrl: 'product-detail.html',
 })
 export class ProductDetailPage {
-  product:any;
+  product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public productDetailService: ProductDetailServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public productDetailService: ProductDetailServiceProvider, public log: LogServiceProvider) {
     this.product = navParams.get('title');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
+    this.log.info('ionViewDidLoad ProductDetailPage');
     this.getProductdetailData();
   }
   getProductdetailData() {
@@ -29,9 +30,9 @@ export class ProductDetailPage {
       .getProductDetail()
       .then((data) => {
         this.productdetailData = data;
-        console.log(this.productdetailData);
+        this.log.info(this.productdetailData);
       }, (err) => {
-        console.log(err);
+        this.log.error(err);
       });
   }
   addToCart() {

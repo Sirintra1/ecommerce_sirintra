@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ShopModel } from '../shop-detail/shop-detail.model';
 import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the ShopDetailPage page.
@@ -15,12 +16,12 @@ import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
 })
 export class ShopDetailPage {
   shopDetailData: ShopModel = new ShopModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ShopDetailPage');
+    this.log.info('ionViewDidLoad ShopDetailPage');
     this.getShopDetailData() ;
   }
   getShopDetailData() {
@@ -28,9 +29,9 @@ export class ShopDetailPage {
       .getShopDetail()
       .then((data) => {
         this.shopDetailData = data;
-        console.log(data);
+        this.log.info(data);
       }, (err) => {
-        console.log(err);
+        this.log.error(err);
       });
   }
 }

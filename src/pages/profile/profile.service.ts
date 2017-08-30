@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { ProfileModel } from '../profile/profile.model';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /*
   Generated class for the ProfileServiceProvider provider.
@@ -13,8 +14,8 @@ import { ProfileModel } from '../profile/profile.model';
 @Injectable()
 export class ProfileServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ProfileServiceProvider Provider');
+  constructor(public http: Http,public log: LogServiceProvider) {
+    this.log.info('Hello ProfileServiceProvider Provider');
   }
 
   getProfile(): Promise<ProfileModel> {
@@ -25,7 +26,7 @@ export class ProfileServiceProvider {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
 
   }

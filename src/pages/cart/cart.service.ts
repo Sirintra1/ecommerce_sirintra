@@ -3,11 +3,12 @@ import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { CartModel } from "./cart.model";
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 
 @Injectable()
 export class CartService {
-  constructor(public http: Http) {
+  constructor(public http: Http, public log: LogServiceProvider) {
 
   }
 
@@ -19,7 +20,7 @@ export class CartService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

@@ -8,7 +8,7 @@ import { ProductDetailPage } from "../product-detail/product-detail";
 import { ShopDetailPage } from "../shop-detail/shop-detail";
 import { ListProductPage } from '../list-product/list-product';
 import { ListShopPage } from '../list-shop/list-shop';
-
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the HomePage page.
  *
@@ -25,7 +25,8 @@ export class HomePage {
   loading: any;
   constructor(public navCtrl: NavController, 
     public homeService: HomeService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public log: LogServiceProvider
   ) {
     
     this.loading = this.loadingCtrl.create();
@@ -38,6 +39,7 @@ export class HomePage {
       .getData()
       .then(data => {
         this.home = data;
+        this.log.info(data);
         this.loading.dismiss();
       });
   }

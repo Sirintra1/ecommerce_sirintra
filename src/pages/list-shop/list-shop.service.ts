@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { ListShopModel } from '../list-shop/list-shop.model';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
+
 
 /*
   Generated class for the ListShopServiceProvider provider.
@@ -13,8 +15,8 @@ import { ListShopModel } from '../list-shop/list-shop.model';
 @Injectable()
 export class ListShopServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello ListShopServiceProvider Provider');
+  constructor(public http: Http, public log:LogServiceProvider) {
+    this.log.info('Hello ListShopServiceProvider Provider');
   }
   getListShop(): Promise<ListShopModel> {
     return this.http.get('./assets/example_data/listshop.json')
@@ -24,7 +26,7 @@ export class ListShopServiceProvider {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 }

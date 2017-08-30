@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchModel } from '../search/search.model';
 import { SearchServiceProvider } from '../search/search.service';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the SearchPage page.
@@ -16,11 +17,11 @@ import { SearchServiceProvider } from '../search/search.service';
 })
 export class SearchPage {
   searchData: SearchModel = new SearchModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public searchService: SearchServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public searchService: SearchServiceProvider,public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+    this.log.info('ionViewDidLoad SearchPage');
     this.getSearchData();
   }
   getSearchData() {
@@ -28,9 +29,9 @@ export class SearchPage {
       .getSearch()
       .then((data) => {
         this.searchData = data;
-        console.log(this.searchData);
+        this.log.info(this.searchData);
       }, (err) => {
-        console.log(err);
+        this.log.error(err);
       });
   }
 
