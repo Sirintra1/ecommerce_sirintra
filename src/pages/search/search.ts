@@ -38,9 +38,9 @@ export class SearchPage {
   searchInput(e) {
     if (e && e == 'reload') {
       this.getSearchData();
+    } else {
+      this.searchItem.items = e;
     }
-    this.searchItem.items = e;
-    
   }
 
 }
