@@ -15,12 +15,12 @@
     ],
     "review": [
         {
-            "comment": "1",
-            "rate": 5
+            "comment": "สินค้าตัวจริงสวยมากเลยค่ะ",
+            "rate": 4.5
         },
         {
-            "comment": "2",
-            "rate": 5
+            "comment": "ถ้าได้สินค้าแล้วจะกลับมาเพิ่มดาวให้นะ",
+            "rate": 1.5
         }
     ],
     "rate": 4.5,
@@ -36,14 +36,9 @@
     ],
     "promotions": [
         {
-            "name": "promotion 1",
-            "desc": "promotion 1",
+            "name": "โปรโมชั่นวันวาเลนไทน์",
+            "desc": "โปรโมชั่นวันวาเลนไทน์ ซื้อสินค้าจากร้านครบ 500 บาท รับกล่องเก็บรองเท้า ฟรี!!",
             "code": "promotion 1"
-        },
-        {
-            "name": "promotion 2",
-            "desc": "promotion 2",
-            "code": "promotion 2"
         }
     ],
     "favorite": [
@@ -67,7 +62,7 @@
     "qty": 40,
     "issize": true,
     "size": {
-        "detail": "detail size",
+        "detail": "https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/13636041_639744079526778_1585487380_n.jpg?ig_cache_key=MTI5NDE4MDYzNTI4Nzk4NDAwNQ%3D%3D.2",
         "sizedetail": [
             {
                 "name": "S",
@@ -101,25 +96,17 @@
     ],
     "payment": [
         {
-            "payment": "payment001"
-        },
-        {
-            "payment": "payment002"
+            "payment": "เก็บเงินปลายทางทั่วประเทศ"
         }
     ],
     "shipping": [
         {
-            "shipping": "shipping001"
-        },
-        {
-            "shipping": "shipping002"
-        },
-        {
-            "shipping": "shipping003"
+            "shipping": "ส่งแบบธรรมดา: ฟรี"
         }
     ],
     "shop": {
-        "shop": "shop001"
+        "shop": "Adidas Thailand",
+        "rate": 4
     },
     "relationProducts": [
         {

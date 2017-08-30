@@ -18,35 +18,48 @@
 
   <ion-list class="details-list">
     <ion-item class="detail-item">
-      <ion-avatar item-left>
-        <ion-icon name="ios-cash-outline"></ion-icon>
-      </ion-avatar>
-      <span class="detail-text">Price {{productdetailData.unitprice | number}} ฿</span>
+      <ion-row>
+        <ion-col width-35>
+          <h3 class="categories-title-pomotion">
+            <ion-icon name="ios-cash-outline"></ion-icon>
+          </h3>
+        </ion-col>
+        <ion-col width-65 text-right>
+          <h3>Price {{productdetailData.unitprice | number}} ฿</h3>
+        </ion-col>
+      </ion-row>
+
 
     </ion-item>
     <ion-item class="detail-item" *ngIf="productdetailData.promotions">
       <div *ngFor="let item of productdetailData.promotions">
         <h3 class="categories-title-pomotion">
           <ion-icon name="md-pricetags"></ion-icon> {{'Promotion' | translate}}</h3>
-          <p>ชื่อ โปรโมชั่น {{item.name}}</p>
-          <p>รายละเอียด {{item.desc}}</p>
-        
-        <!-- <span class="detail-text">เมือซื้อเสื้อยีนส์ 1 แถม กางเกงยีนส์ขาสั้น 1 ตัว</span> -->
+        <h4 class="detail-textHeader">{{item.name}}</h4>
+        <p class="detail-text">{{item.desc}}</p>
       </div>
     </ion-item>
     <ion-item class="detail-item" *ngIf="productdetailData.shipping">
       <h3 class="categories-title-pomotion">
-        <!-- <ion-icon name="md-pricetags"></ion-icon>  -->
-        {{'Shipping' | translate}}</h3>
+        <ion-icon name="md-car"></ion-icon> {{'Shipping' | translate}}</h3>
       <div *ngFor="let item of productdetailData.shipping">
-        <span class="detail-text">{{item.shipping}}</span>
-        <!-- <span class="detail-text">เมือซื้อเสื้อยีนส์ 1 แถม กางเกงยีนส์ขาสั้น 1 ตัว</span> -->
+        <span class="detail-textHeader">{{item.shipping}}</span>
+      </div>
+    </ion-item>
+    <ion-item class="detail-item" *ngIf="productdetailData.shipping">
+      <h3 class="categories-title-pomotion">
+        <ion-icon name="ios-globe-outline"></ion-icon> {{'Payment' | translate}}</h3>
+      <div *ngFor="let item of productdetailData.payment">
+        <span class="detail-textHeader">{{item.payment}}</span>
       </div>
     </ion-item>
 
     <ion-item class="detail-item" *ngIf="productdetailData.issize">
-      <!-- <h3>{{' Size' | translate}}</h3> -->
-      <span class="detail-text">{{productdetailData.size.detail}}</span>
+      <h3 class="categories-title-pomotion">
+        <!-- <ion-icon name="ios-resize-outline"></ion-icon> -->
+        {{'Select Size' | translate}}</h3>
+      <!-- <span class="detail-text">{{productdetailData.size.detail}}</span> -->
+      <preload-image [ratio]="{w:1, h:1}" [src]="productdetailData.size.detail"></preload-image>
     </ion-item>
 
     <ion-list class="radio-tags" radio-group *ngIf="productdetailData.size">
@@ -59,13 +72,50 @@
     <ion-item class="detail-item" *ngIf="productdetailData.shop">
       <h3 class="categories-title-pomotion">
         <!-- <ion-icon name="md-pricetags"></ion-icon>  -->
-        {{'SHOP' | translate}}</h3>
-      <span class="detail-text">{{productdetailData.shop.shop}}</span>
+        {{'Shop' | translate}}</h3>
+      <ion-row>
+        <ion-col width-35>
+          <span class="detail-textHeader">{{productdetailData.shop.shop}}</span>
+        </ion-col>
+        <ion-col width-65 text-right>
+          <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+            starIconName="star" nullable="false"></rating>
+        </ion-col>
+      </ion-row>
     </ion-item>
 
   </ion-list>
-  <h4 class="categories-title" *ngIf="productdetailData.relationProducts">Relation products</h4>
+  <h4 class="relation-title" *ngIf="productdetailData.relationProducts">Relation products</h4>
   <list-scoll-x [populars]="productdetailData.relationProducts" *ngIf="productdetailData.relationProducts"></list-scoll-x>
+
+  <ion-item class="detail-item">
+    <h3 class="categories-title-pomotion">
+      <ion-icon name="md-help"></ion-icon> {{'Question' | translate}}</h3>
+    <div *ngFor="let item of productdetailData.qa">
+      <ion-item class="detail-item">
+        <h4 class="detail-textHeader">
+          <ion-icon name="md-person"></ion-icon> {{item.question}}</h4>
+        <p class="detail-text">
+          <ion-icon name="ios-redo-outline"></ion-icon> {{item.answer}}</p>
+      </ion-item>
+    </div>
+  </ion-item>
+  <ion-item class="detail-item">
+    <h3 class="categories-title-pomotion">
+      <ion-icon name="md-star-outline"></ion-icon>
+      {{'Review' | translate}}</h3>
+    <div *ngFor="let item of productdetailData.review">
+      <ion-item class="detail-item">
+        <ion-row>
+          <ion-col width-100>
+            <rating [(ngModel)]="item.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+              nullable="false"></rating>
+            <h4 class="detail-textHeader">{{item.comment}}</h4>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </div>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
