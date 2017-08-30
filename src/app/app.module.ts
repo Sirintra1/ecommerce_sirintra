@@ -85,6 +85,11 @@ import { ShopDetailServiceProvider } from '../pages/shop-detail/shop-detail.serv
 import { CartListComponent } from '../components/cart-list/cart-list';
 import { LogServiceProvider } from '../providers/log-service/log-service';
 import { SearchbarComponent } from '../components/searchbar/searchbar';
+import { AuthorizeProvider } from "../providers/authorize/authorize";
+import { LoginPage } from "../pages/login/login";
+import { LoginServiceProvider } from "../pages/login/login.service";
+import { RegisterPage } from "../pages/register/register";
+import { RegisterServiceProvider } from "../pages/register/register.service";
 
 
 export function createTranslateLoader(http: Http) {
@@ -104,6 +109,8 @@ export function createTranslateLoader(http: Http) {
     FavoritePage,
     ProductDetailPage,
     ShopDetailPage,
+    LoginPage,
+    RegisterPage,
 
     PreloadImage,
     BackgroundImage,
@@ -153,7 +160,9 @@ export function createTranslateLoader(http: Http) {
     ProductDetailPage,
     ShopDetailPage,
     ListProductPage,
-    ListShopPage
+    ListShopPage,
+    LoginPage,
+    RegisterPage
 
   ],
   providers: [
@@ -184,7 +193,10 @@ export function createTranslateLoader(http: Http) {
     ListShopServiceProvider,
     ProductDetailServiceProvider,
     ShopDetailServiceProvider,
-    LogServiceProvider
+    LogServiceProvider,
+    AuthorizeProvider,
+    LoginServiceProvider,
+    RegisterServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

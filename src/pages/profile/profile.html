@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>{{ 'PROFILE' | translate }}</ion-title>
-        <ion-buttons>
+        <ion-buttons start>
             <button ion-button>
         {{ 'SAVE' | translate }}
       </button>
@@ -10,45 +10,48 @@
 </ion-header>
 
 <ion-content class="settings-content">
-    <div class="user-image-content">
-        <ion-row no-padding class="user-image-row">
-            <ion-col no-padding width-40>
-                <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="profileData.profileImageURL" alt="this is the image" title="IMAGE!"></preload-image>
-            </ion-col>
-        </ion-row>
-        <ion-row no-padding class="user-image-row">
-            <ion-col no-padding width-60>
-                <button class="image-action-button" ion-button outline block small>{{ 'CHANGE_PROFILE_PICTURE' | translate}}</button>
-            </ion-col>
-        </ion-row>
-    </div>
-    <ion-list class="user-data-content">
-        <ion-item>
-            <ion-label stacked>{{ 'First Name' | translate }}</ion-label>
-            <ion-input type="text" [(ngModel)]="profileData.firstName"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label stacked>{{ 'Last Name' | translate }}</ion-label>
-            <ion-input type="text" [(ngModel)]="profileData.lastName"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label stacked>{{ 'E-mail' | translate }}</ion-label>
-            <ion-input [(ngModel)]="profileData.email" rows="5" placeholder="Your email here..."></ion-input>
-        </ion-item>
-    </ion-list>
+    <div *ngIf="profileData">
+        <div class="user-image-content">
+            <ion-row no-padding class="user-image-row">
+                <ion-col no-padding width-40>
+                    <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="profileData.profileImageURL" alt="this is the image" title="IMAGE!"></preload-image>
+                </ion-col>
+            </ion-row>
+            <ion-row no-padding class="user-image-row">
+                <ion-col no-padding width-60>
+                    <button class="image-action-button" ion-button outline block small>{{ 'CHANGE_PROFILE_PICTURE' | translate}}</button>
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-list class="user-data-content">
+            <ion-item>
+                <ion-label stacked>{{ 'First Name' | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="profileData.firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>{{ 'Last Name' | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="profileData.lastName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>{{ 'E-mail' | translate }}</ion-label>
+                <ion-input [(ngModel)]="profileData.email" rows="5" placeholder="Your email here..."></ion-input>
+            </ion-item>
+        </ion-list>
 
 
-    <button class="alt-button" ion-button full>{{'PRIVACY_POLICY' | translate}}</button>
+        <button class="alt-button" ion-button full>{{'PRIVACY_POLICY' | translate}}</button>
 
-    <button class="alt-button" ion-button full>{{'TERMS_OF_USE' | translate }}</button>
+        <button class="alt-button" ion-button full>{{'TERMS_OF_USE' | translate }}</button>
 
-    <!-- <button class="alt-button logout-button" ion-button full icon-left>
+        <!-- <button class="alt-button logout-button" ion-button full icon-left>
     <ion-icon name="log-in"></ion-icon>
     {{'LOG_IN' | translate }}
   </button> -->
 
-    <button class="alt-button logout-button" ion-button full icon-left>
+        <button class="alt-button logout-button" ion-button full icon-left (click)="logout()">
     <ion-icon name="log-out"></ion-icon>
     {{'LOG_OUT' | translate }}
   </button>
+    </div>
+
 </ion-content>
