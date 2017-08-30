@@ -15,15 +15,15 @@ export class LogServiceProvider {
     this.info('Hello LogServiceProvider Provider');
   }
   info(data: any) {
-    // console.log(data);
+    console.log(data);
   }
   error(error: any) {
-    // console.error(error);
+    console.error(error);
   }
   warning(warning: any) {
-    // console.warn(warning);
+    console.warn(warning);
   }
   errorService(message: string, error: any) {
-    // console.error(error);
+    console.error(error);
   }
 }
