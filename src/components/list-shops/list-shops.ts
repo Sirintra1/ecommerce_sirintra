@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the ListItemsComponent component.
@@ -12,13 +13,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ListShopsComponent {
 
-  @Input() items:any;
-  @Output() itemClicked:EventEmitter<any> = new EventEmitter<any>();
-  constructor() {
+  @Input() items: any;
+  @Output() itemClicked: EventEmitter<any> = new EventEmitter<any>();
+  constructor(public log: LogServiceProvider) {
 
   }
 
-  onClick(item){
+  onClick(item) {
     this.itemClicked.emit(item);
   }
 

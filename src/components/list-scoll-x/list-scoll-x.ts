@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the ListScollXComponent component.
@@ -15,11 +16,11 @@ export class ListScollXComponent {
   @Input() populars: any;
   @Output() selectedItem: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
-    console.log('Hello ListScollXComponent Component');
+  constructor(public log: LogServiceProvider) {
+    this.log.info('Hello ListScollXComponent Component');
   }
 
-  _selectedItem(data){
+  _selectedItem(data) {
     this.selectedItem.emit(data);
   }
 

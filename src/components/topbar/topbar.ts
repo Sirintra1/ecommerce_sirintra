@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 @Component({
   selector: 'topbar',
@@ -8,7 +9,7 @@ export class TopbarComponent {
 
   @Input() dataTopBar: any;
 
-  constructor() {
+  constructor(public log:LogServiceProvider) {
 
   }
   onClick = function () {
@@ -17,7 +18,7 @@ export class TopbarComponent {
       "customerid": "xxx",
       "favdate": "2017-08-05T14:05:59"
     });
-    console.log(this.dataTopBar.favorite);
+    this.log.info(this.dataTopBar.favorite);
 
   }
   onClickF = function () {
@@ -29,6 +30,6 @@ export class TopbarComponent {
         break;
       }
     }
-    console.log(this.dataTopBar.favorite);
+    this.log.info(this.dataTopBar.favorite);
   }
 }

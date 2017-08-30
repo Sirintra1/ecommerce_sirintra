@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the AdsHeaderBarComponent component.
  *
@@ -13,8 +13,8 @@ import { Component, Input } from '@angular/core';
 export class AdsHeaderBarComponent {
   @Input() images: Array<string> = [];
 
-  constructor() {
-    console.log('Hello AdsHeaderBarComponent Component');
+  constructor(public log: LogServiceProvider) {
+    this.log.info('Hello AdsHeaderBarComponent Component');
   }
 
 }

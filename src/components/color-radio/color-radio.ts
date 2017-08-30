@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, Renderer } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 @Directive({
   selector: '[color-radio]'
@@ -7,7 +8,7 @@ export class ColorRadio
 {
   @Input('color-radio') color: string;
 
-  constructor(public el: ElementRef, public renderer: Renderer) { }
+  constructor(public el: ElementRef, public renderer: Renderer,public log:LogServiceProvider) { }
 
   setColor(color: string) {
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
@@ -15,7 +16,7 @@ export class ColorRadio
   }
 
   ngOnInit() {
-    console.log(this.color);
+    this.log.info(this.color);
     this.setColor(this.color);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the SearchbarComponent component.
@@ -14,8 +15,8 @@ export class SearchbarComponent {
 
   @Input() items: any
   @Output() returnData: EventEmitter<any> = new EventEmitter<any>();
-  constructor() {
-    console.log('Hello SearchbarComponent Component');
+  constructor(public log: LogServiceProvider) {
+    this.log.info('Hello SearchbarComponent Component');
   }
 
   getItems(ev) {
