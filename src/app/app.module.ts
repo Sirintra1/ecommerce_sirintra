@@ -15,7 +15,10 @@ import { ShowHideContainer } from '../components/show-hide-password/show-hide-co
 import { ShowHideInput } from '../components/show-hide-password/show-hide-input';
 import { ColorRadio } from '../components/color-radio/color-radio';
 import { CounterInput } from '../components/counter-input/counter-input';
-import { Rating } from '../components/rating/rating';
+// import { Rating } from '../components/rating/rating';
+
+// Import ionic2-rating module
+import { Ionic2RatingModule } from 'ionic2-rating';
 // import { GoogleMap } from '../components/google-map/google-map';
 
 // import { FacebookLoginService } from '../pages/facebook-login/facebook-login.service';
@@ -80,10 +83,11 @@ import { ListShopPage } from '../pages/list-shop/list-shop';
 import { ProductDetailServiceProvider } from '../pages/product-detail/product-detail.service';
 import { ShopDetailServiceProvider } from '../pages/shop-detail/shop-detail.service';
 import { CartListComponent } from '../components/cart-list/cart-list';
+import { LogServiceProvider } from '../providers/log-service/log-service';
 
 
 export function createTranslateLoader(http: Http) {
-	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 
@@ -106,7 +110,7 @@ export function createTranslateLoader(http: Http) {
     ShowHideInput,
     ColorRadio,
     CounterInput,
-    Rating,
+    // Rating,
     // GoogleMap,
     ListScollXComponent,
     ListGridComponent,
@@ -123,15 +127,16 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-		TranslateModule.forRoot({
-    loader: {
+    Ionic2RatingModule,
+    TranslateModule.forRoot({
+      loader: {
         provide: TranslateLoader,
-      	useFactory: (createTranslateLoader),
+        useFactory: (createTranslateLoader),
         deps: [Http]
-		    }
-		}),
-		VideoPlayerModule,
-		ValidatorsModule
+      }
+    }),
+    VideoPlayerModule,
+    ValidatorsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -147,16 +152,16 @@ export function createTranslateLoader(http: Http) {
     ShopDetailPage,
     ListProductPage,
     ListShopPage
-    
+
   ],
   providers: [
     HomeService,
     CartService,
     // GoogleMapsService,
-		LanguageService,
+    LanguageService,
 
-	  SplashScreen,
-	  StatusBar,
+    SplashScreen,
+    StatusBar,
     SocialSharing,
     NativeStorage,
     InAppBrowser,
@@ -165,19 +170,20 @@ export function createTranslateLoader(http: Http) {
     Keyboard,
     Geolocation,
     TwitterConnect,
-		AdMobFree,
-		AppRate,
-		ImagePicker,
-		Crop,
-		EmailComposer,
+    AdMobFree,
+    AppRate,
+    ImagePicker,
+    Crop,
+    EmailComposer,
     SearchServiceProvider,
     FavoriteServiceProvider,
     ProfileServiceProvider,
     ListProductServiceProvider,
     ListShopServiceProvider,
     ProductDetailServiceProvider,
-    ShopDetailServiceProvider
+    ShopDetailServiceProvider,
+    LogServiceProvider
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

@@ -5,6 +5,7 @@ import { CartModel } from "./cart.model";
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { FormGroup, FormControl } from '@angular/forms';
 import { counterRangeValidator } from '../../components/counter-input/counter-input';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 
 /**
@@ -25,7 +26,8 @@ export class CartPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public cartService:CartService,
-    public loadingCtrl:LoadingController
+    public loadingCtrl:LoadingController,
+    public log:LogServiceProvider
   ) {
     this.loading = loadingCtrl.create();
     this.counterForm = new FormGroup({
@@ -34,12 +36,12 @@ export class CartPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CartPage');
+    this.log.info('ionViewDidLoad CartPage');
     this.loading.present();
     this.cartService
       .getData()
       .then(data => {
-        console.log(data);
+        this.log.info(data);
         this.cart = data;
         this.loading.dismiss();
       });

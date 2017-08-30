@@ -1,27 +1,32 @@
 {
     "title": "Product List",
-    "items": [{
+    "items": [
+        {
             "name": "Samsung Galaxy S8",
             "detail": "Samsung Galaxy S8 / 128 GB",
             "price": "20,000",
+            "rate": 4,
             "image": "https://images.iphonemod.net/wp-content/uploads/2017/04/iDrop-News-Exclusive-iPhone-8-Image-6.jpg"
         },
         {
             "name": "Samsung Galaxy S9",
             "detail": "Samsung Galaxy S8 / 128 GB",
             "price": "20,000",
+            "rate": 3,
             "image": "https://images.iphonemod.net/wp-content/uploads/2017/04/iDrop-News-Exclusive-iPhone-8-Image-6.jpg"
         },
         {
             "name": "Samsung Galaxy S10",
             "detail": "Samsung Galaxy S8 / 128 GB",
             "price": "20,000",
+            "rate": 2.5,
             "image": "https://images.iphonemod.net/wp-content/uploads/2017/04/iDrop-News-Exclusive-iPhone-8-Image-6.jpg"
         },
         {
             "name": "Samsung Galaxy S11",
             "detail": "Samsung Galaxy S8 / 128 GB",
             "price": "20,000",
+            "rate": 5,
             "image": "https://images.iphonemod.net/wp-content/uploads/2017/04/iDrop-News-Exclusive-iPhone-8-Image-6.jpg"
         }
     ]

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListProductModel } from '../list-product/list-product.model';
 import { ListProductServiceProvider } from '../list-product/list-product.service';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the ListProductPage page.
  *
@@ -15,11 +16,11 @@ import { ListProductServiceProvider } from '../list-product/list-product.service
 })
 export class ListProductPage {
   listProductData: ListProductModel = new ListProductModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListProductPage');
+    this.log.info('ionViewDidLoad ListProductPage');
     this.getListProductData();
   }
   getListProductData() {
@@ -28,7 +29,7 @@ export class ListProductPage {
       .then((data) => {
         this.listProductData = data;
       }, (err) => {
-        console.log(err);
+        this.log.error(err);
       });
   }
 }
