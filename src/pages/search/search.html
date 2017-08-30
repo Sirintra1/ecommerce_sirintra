@@ -14,7 +14,7 @@
 
 
 <ion-content class="list-big-content">
-    <searchbar [items]="searchItem.items" (returnData)="searchInput($event)"></searchbar>
+    <searchbar [items]="searchData.items" (returnData)="searchInput($event)"></searchbar>
     <ion-row style="background-color: #fff;margin-bottom: 6px;padding: 10px;">
       <ion-col col-5>
         <ion-icon name="ios-funnel"></ion-icon> Filter</ion-col>
@@ -24,6 +24,6 @@
         <ion-icon name="list"></ion-icon>
       </ion-col>
     </ion-row>
-    <list-items [items]="searchItem.items" ></list-items> 
+    <list-items [items]="searchData.items" ></list-items> 
 
 </ion-content>

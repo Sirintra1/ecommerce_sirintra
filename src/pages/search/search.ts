@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchModel } from './search.model';
 import { SearchServiceProvider } from './search.service';
+import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 /**
  * Generated class for the SearchPage page.
@@ -15,23 +16,23 @@ import { SearchServiceProvider } from './search.service';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  searchItem: SearchModel = new SearchModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public searchServiceProvider: SearchServiceProvider) {
+  searchData: SearchModel = new SearchModel();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public searchServiceProvider: SearchServiceProvider, public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+    this.log.info('ionViewDidLoad SearchPage');
     this.getSearchData();
   }
 
   getSearchData() {
     this.searchServiceProvider.getData().then((data) => {
-      this.searchItem = data;
-      window.localStorage.setItem('array', JSON.stringify(this.searchItem));
+      this.searchData = data;
+      window.localStorage.setItem('array', JSON.stringify(this.searchData));
 
-      console.log(this.searchItem);
+        this.log.info(this.searchData);
     }, (error) => {
-      console.error(error);
+        this.log.error(error);
     });
   }
 
@@ -39,7 +40,7 @@ export class SearchPage {
     if (e && e == 'reload') {
       this.getSearchData();
     } else {
-      this.searchItem.items = e;
+      this.searchData.items = e;
     }
   }
 
