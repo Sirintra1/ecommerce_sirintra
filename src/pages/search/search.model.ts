@@ -1,10 +1,5 @@
+import { ProductItemModel } from "../../app/app.model";
+
 export class SearchModel {
-    items: Array<SearchItemModel>;
+    items: Array<ProductItemModel>;
 }
-
-export class SearchItemModel {
-    name: string;
-    image: string;
-    description: string;
-}
-

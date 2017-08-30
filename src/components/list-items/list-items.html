@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="showSearch">
+  <div *ngIf="showSearch || showToolbar">
       <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </div>
   <ion-row class="filter-bar" *ngIf="showToolbar">
@@ -19,8 +19,8 @@
             </ion-col>
              <ion-col>
               <h3 class="h3-name">{{item.name}}</h3>
-              <p class="color-orenge-custom">{{item.price}} บาท</p>
-              <p><span class="text-decoration">18,500 บาท</span> -68%</p>
+              <p class="color-orenge-custom">{{item.price | number}} {{item.currency | translate}}</p>
+              <p><span class="text-decoration">{{item.normalprice | number}} {{item.currency | translate}}</span> -{{item.discount | number}} {{item.discounttype | translate}}</p>
               <rating [(ngModel)]="item.rate" readOnly="false"  max="5"  emptyStarIconName="star-outline" halfStarIconName="star-half"starIconName="star" nullable="false"></rating>
               <!--<p class="color-gold-custom"><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> -->
               <!--<ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> (19)</p>-->

@@ -1,9 +1,5 @@
+import { ProductItemModel } from "../../app/app.model";
+
 export class FavoriteModel {
-    items: Array<Product>;
-}
-export class Product {
-    name: string;
-    detail: string;
-    price: string;
-    image: string;
+    items: Array<ProductItemModel>;
 }

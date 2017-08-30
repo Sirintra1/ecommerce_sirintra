@@ -14,16 +14,6 @@
 
 
 <ion-content class="list-big-content">
-    <searchbar [items]="searchData.items" (returnData)="searchInput($event)"></searchbar>
-    <ion-row style="background-color: #fff;margin-bottom: 6px;padding: 10px;">
-      <ion-col col-5>
-        <ion-icon name="ios-funnel"></ion-icon> Filter</ion-col>
-      <ion-col col-5>
-        <ion-icon name="swap"></ion-icon> Sort</ion-col>
-      <ion-col col-2>
-        <ion-icon name="list"></ion-icon>
-      </ion-col>
-    </ion-row>
-    <list-items [items]="searchData.items" ></list-items> 
+    <list-items [items]="searchData.items" [showSearch]="true" [showToolbar] = "true"></list-items> 
 
 </ion-content>

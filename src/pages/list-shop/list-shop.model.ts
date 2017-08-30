@@ -1,7 +1,5 @@
+import { ShopItemModel } from "../../app/app.model";
+
 export class ListShopModel {
-    items: Array<Shop>;
-}
-export class Shop {
-    name: string;
-    image: string;
+    items: Array<ShopItemModel>;
 }

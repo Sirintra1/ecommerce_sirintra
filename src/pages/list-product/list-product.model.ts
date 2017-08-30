@@ -1,10 +1,5 @@
+import { ProductItemModel } from "../../app/app.model";
+
 export class ListProductModel {
-    items: Array<Product>;
-}
-export class Product {
-    name: string;
-    detail: string;
-    price: string;
-    image: string;
-    rate:number;
+    items: Array<ProductItemModel>;
 }
