@@ -14,7 +14,8 @@
 
 
 <ion-content>
-  <ads-header-bar [images]="home.images"></ads-header-bar>
+  <slide-tabs [items]="home.categories"></slide-tabs>
+  <!-- <ads-header-bar [images]="home.images"></ads-header-bar>
   <h4 class="categories-title">{{'LASTVISIT' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="home.lastvisit && home.lastvisit.length > 0">see all</span></h4>
   <list-scoll-x [populars]="home.lastvisit" (selectedItem)="selectedItem($event)" *ngIf="home.lastvisit && home.lastvisit.length > 0"></list-scoll-x>
 
@@ -25,5 +26,5 @@
   <list-scoll-x [populars]="home.popularproducts" (selectedItem)="selectedItem($event)" *ngIf="home.popularproducts && home.popularproducts.length > 0"></list-scoll-x>
 
   <h4 class="categories-title">{{'BESTSELLER' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="home.bestseller && home.bestseller.length > 0">see all</span></h4>
-  <list-scoll-x [populars]="home.bestseller" (selectedItem)="selectedItem($event)" *ngIf="home.bestseller && home.bestseller.length > 0"></list-scoll-x>
+  <list-scoll-x [populars]="home.bestseller" (selectedItem)="selectedItem($event)" *ngIf="home.bestseller && home.bestseller.length > 0"></list-scoll-x> -->
 </ion-content>
