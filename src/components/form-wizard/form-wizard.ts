@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Slides } from "ionic-angular";
 
 /**
  * Generated class for the FormWizardComponent component.
@@ -11,12 +12,37 @@ import { Component } from '@angular/core';
   templateUrl: 'form-wizard.html'
 })
 export class FormWizardComponent {
-
+  @ViewChild('formWizard') formWizard: Slides;
+  tabs: any = '0';
   text: string;
 
   constructor() {
     console.log('Hello FormWizardComponent Component');
     this.text = 'Hello World';
+  }
+
+  selectTab(index) {
+    this.formWizard.slideTo(index);
+  }
+
+  changeWillSlide($event) {
+    this.tabs = $event._snapIndex.toString();
+  }
+
+  ngAfterViewInit() {
+    this.formWizard.lockSwipes(true);
+  }
+
+  slidePrev() {
+    this.formWizard.lockSwipes(false);
+    this.formWizard.slidePrev();
+    this.formWizard.lockSwipes(true);
+  }
+
+  slideNext() {
+    this.formWizard.lockSwipes(false);
+    this.formWizard.slideNext();
+    this.formWizard.lockSwipes(true);
   }
 
 }

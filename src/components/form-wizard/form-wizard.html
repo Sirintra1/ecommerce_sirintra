@@ -1,4 +1,43 @@
-<!-- Generated template for the FormWizardComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-navbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <ion-segment color="dark" class="md" [(ngModel)]="tabs">
+          <ion-segment-button (click)="selectTab(0)" [ngClass]="tabs >= 0 ? 'active' : '' " value="0">1</ion-segment-button>
+        </ion-segment>
+        <p>ที่อยู่จัดส่ง</p>
+      </ion-col>
+      <ion-col text-center>
+        <div class="lines" [ngClass]="tabs >= 1 ? 'active-lines' : '' "></div>
+      </ion-col>
+      <ion-col text-center>
+        <ion-segment color="dark" [(ngModel)]="tabs">
+          <ion-segment-button (click)="selectTab(1)" [ngClass]="tabs >= 1 ? 'active' : '' " value="1">2</ion-segment-button>
+        </ion-segment>
+        <p>ชำระเงิน</p>
+      </ion-col>
+      <ion-col text-center>
+        <div class="lines" [ngClass]="tabs >= 2 ? 'active-lines' : '' "></div>
+      </ion-col>
+      <ion-col text-center>
+        <ion-segment color="dark" [(ngModel)]="tabs">
+          <ion-segment-button (click)="selectTab(2)" [ngClass]="tabs >= 2 ? 'active' : '' " value="2">3</ion-segment-button>
+        </ion-segment>
+        <p>คอนเฟิร์ม</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-navbar>
+<ion-slides #formWizard (ionSlideWillChange)="changeWillSlide($event)">
+  <ion-slide>
+    <button ion-button full color="danger" (click)="slideNext()">การชำระเงิน</button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button full color="danger" (click)="slidePrev()">ย้อนกลับ</button>
+    <button ion-button full color="danger" (click)="slideNext()">ยืนยันการสั่งซื้อ</button>
+  </ion-slide>
+  <ion-slide>
+    <button ion-button full color="danger" (click)="slidePrev()">ย้อนกลับ</button>
+    <button ion-button full color="danger">คอนเฟิร์ม</button>
+  </ion-slide>
+</ion-slides>
