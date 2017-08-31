@@ -20,10 +20,10 @@
 <ion-footer>
   <ion-row class="categories-title">
     <ion-col width-60>
-      <p>Total price</p>
+      <p class="color-black-custom font-bold">Total price</p>
     </ion-col>
     <ion-col width-40 text-right>
-      <p>{{cart.totalamount | number}}</p>
+      <p class="color-black-custom font-bold">{{cart.totalamount | number}} Baht</p>
     </ion-col>
   </ion-row>
   <button ion-button full color="danger" (click)="gotocheckout()">{{"PAYMENT" | translate}}</button>
