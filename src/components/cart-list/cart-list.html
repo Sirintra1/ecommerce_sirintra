@@ -15,32 +15,61 @@
       <counter-input [counterValue]="item.qty"></counter-input>
     </ion-item>
   </ion-list> -->
-
 <ion-list>
-  <ion-item *ngFor="let data of carts.items">
-    <!-- <ion-avatar item-left> -->
-      <!-- <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image> -->
-    <!-- </ion-avatar> -->
-
+  <!-- <ion-item *ngFor="let data of carts.items">
     <ion-col no-padding width-25 item-left class="magin-right-10-custom">
-        <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image>
-      </ion-col>
-    
+      <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image>
+    </ion-col>
     <ion-col>
-    <h2 class="item-title">{{data.product.name}}</h2>
-    <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
-    <p><b>{{data.amount}} Baht</b></p>
-    <button ion-button icon-only clear color="danger" class="circle-btn"> 
+      <h2 class="item-title">{{data.product.name}}</h2>
+      <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
+      <p><b>{{data.amount}} Baht</b></p>
+      <button ion-button icon-only clear color="danger" class="circle-btn"> 
           <ion-icon name="md-heart-outline"></ion-icon>
         </button>
-    <button ion-button icon-only clear color="gray" class="circle-btn">
+      <button ion-button icon-only clear color="gray" class="circle-btn">
           <ion-icon name="ios-trash-outline"></ion-icon>
         </button>
-    <div class="counter-list">
-      <ion-item no-lines class="counter-item">
-        <counter-input [counterValue]="data.qty"></counter-input>
-      </ion-item>
-    </div>
-  </ion-col>
-  </ion-item>
+      <div class="counter-list">
+        <ion-item no-lines class="counter-item">
+          <counter-input [counterValue]="data.qty"></counter-input>
+        </ion-item>
+      </div>
+    </ion-col>
+  </ion-item> -->
+
+  <div ion-item *ngFor="let data of carts.items">
+    <ion-row>
+      <ion-col no-padding width-33 class="magin-right-10-custom">
+        <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image>
+      </ion-col>
+      <ion-col>
+        <h3 class="h3-name">{{data.product.name}}</h3>
+        <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
+        <p class="color-orenge-custom"> {{data.amount | number}} Baht</p>
+        <ion-row>
+          <ion-col width-15>
+            <!-- <button ion-button icon-only clear color="danger">  -->
+              <ion-icon name="md-heart-outline" class="icon-item"  color="danger"></ion-icon>
+            <!-- </button> -->
+            <!-- <button ion-button icon-only clear color="gray"> -->
+              <!-- <ion-icon name="ios-trash-outline" class="icon-item" color="gray"></ion-icon> -->
+            <!-- </button> -->
+          </ion-col>
+          <ion-col width-25>
+              <ion-icon name="ios-trash-outline" class="icon-item" color="gray"></ion-icon>
+          </ion-col>
+          <ion-col width-60>
+            <div class="counter-list">
+              <ion-item no-lines class="counter-item">
+                <counter-input [counterValue]="data.qty"></counter-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-list>

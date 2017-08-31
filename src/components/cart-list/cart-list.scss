@@ -1,19 +1,46 @@
 cart-list {
-    .ion-content {
-        height: 92% !important;
-    }
-    .item-title {
-        font-weight: bold;
+    // .ion-content {
+    //     height: 92% !important;
+    // }
+    // .item-title {
+    //     font-weight: bold;
+    //     color: #ae75e7;
+    // }
+    // .circle-btn {
+    //     border-radius: 50% !important;
+    //     padding: 5px !important;
+    // }
+    // .item-counter {
+    //     border: none !important;
+    // }
+    // .magin-right-10-custom{
+    //     margin-right: 10px;
+    // }
+    .h3-name {
         color: #ae75e7;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
-    .circle-btn {
-        border-radius: 50% !important;
-        padding: 5px !important;
+    .color-orenge-custom {
+        color: #ff5722;
     }
-    .item-counter {
-        border: none !important;
+    .color-gold-custom {
+        color: gold;
     }
-    .magin-right-10-custom{
+    .text-decoration {
+        text-decoration: line-through;
+    }
+    .filter-bar {
+        background-color: #fff;
+        margin-bottom: 6px;
+        padding: 10px;
+    }
+    .magin-right-10-custom {
         margin-right: 10px;
+    }
+    .icon-item {
+        font-size: 30px;
     }
 }
