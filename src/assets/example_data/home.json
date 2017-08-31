@@ -1,6 +1,6 @@
 {
   "categories": [{
-      "name": "Category1",
+      "name": "ไฮไลท์",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "name": "Category2",
+      "name": "แฟชั่น",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
@@ -436,7 +436,7 @@
       ]
     },
     {
-      "name": "Category3",
+      "name": "เครื่องใช้ไฟฟ้า",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
@@ -654,7 +654,7 @@
       ]
     },
     {
-      "name": "Category4",
+      "name": "ไอที",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
@@ -872,7 +872,7 @@
       ]
     },
     {
-      "name": "Category5",
+      "name": "ความงามและสุขภาพ",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
@@ -1090,7 +1090,7 @@
       ]
     },
     {
-      "name": "Category6",
+      "name": "กีฬาและเดินทาง",
       "images": [
         "https://th-live.slatic.net/original/2f9770b51f261b8c17ea5bbb3061e8ad.jpg",
         "https://th-live.slatic.net/original/f282dd2746734099e75de025458d1de6.jpg"
