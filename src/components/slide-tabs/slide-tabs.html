@@ -1,6 +1,6 @@
 <!-- Generated template for the ScrollbarsComponent component -->
 <div class="slide-tabs">
-  <ion-toolbar no-border class="scrollable-segments">
+  <ion-toolbar no-border class="scrollable-segments" (touchstart)="touchToolbar($event)">
     <ion-segment [(ngModel)]="tabs" id="scrollable">
       <ion-segment-button *ngFor="let item of items; let i = index;" (click)="selectTab(i)" value="{{i}}">
         {{item.name}}
@@ -10,7 +10,6 @@
   <ion-slides #tabsSlider *ngIf="items" (ionSlideWillChange)="changeWillSlide($event)">
     <ion-slide *ngFor="let page of getPage(items.length);">
       <ion-content>
-
         <!-- <ads-header-bar [images]="items[page].images"></ads-header-bar> -->
 
         <h4 class="categories-title" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0">{{'PRODUCTVOUCHER' | translate}}</h4>
