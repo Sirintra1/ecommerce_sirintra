@@ -11,7 +11,7 @@ export class HomeModel {
   bestseller: Array<ProductItemModel>;
   lastvisit: Array<ProductItemModel>;
   popularshops: Array<ShopItemModel>;
-  prouctvoucher: Array<VoucherModel>;
+  productvoucher: Array<VoucherModel>;
   shopvoucher: Array<VoucherModel>;
 }
 
