@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { counterRangeValidator } from '../../components/counter-input/counter-input';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
+import { CheckoutPage } from "../checkout/checkout";
 
 
 /**
@@ -55,5 +56,9 @@ export class CartPage {
 
   gotoProductDetail(item) {
     this.navCtrl.push(ProductDetailPage, item)
+  }
+
+  gotocheckout(){
+    this.navCtrl.push(CheckoutPage)
   }
 }
