@@ -26,5 +26,5 @@
       <p>{{cart.totalamount | number}}</p>
     </ion-col>
   </ion-row>
-  <button ion-button full color="danger">{{"PAYMENT" | translate}}</button>
+  <button ion-button full color="danger" (click)="gotocheckout()">{{"PAYMENT" | translate}}</button>
 </ion-footer>
