@@ -93,6 +93,7 @@ import { RegisterServiceProvider } from "../pages/register/register.service";
 import { SlideTabsComponent } from '../components/slide-tabs/slide-tabs';
 import { ImageListComponent } from '../components/image-list/image-list';
 import { CheckoutPage } from "../pages/checkout/checkout";
+import { FormWizardComponent } from '../components/form-wizard/form-wizard';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -136,7 +137,8 @@ export function createTranslateLoader(http: Http) {
     CartListComponent,
     SearchbarComponent,
     SlideTabsComponent,
-    ImageListComponent
+    ImageListComponent,
+    FormWizardComponent
   ],
   imports: [
     BrowserModule,
