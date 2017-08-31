@@ -126,5 +126,15 @@
   "ACCEPT_TERMS_VALIDATIONS": "Accept Terms Validations",
   "SEARCH": "Search",
   "CART": "Cart",
-  "FAVORITE": "Favorite"
+  "FAVORITE": "Favorite",
+  "THB": "Baht",
+  "PRODUCTVOUCHER": "Product Vouchers",
+  "SHOPVOUCHER": "Shop Vouchers",
+  "PUSH_NOTIFICATION": "Notifications",
+  "HISTORY_LOG": "My Products",
+  "SETTING": "Setting",
+  "CHANGE_LANGUAGE": "Change Language",
+  "POLICY": "Policy",
+  "HELP": "Help",
+  "WELCOME": "Hello,"
 }

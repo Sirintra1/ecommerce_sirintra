@@ -6,6 +6,7 @@ import { ProductDetailPage } from "../product-detail/product-detail";
 import { FormGroup, FormControl } from '@angular/forms';
 import { counterRangeValidator } from '../../components/counter-input/counter-input';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { AuthorizeProvider } from "../../providers/authorize/authorize";
 
 
 /**
@@ -23,11 +24,12 @@ export class CartPage {
   loading: any;
   cart: CartModel = new CartModel();
   counterForm: any;
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public cartService:CartService,
-    public loadingCtrl:LoadingController,
-    public log:LogServiceProvider
+    public cartService: CartService,
+    public loadingCtrl: LoadingController,
+    public log: LogServiceProvider,
+    public authorizeProvider: AuthorizeProvider
   ) {
     this.loading = loadingCtrl.create();
     this.counterForm = new FormGroup({
@@ -47,7 +49,11 @@ export class CartPage {
       });
   }
 
-  gotoProductDetail(item){
-    this.navCtrl.push(ProductDetailPage,item)
+  ionViewWillEnter() {
+    this.authorizeProvider.isAuthorization();
+  }
+
+  gotoProductDetail(item) {
+    this.navCtrl.push(ProductDetailPage, item)
   }
 }
