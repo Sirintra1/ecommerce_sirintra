@@ -2,93 +2,35 @@
     "items": [
         {
             "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
+                "name": "Crossfit WorldWide Event",
+                "image": "https://images-eu.ssl-images-amazon.com/images/G/02/AMAZON-FASHION/2016/SHOES/SPORT/MISC/Nikemobilefootball",
+                "price": 1800,
+                "normalprice": 20000,
+                "discount": 10,
+                "discounttype": "%",
+                "currency": "THB",
+                "rate": 5,
+                "description": "At the Crossfit WorldWide Event athletes at compete in workouts that they learn about hours or days beforehand, consisting mostly of an assortment of standard aerobic, weightlifting, and gymnastics movement."
+              },
+            "unitprice": 1800,
             "qty": 2,
-            "amount": 200
+            "amount": 3600
         },
         {
             "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
+                "name": "US Open",
+                "image": "http://www.9digits.com/wp-content/uploads/2016/01/Nike-Air-Zoom-Pegasus-31-Mens-Running-Shoe-652925_801_C_PREM.jpg",
+                "price": 1800,
+                "normalprice": 20000,
+                "discount": 10,
+                "discounttype": "%",
+                "currency": "THB",
+                "rate": 5,
+                "description": "The United States Open Tennis Championships is a hardcourt tennis tournament. The tournament is the modern version of one of the oldest tennis championships in the world, the U.S. National Championship, for which men's singles was first contested in 1881."
+              },
+            "unitprice": 1800,
             "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
-        },
-        {
-            "product": {
-                "name": "NIKE",
-                "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-                "unitprice": 100
-            },
-            "unitprice": 100,
-            "qty": 2,
-            "amount": 200
+            "amount": 3600
         }
     ],
     "totalamount": 800.00
