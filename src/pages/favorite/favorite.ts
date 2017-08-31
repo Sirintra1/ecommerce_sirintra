@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FavoriteModel } from '../favorite/favorite.model';
 import { FavoriteServiceProvider } from '../favorite/favorite.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ProductDetailPage } from "../product-detail/product-detail";
+
 /**
  * Generated class for the FavoritePage page.
  *
@@ -32,6 +34,10 @@ export class FavoritePage {
       }, (err) => {
         this.log.error(err);
       });
+  }
+
+  selectedItem(){
+    this.navCtrl.push(ProductDetailPage);
   }
 
 }

@@ -92,7 +92,8 @@ import { RegisterPage } from "../pages/register/register";
 import { RegisterServiceProvider } from "../pages/register/register.service";
 import { SlideTabsComponent } from '../components/slide-tabs/slide-tabs';
 import { ImageListComponent } from '../components/image-list/image-list';
-
+import { CheckoutPage } from "../pages/checkout/checkout";
+// import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -113,6 +114,7 @@ export function createTranslateLoader(http: Http) {
     ShopDetailPage,
     LoginPage,
     RegisterPage,
+    CheckoutPage,
 
     PreloadImage,
     BackgroundImage,
@@ -166,7 +168,8 @@ export function createTranslateLoader(http: Http) {
     ListProductPage,
     ListShopPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CheckoutPage
 
   ],
   providers: [

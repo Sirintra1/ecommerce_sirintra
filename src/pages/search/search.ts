@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchModel } from './search.model';
 import { SearchServiceProvider } from './search.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ProductDetailPage } from "../product-detail/product-detail";
 
 /**
  * Generated class for the SearchPage page.
@@ -36,12 +37,16 @@ export class SearchPage {
     });
   }
 
-  searchInput(e) {
-    if (e && e == 'reload') {
-      this.getSearchData();
-    } else {
-      this.searchData.items = e;
-    }
+  // searchInput(e) {
+  //   if (e && e == 'reload') {
+  //     this.getSearchData();
+  //   } else {
+  //     this.searchData.items = e;
+  //   }
+  // }
+
+  selectedItem(){
+    this.navCtrl.push(ProductDetailPage);
   }
 
 }
