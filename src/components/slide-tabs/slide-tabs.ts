@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Slides, LoadingController } from "ionic-angular";
 
 /**
@@ -13,6 +13,11 @@ import { Slides, LoadingController } from "ionic-angular";
 })
 export class SlideTabsComponent {
   @Input() items: Array<any>;
+  @Output() selectItem: EventEmitter<any> = new EventEmitter();
+  @Output() selectShop: EventEmitter<any> = new EventEmitter();
+  @Output() onProductList: EventEmitter<any> = new EventEmitter();
+  @Output() onShopList: EventEmitter<any> = new EventEmitter();
+
   @ViewChild('tabsSlider') tabsSlider: Slides;
   tabs: any;
   selectPage: boolean = false;
@@ -41,6 +46,7 @@ export class SlideTabsComponent {
     this.selectPage = true;
   }
   changeWillSlide($event) { // change slide page on slideview
+    // console.log($event._snapIndex.toString());
     this.tabs = $event._snapIndex.toString();
     this.scrollbars();
   }
@@ -72,8 +78,22 @@ export class SlideTabsComponent {
   }
   // function end page slide
 
-  selectedItem(e) {
-    console.log(e);
+  clickItem(e) {
+    // console.log(e);
+    this.selectItem.emit(e);
+  }
+
+  clickShop(e) {
+    // console.log(e);
+    this.selectShop.emit(e);
+  }
+
+  productList(e) {
+    this.onProductList.emit(e);
+  }
+
+  shopList(e) {
+    this.onShopList.emit(e);
   }
 
   touchstart(e) {

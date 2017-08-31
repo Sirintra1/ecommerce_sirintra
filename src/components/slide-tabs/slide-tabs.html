@@ -10,20 +10,27 @@
   <ion-slides #tabsSlider *ngIf="items" (ionSlideWillChange)="changeWillSlide($event)">
     <ion-slide *ngFor="let page of getPage(items.length);">
       <ion-content>
+
         <ads-header-bar [images]="items[page].images"></ads-header-bar>
-        <h4 class="categories-title">{{'LASTVISIT' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0">see all</span></h4>
-        <list-scoll-x [populars]="items[page].lastvisit" (selectedItem)="selectedItem($event)" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0"></list-scoll-x>
+
+        <h4 class="categories-title">{{'LASTVISIT' | translate}} <span class="see-all" (click)="productList('lastvisit')" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0">see all</span></h4>
+        <list-scoll-x [populars]="items[page].lastvisit" (selectedItem)="clickItem($event)" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0"></list-scoll-x>
+
         <h4 class="categories-title" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0">{{'PRODUCTVOUCHER' | translate}}</h4>
         <image-list [images]="items[page].productvoucher" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0"></image-list>
-        <h4 class="categories-title">{{'SHOP' | translate}} <span class="see-all" (click)="openPageShopList()" *ngIf="items[page].popularshops && items[page].popularshops.length > 0">see all</span></h4>
-        <list-grid [items]="items[page].popularshops" (selectedItem)="selectedShop($event)" *ngIf="items[page].popularshops && items[page].popularshops.length > 0"></list-grid>
+
+        <h4 class="categories-title">{{'SHOP' | translate}} <span class="see-all" (click)="shopList('shop')" *ngIf="items[page].popularshops && items[page].popularshops.length > 0">see all</span></h4>
+        <list-grid [items]="items[page].popularshops" (selectedItem)="clickShop($event)" *ngIf="items[page].popularshops && items[page].popularshops.length > 0"></list-grid>
+
         <h4 class="categories-title" *ngIf="items[page].shopvoucher && items[page].shopvoucher.length > 0">{{'SHOPVOUCHER' | translate}}</h4>
         <image-list [images]="items[page].shopvoucher" *ngIf="items[page].shopvoucher && items[page].shopvoucher.length > 0"></image-list>
-        <h4 class="categories-title">{{'POPULAR' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="items[page].popularproducts && items[page].popularproducts.length > 0">see all</span></h4>
-        <list-scoll-x [populars]="items[page].popularproducts" (selectedItem)="selectedItem($event)" *ngIf="items[page].popularproducts && items[page].popularproducts.length > 0"></list-scoll-x>
 
-        <h4 class="categories-title">{{'BESTSELLER' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="items[page].bestseller && items[page].bestseller.length > 0">see all</span></h4>
-        <list-scoll-x [populars]="items[page].bestseller" (selectedItem)="selectedItem($event)" *ngIf="items[page].bestseller && items[page].bestseller.length > 0"></list-scoll-x>
+        <h4 class="categories-title">{{'POPULAR' | translate}} <span class="see-all" (click)="productList('popular')" *ngIf="items[page].popularproducts && items[page].popularproducts.length > 0">see all</span></h4>
+        <list-scoll-x [populars]="items[page].popularproducts" (selectedItem)="clickItem($event)" *ngIf="items[page].popularproducts && items[page].popularproducts.length > 0"></list-scoll-x>
+
+        <h4 class="categories-title">{{'BESTSELLER' | translate}} <span class="see-all" (click)="productList('bestseller')" *ngIf="items[page].bestseller && items[page].bestseller.length > 0">see all</span></h4>
+        <list-scoll-x [populars]="items[page].bestseller" (selectedItem)="clickItem($event)" *ngIf="items[page].bestseller && items[page].bestseller.length > 0"></list-scoll-x>
+
       </ion-content>
     </ion-slide>
   </ion-slides>
