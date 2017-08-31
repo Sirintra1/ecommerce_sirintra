@@ -21,10 +21,6 @@ export class FormWizardComponent {
     this.text = 'Hello World';
   }
 
-  selectTab(index) {
-    this.formWizard.slideTo(index);
-  }
-
   changeWillSlide($event) {
     this.tabs = $event._snapIndex.toString();
   }

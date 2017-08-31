@@ -10,12 +10,12 @@ form-wizard {
     .toolbar-ios .segment-ios {
         position: inherit !important;
     }
-    .segment-ios-dark .segment-button.segment-activated {
+    .segment-ios-light .segment-button.segment-activated {
         color: #fff;
         background-color: #00e9d5 !important;
         border-color: #00e9d5;
     }
-    .segment-ios-dark .segment-button {
+    .segment-ios-light .segment-button {
         border-color: #00e9d5;
         border: 1px solid;
         color: #00e9d5;
