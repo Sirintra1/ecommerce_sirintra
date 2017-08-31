@@ -14,6 +14,6 @@
 
 
 <ion-content class="list-big-content">
-    <list-items [items]="searchData.items" [showSearch]="true" [showToolbar] = "true"></list-items> 
+  <list-items [items]="searchData.items" [showSearch]="true" [showToolbar]="true" (click)="selectedItem()"></list-items>
 
 </ion-content>
