@@ -90,6 +90,8 @@ import { LoginPage } from "../pages/login/login";
 import { LoginServiceProvider } from "../pages/login/login.service";
 import { RegisterPage } from "../pages/register/register";
 import { RegisterServiceProvider } from "../pages/register/register.service";
+import { SlideTabsComponent } from '../components/slide-tabs/slide-tabs';
+import { ImageListComponent } from '../components/image-list/image-list';
 
 
 export function createTranslateLoader(http: Http) {
@@ -130,7 +132,9 @@ export function createTranslateLoader(http: Http) {
     ListShopPage,
     ListShopsComponent,
     CartListComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    SlideTabsComponent,
+    ImageListComponent
   ],
   imports: [
     BrowserModule,

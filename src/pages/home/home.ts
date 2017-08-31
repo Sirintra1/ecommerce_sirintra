@@ -39,6 +39,7 @@ export class HomePage {
       .getData()
       .then(data => {
         this.home = data;
+        console.log(this.home);
         this.log.info(data);
         this.loading.dismiss();
       });

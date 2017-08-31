@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FavoriteModel } from '../favorite/favorite.model';
 import { FavoriteServiceProvider } from '../favorite/favorite.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
@@ -16,21 +16,13 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 })
 export class FavoritePage {
   favoriteData: FavoriteModel = new FavoriteModel();
-  @ViewChild('pageSlider') pageSlider: Slides;
   tabs: any = '0';
-  constructor(public navCtrl: NavController, public navParams: NavParams, public favoriteService: FavoriteServiceProvider,public log:LogServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public favoriteService: FavoriteServiceProvider, public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad FavoritePage');
     this.getSearchData();
-  }
-  selectTab(index) {
-    this.pageSlider.slideTo(index);
-  }
-
-  changeWillSlide($event) {
-    this.tabs = $event._snapIndex.toString();
   }
   getSearchData() {
     this.favoriteService
@@ -38,7 +30,7 @@ export class FavoritePage {
       .then((data) => {
         this.favoriteData = data;
       }, (err) => {
-       this.log.error(err);
+        this.log.error(err);
       });
   }
 
