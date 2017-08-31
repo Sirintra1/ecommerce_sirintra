@@ -23,12 +23,12 @@ export class HomePage {
   //images: Array<string> = [];
   home: HomeModel = new HomeModel();
   loading: any;
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public homeService: HomeService,
     public loadingCtrl: LoadingController,
     public log: LogServiceProvider
   ) {
-    
+
     this.loading = this.loadingCtrl.create();
   }
 
@@ -45,21 +45,23 @@ export class HomePage {
       });
   }
 
-  selectedItem(e){
+  selectedItem(e) {
     this.navCtrl.push(ProductDetailPage, e);
   }
 
-  selectedShop(e){
+  selectedShop(e) {
     this.navCtrl.push(ShopDetailPage, e);
   }
 
-  xxxx(e){
+  xxxx(e) {
     alert(e);
   }
-  openPageProductList(){
+  openPageProductList(e) {
+    console.log(e);
     this.navCtrl.push(ListProductPage);
   }
-  openPageShopList(){
+  openPageShopList(e) {
+    console.log(e);
     this.navCtrl.push(ListShopPage);
   }
 }

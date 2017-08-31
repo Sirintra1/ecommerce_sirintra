@@ -4,6 +4,7 @@ import { ProfileModel } from '../profile/profile.model';
 import { ProfileServiceProvider } from '../profile/profile.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
+import { LoginPage } from "../login/login";
 
 /**
  * Generated class for the ProfilePage page.
@@ -27,16 +28,20 @@ export class ProfilePage {
   }
 
   ionViewWillEnter() {
-    this.checkUser();
+    this.getUser();
   }
 
-  checkUser() {
-    this.profileData = this.authorizeProvider.isAuthorization();
+  getUser() {
+    this.profileData = this.authorizeProvider.getAuthorization();
+  }
+
+  goLogin() {
+    this.navCtrl.push(LoginPage);
   }
 
   logout() {
     this.authorizeProvider.unAuthorization();
-    this.checkUser();
+    this.getUser();
   }
   // getProfileData() {
   //   this.profileService

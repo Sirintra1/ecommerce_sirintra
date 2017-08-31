@@ -14,7 +14,8 @@
 
 
 <ion-content>
-  <slide-tabs [items]="home.categories"></slide-tabs>
+  <slide-tabs [items]="home.categories" (selectItem)="selectedItem($event)" (selectShop)="selectedShop($event)" (onProductList)="openPageProductList($event)"
+    (onShopList)="openPageShopList($event)"></slide-tabs>
   <!-- <ads-header-bar [images]="home.images"></ads-header-bar>
   <h4 class="categories-title">{{'LASTVISIT' | translate}} <span class="see-all" (click)="openPageProductList()" *ngIf="home.lastvisit && home.lastvisit.length > 0">see all</span></h4>
   <list-scoll-x [populars]="home.lastvisit" (selectedItem)="selectedItem($event)" *ngIf="home.lastvisit && home.lastvisit.length > 0"></list-scoll-x>

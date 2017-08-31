@@ -34,6 +34,11 @@ export class AuthorizeProvider {
     }
   }
 
+  getAuthorization() {
+    let user = JSON.parse(window.localStorage.getItem('e7e_ecommerce_buy_user'));
+    return user;
+  }
+
   unAuthorization() { // logout
     window.localStorage.removeItem('e7e_ecommerce_buy_user');
     return;
