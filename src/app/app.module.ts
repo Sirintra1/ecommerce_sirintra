@@ -94,6 +94,8 @@ import { SlideTabsComponent } from '../components/slide-tabs/slide-tabs';
 import { ImageListComponent } from '../components/image-list/image-list';
 import { CheckoutPage } from "../pages/checkout/checkout";
 import { FormWizardComponent } from '../components/form-wizard/form-wizard';
+import { ShippingComponent } from '../components/shipping/shipping';
+import { CheckoutServiceProvider } from "../pages/checkout/checkout.service";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -138,7 +140,8 @@ export function createTranslateLoader(http: Http) {
     SearchbarComponent,
     SlideTabsComponent,
     ImageListComponent,
-    FormWizardComponent
+    FormWizardComponent,
+    ShippingComponent
   ],
   imports: [
     BrowserModule,
@@ -205,7 +208,8 @@ export function createTranslateLoader(http: Http) {
     LogServiceProvider,
     AuthorizeProvider,
     LoginServiceProvider,
-    RegisterServiceProvider
+    RegisterServiceProvider,
+    CheckoutServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

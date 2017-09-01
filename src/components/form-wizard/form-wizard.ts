@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { Slides } from "ionic-angular";
 
 /**
@@ -12,6 +12,7 @@ import { Slides } from "ionic-angular";
   templateUrl: 'form-wizard.html'
 })
 export class FormWizardComponent {
+  @Input() listaddress: Array<any>;
   @ViewChild('formWizard') formWizard: Slides;
   tabs: any = '0';
   text: string;

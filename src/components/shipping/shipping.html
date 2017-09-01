@@ -1,0 +1,24 @@
+<!-- Generated template for the ShippingComponent component -->
+<ion-label class="label label-ios"> ส่งที่ </ion-label>
+<ion-list class="radio-group" radio-group [(ngModel)]="chk">
+  <ion-item class="radio-item" *ngFor="let item of listaddress.address" (click)="selectaddress(item)">
+    <ion-label class="detail-style">
+      <ion-row>
+        <ion-col width-33>
+          <p>{{item.firstname}} {{item.firstname}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-100>
+          <p>{{item.address}} {{item.district}} {{item.subdistrict}} {{item.province}} {{item.postcode}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-33>
+          <p style="word-wrap: break-word;">{{item.tel}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-label>
+    <ion-radio  (click)="selectaddress(item)"></ion-radio>
+  </ion-item>
+</ion-list>
