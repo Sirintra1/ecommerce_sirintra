@@ -30,8 +30,10 @@
 </ion-navbar>
 <ion-slides #formWizard (ionSlideWillChange)="changeWillSlide($event)">
   <ion-slide>
-    <shipping [listaddress]="listaddress"></shipping>  
-    <button ion-button full color="danger" (click)="slideNext()">การชำระเงิน</button>
+    <ion-content>
+      <shipping [listaddress]="listaddress" [listshipping]="listshipping"  (gotoNext)="slideNext($event)"></shipping>
+      <!-- <button ion-button full color="danger" class="slide-next" (click)="slideNext()">การชำระเงิน</button> -->
+    </ion-content>
   </ion-slide>
   <ion-slide>
     <button ion-button full color="danger" (click)="slidePrev()">ย้อนกลับ</button>

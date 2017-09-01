@@ -53,6 +53,11 @@ export class product {
     qty: number;
     price: number;
     choice: Array<choice>;
+    shopdetail: shopdetail = new shopdetail();
+
+}
+export class shopdetail {
+    name: string;
 }
 
 export class choice {

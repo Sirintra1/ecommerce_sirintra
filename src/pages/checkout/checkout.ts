@@ -4,6 +4,7 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
 import { addressModel } from './checkout.model';
+import { shippingModel } from './checkout.model';
 
 /**
  * Generated class for the CheckoutPage page.
@@ -18,6 +19,7 @@ import { addressModel } from './checkout.model';
 })
 export class CheckoutPage {
   address: addressModel = new addressModel();
+  shipping: shippingModel = new shippingModel();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public checkoutServiceProvider: CheckoutServiceProvider, public log: LogServiceProvider) {
   }
@@ -25,6 +27,7 @@ export class CheckoutPage {
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad CheckoutPage');
     this.getAddress();
+    this.getShipping();
   }
   getAddress() {
     this.checkoutServiceProvider
@@ -32,6 +35,16 @@ export class CheckoutPage {
       .then((data) => {
         this.address = data;
         this.log.info(this.address);
+      }, (err) => {
+        this.log.error(err);
+      });
+  }
+  getShipping() {
+    this.checkoutServiceProvider
+      .getShipping()
+      .then((data) => {
+        this.shipping = data;
+        this.log.info(this.shipping);
       }, (err) => {
         this.log.error(err);
       });

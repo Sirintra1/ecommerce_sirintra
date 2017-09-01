@@ -1,11 +1,11 @@
 <!-- Generated template for the ShippingComponent component -->
 <ion-label class="label label-ios"> ส่งที่ </ion-label>
-<ion-list class="radio-group" radio-group [(ngModel)]="chk">
-  <ion-item class="radio-item" *ngFor="let item of listaddress.address" (click)="selectaddress(item)">
+<ion-list class="radio-group" radio-group>
+  <ion-item class="radio-item" *ngFor="let item of listaddress" (click)="selectaddress(item)">
     <ion-label class="detail-style">
       <ion-row>
         <ion-col width-33>
-          <p>{{item.firstname}} {{item.firstname}}</p>
+          <p class="p-black">{{item.firstname}} {{item.firstname}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -19,6 +19,59 @@
         </ion-col>
       </ion-row>
     </ion-label>
-    <ion-radio  (click)="selectaddress(item)"></ion-radio>
+    <ion-radio (click)="selectaddress(item)"></ion-radio>
   </ion-item>
 </ion-list>
+<ion-label class="p-blue" (click)="showPrompt()">เพิ่มที่อยู่ใหม่</ion-label>
+<ion-label class="label label-ios"> โปรดเลือกแบบของการส่งสินค้า </ion-label>
+<!--  -->
+<ion-list>
+  <div *ngFor="let item of listshipping.products">
+    <ion-item>
+      <ion-row>
+        <ion-col width-15>
+          <p class="p-black">{{item.shopdetail.name}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col no-padding width-33 class="magin-right-10-custom">
+          <preload-image [ratio]="{w:1, h:1}" [src]="item.image"></preload-image>
+        </ion-col>
+        <ion-col>
+          <p class="p-black">{{item.name}}</p>
+          <p> {{item.qty}} Qty</p>
+          <p> {{item.price}} Baht</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-row>
+      <ion-col width-100>
+        <p class="p-black">ตัวเลือกในการจัดส่ง</p>
+      </ion-col>
+    </ion-row>
+    <ion-list class="radio-tags" radio-group>
+      <ion-item *ngFor="let itm of item.choice" class="radio-tag" (click)="setproduct(item,itm)">
+        <ion-label>
+          <p>{{itm.discription}}</p>
+          <p>{{itm.type}}</p>
+        </ion-label>
+        <ion-radio (click)="setproduct(item,itm)"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-list>
+<ion-grid>
+  <ion-row>
+    <ion-col width-50 text-left>
+      <h4>
+        รวม
+      </h4>
+    </ion-col>
+    <ion-col width-50 text-right>
+      <h4>
+        {{listshipping.total}} Baht
+      </h4>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<button ion-button full color="danger" class="slide-next" (click)="gotoPayment()">การชำระเงิน</button>

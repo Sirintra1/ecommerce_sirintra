@@ -1,5 +1,5 @@
 form-wizard {
-    ion-navbar{
+    ion-navbar {
         height: 100px !important;
     }
     .segment-md .segment-button {
@@ -67,5 +67,8 @@ form-wizard {
         top: 0 !important;
         height: 100%;
         text-align: left;
+    }
+    .slide-next {
+        bottom: 15px;
     }
 }

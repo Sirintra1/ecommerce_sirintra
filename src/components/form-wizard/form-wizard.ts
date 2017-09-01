@@ -13,6 +13,7 @@ import { Slides } from "ionic-angular";
 })
 export class FormWizardComponent {
   @Input() listaddress: Array<any>;
+  @Input() listshipping: any;
   @ViewChild('formWizard') formWizard: Slides;
   tabs: any = '0';
   text: string;
@@ -20,6 +21,7 @@ export class FormWizardComponent {
   constructor() {
     console.log('Hello FormWizardComponent Component');
     this.text = 'Hello World';
+    
   }
 
   changeWillSlide($event) {
@@ -36,7 +38,7 @@ export class FormWizardComponent {
     this.formWizard.lockSwipes(true);
   }
 
-  slideNext() {
+  slideNext(e) {
     this.formWizard.lockSwipes(false);
     this.formWizard.slideNext();
     this.formWizard.lockSwipes(true);
