@@ -1,4 +1,7 @@
 form-wizard {
+    ion-navbar{
+        height: 100px !important;
+    }
     .segment-md .segment-button {
         border-top-left-radius: 100%;
         border-top-right-radius: 100%;
@@ -46,17 +49,17 @@ form-wizard {
         }
     }
     .lines {
-        top: 26%;
+        top: 25px;
         left: -50%;
         width: 200%;
         border: rgba(0, 233, 213, 0.19) 2px solid;
-        position: relative;
+        position: absolute;
     }
     .active-lines {
-        top: 26%;
+        top: 25px;
         left: -50%;
         width: 200%;
         border: #00e9d5 2px solid;
-        position: relative;
+        position: absolute;
     }
 }
