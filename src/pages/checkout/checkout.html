@@ -14,5 +14,20 @@
 
 
 <ion-content>
-  <form-wizard [listaddress]="address.address" [listshipping]="shipping"></form-wizard>
+  <!-- <form-wizard [listaddress]="address.address" [listshipping]="shipping">
+    <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step1Root"></form-wizard-step>
+    <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step1Root"></form-wizard-step>
+    <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step3Root"></form-wizard-step>
+  </form-wizard> -->
+  <ion-form-wizard>
+    <ion-form-wizard-step>
+      <p>ion-form-wizard-step 1</p>
+    </ion-form-wizard-step>
+    <ion-form-wizard-step>
+      <p>ion-form-wizard-step 2</p>
+    </ion-form-wizard-step>
+    <ion-form-wizard-step>
+      <p>ion-form-wizard-step 3</p>
+    </ion-form-wizard-step>
+  </ion-form-wizard>
 </ion-content>

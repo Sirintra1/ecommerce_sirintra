@@ -96,6 +96,8 @@ import { CheckoutPage } from "../pages/checkout/checkout";
 import { FormWizardComponent } from '../components/form-wizard/form-wizard';
 import { ShippingComponent } from '../components/shipping/shipping';
 import { CheckoutServiceProvider } from "../pages/checkout/checkout.service";
+import { IonFormWizardComponent } from '../components/ion-form-wizard/ion-form-wizard';
+import { IonFormWizardStepComponent } from '../components/ion-form-wizard-step/ion-form-wizard-step';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -141,7 +143,9 @@ export function createTranslateLoader(http: Http) {
     SlideTabsComponent,
     ImageListComponent,
     FormWizardComponent,
-    ShippingComponent
+    ShippingComponent,
+    IonFormWizardComponent,
+    IonFormWizardStepComponent
   ],
   imports: [
     BrowserModule,
