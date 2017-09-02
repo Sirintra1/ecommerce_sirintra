@@ -23,11 +23,11 @@ export class CheckoutPage {
   steps: Array<any> = [
     {
       value : 1,
-      title : "ADDRESS"
+      title : "SHIPPING"
     },
     {
       value : 2,
-      title : "PAYMENTCHANNAL"
+      title : "PAYMENT"
     },
     {
       value : 3,

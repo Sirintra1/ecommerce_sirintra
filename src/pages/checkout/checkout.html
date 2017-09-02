@@ -20,13 +20,13 @@
     <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step3Root"></form-wizard-step>
   </form-wizard> -->
   <ion-form-wizard [steps]="steps">
-    <ion-form-wizard-step>
+    <ion-form-wizard-step [step]="1">
       <p>ion-form-wizard-step 1</p>
     </ion-form-wizard-step>
-    <ion-form-wizard-step>
+    <ion-form-wizard-step [step]="2">
       <p>ion-form-wizard-step 2</p>
     </ion-form-wizard-step>
-    <ion-form-wizard-step>
+    <ion-form-wizard-step [step]="3">
       <p>ion-form-wizard-step 3</p>
     </ion-form-wizard-step>
   </ion-form-wizard>

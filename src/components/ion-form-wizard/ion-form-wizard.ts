@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: 'ion-form-wizard.html'
 })
 export class IonFormWizardComponent {
-  tabs: any = '1';
+  public currentstep: any = '1';
   @Input() steps:Array<any>;
   constructor() {
     console.log('Hello IonFormWizardComponent Component');

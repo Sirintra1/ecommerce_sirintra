@@ -5,18 +5,17 @@
       <ion-col *ngFor="let step of steps">
         <ion-row>
           <ion-col text-center>
-            <ion-segment color="light" class="md" [(ngModel)]="tabs">
-              <ion-segment-button [ngClass]="tabs >= step.value ? 'active' : '' " [value]="step.value">{{step.value}}</ion-segment-button>
+            <ion-segment color="light" class="md" [(ngModel)]="currentstep">
+              <ion-segment-button [ngClass]="currentstep >= step.value ? 'active' : '' " [value]="step.value">{{step.value}}</ion-segment-button>
             </ion-segment>
             <p>{{step.title}}</p>
           </ion-col>
           <ion-col text-center>
-            <!-- <div class="lines" [ngClass]="tabs >= step.value + 1 ? 'active-lines' : '' "></div> -->
+            <!-- <div class="lines" [ngClass]="currentstep >= step.value + 1 ? 'active-lines' : '' "></div> -->
           </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-navbar>
-{{tabs}}
 <ng-content></ng-content>

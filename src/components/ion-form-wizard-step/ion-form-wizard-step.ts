@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IonFormWizardComponent } from "../ion-form-wizard/ion-form-wizard";
 
 /**
  * Generated class for the IonFormWizardStepComponent component.
@@ -12,11 +13,10 @@ import { Component } from '@angular/core';
 })
 export class IonFormWizardStepComponent {
 
-  text: string;
+  @Input() step:any;
 
-  constructor() {
+  constructor(public parent: IonFormWizardComponent) {
     console.log('Hello IonFormWizardStepComponent Component');
-    this.text = 'Hello World';
   }
 
 }
