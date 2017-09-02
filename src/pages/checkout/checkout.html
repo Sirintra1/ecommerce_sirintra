@@ -21,13 +21,13 @@
   </form-wizard> -->
   <ion-form-wizard [steps]="steps">
     <ion-form-wizard-step [step]="1">
-      <p>ion-form-wizard-step 1</p>
+        <shipping [listaddress]="address.address" [listshipping]="shipping"  (gotoNext)="slideNext($event)"></shipping>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="2">
-      <p>ion-form-wizard-step 2</p>
+      <payment></payment>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="3">
-      <p>ion-form-wizard-step 3</p>
+      <confirm></confirm>
     </ion-form-wizard-step>
   </ion-form-wizard>
 </ion-content>

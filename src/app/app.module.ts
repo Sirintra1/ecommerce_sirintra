@@ -98,6 +98,8 @@ import { ShippingComponent } from '../components/shipping/shipping';
 import { CheckoutServiceProvider } from "../pages/checkout/checkout.service";
 import { IonFormWizardComponent } from '../components/ion-form-wizard/ion-form-wizard';
 import { IonFormWizardStepComponent } from '../components/ion-form-wizard-step/ion-form-wizard-step';
+import { PaymentComponent } from '../components/payment/payment';
+import { ConfirmComponent } from '../components/confirm/confirm';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -145,7 +147,9 @@ export function createTranslateLoader(http: Http) {
     FormWizardComponent,
     ShippingComponent,
     IonFormWizardComponent,
-    IonFormWizardStepComponent
+    IonFormWizardStepComponent,
+    PaymentComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
