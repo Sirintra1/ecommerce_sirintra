@@ -20,6 +20,20 @@ import { shippingModel } from './checkout.model';
 export class CheckoutPage {
   address: addressModel = new addressModel();
   shipping: shippingModel = new shippingModel();
+  steps: Array<any> = [
+    {
+      value : 1,
+      title : "ADDRESS"
+    },
+    {
+      value : 2,
+      title : "PAYMENTCHANNAL"
+    },
+    {
+      value : 3,
+      title : "CONFIRM"
+    }
+  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public checkoutServiceProvider: CheckoutServiceProvider, public log: LogServiceProvider) {
   }

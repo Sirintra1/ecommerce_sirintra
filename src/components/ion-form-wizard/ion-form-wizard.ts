@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the IonFormWizardComponent component.
@@ -11,12 +11,10 @@ import { Component } from '@angular/core';
   templateUrl: 'ion-form-wizard.html'
 })
 export class IonFormWizardComponent {
-
-  text: string;
-
+  tabs: any = '1';
+  @Input() steps:Array<any>;
   constructor() {
     console.log('Hello IonFormWizardComponent Component');
-    this.text = 'ion-form-wizard';
   }
 
 }
