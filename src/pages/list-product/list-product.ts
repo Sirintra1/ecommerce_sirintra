@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListProductModel } from '../list-product/list-product.model';
 import { ListProductServiceProvider } from '../list-product/list-product.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ProductDetailPage } from "../product-detail/product-detail";
 /**
  * Generated class for the ListProductPage page.
  *
@@ -31,5 +32,9 @@ export class ListProductPage {
       }, (err) => {
         this.log.error(err);
       });
+  }
+
+  selectedItem(e){
+    this.navCtrl.push(ProductDetailPage);
   }
 }
