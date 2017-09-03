@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
+import { IonFormWizardStepComponent } from "../ion-form-wizard-step/ion-form-wizard-step";
 
 /**
  * Generated class for the ShippingComponent component.
@@ -110,7 +111,7 @@ export class ShippingComponent {
       });
     }
   }
-  gotoPayment() {
+  stepValidation() {
     if (this.data.shipping && this.data.shipping.address) {
       if (this.data.products.length === this.listshipping.products.length) {
         this.gotoNext.emit(this.data);

@@ -19,15 +19,15 @@
     <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step1Root"></form-wizard-step>
     <form-wizard-step stepTitle="{{'HOME' | translate}}" [root]="step3Root"></form-wizard-step>
   </form-wizard> -->
-  <ion-form-wizard [steps]="steps">
+  <ion-form-wizard [steps]="steps" [(currentstep)]="currentstep">
     <ion-form-wizard-step [step]="1">
-        <shipping [listaddress]="address.address" [listshipping]="shipping"  (gotoNext)="slideNext($event)"></shipping>
+        <shipping [listaddress]="address.address" [listshipping]="shipping"  (gotoNext)="completedShippingStep($event)"></shipping>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="2">
-      <payment></payment>
+      <payment (gotoNext)="completedPaymentStep($event)"></payment>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="3">
-      <confirm></confirm>
+      <confirm (gotoNext)="completedConfirmStep($event)"></confirm>
     </ion-form-wizard-step>
   </ion-form-wizard>
 </ion-content>

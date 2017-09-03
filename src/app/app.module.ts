@@ -100,6 +100,7 @@ import { IonFormWizardComponent } from '../components/ion-form-wizard/ion-form-w
 import { IonFormWizardStepComponent } from '../components/ion-form-wizard-step/ion-form-wizard-step';
 import { PaymentComponent } from '../components/payment/payment';
 import { ConfirmComponent } from '../components/confirm/confirm';
+import { CompleteOrderedPage } from "../pages/complete-ordered/complete-ordered";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -122,6 +123,7 @@ export function createTranslateLoader(http: Http) {
     LoginPage,
     RegisterPage,
     CheckoutPage,
+    CompleteOrderedPage,
 
     PreloadImage,
     BackgroundImage,
@@ -182,7 +184,8 @@ export function createTranslateLoader(http: Http) {
     ListShopPage,
     LoginPage,
     RegisterPage,
-    CheckoutPage
+    CheckoutPage,
+    CompleteOrderedPage
 
   ],
   providers: [

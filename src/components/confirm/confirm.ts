@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the ConfirmComponent component.
@@ -11,12 +11,15 @@ import { Component } from '@angular/core';
   templateUrl: 'confirm.html'
 })
 export class ConfirmComponent {
-
-  text: string;
-
+  data: any;
+  @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
+  
   constructor() {
     console.log('Hello ConfirmComponent Component');
-    this.text = 'Hello World';
+  }
+
+  stepValidation() {
+    this.gotoNext.emit(this.data);
   }
 
 }

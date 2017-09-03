@@ -5,6 +5,7 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { CheckoutServiceProvider } from './checkout.service';
 import { addressModel } from './checkout.model';
 import { shippingModel } from './checkout.model';
+import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 
 /**
  * Generated class for the CheckoutPage page.
@@ -34,8 +35,13 @@ export class CheckoutPage {
       title : "CONFIRM"
     }
   ];
+  currentstep:number = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public checkoutServiceProvider: CheckoutServiceProvider, public log: LogServiceProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public checkoutServiceProvider: CheckoutServiceProvider, 
+    public log: LogServiceProvider
+  ) {
   }
 
   ionViewDidLoad() {
@@ -62,6 +68,21 @@ export class CheckoutPage {
       }, (err) => {
         this.log.error(err);
       });
+  }
+
+  completedShippingStep(e){
+    alert('completedShippingStep');
+    this.currentstep += 1;
+  }
+
+  completedPaymentStep(e){
+    alert('completedPaymentStep');
+    this.currentstep += 1;
+  }
+
+  completedConfirmStep(e){
+    alert('completedConfirmStep');
+    this.navCtrl.push(CompleteOrderedPage);
   }
 
 }
