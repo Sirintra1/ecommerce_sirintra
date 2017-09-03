@@ -48,37 +48,15 @@
     </ion-item>
     <ion-item class="detail-item" *ngIf="productdetailData.shipping">
       <h3 class="categories-title-pomotion">
-        <ion-icon name="ios-globe-outline"></ion-icon> {{'Payment' | translate}}</h3>
+        <ion-icon name="ios-cash"></ion-icon> {{'Payment' | translate}}</h3>
       <div *ngFor="let item of productdetailData.payment">
         <span class="detail-textHeader">{{item.payment}}</span>
       </div>
     </ion-item>
 
-    <ion-item class="detail-item" *ngIf="productdetailData.issize">
-      <h3 class="categories-title-pomotion">
-        <!-- <ion-icon name="ios-resize-outline"></ion-icon> -->
-        {{'Select Size' | translate}}</h3>
-      <!-- <span class="detail-text">{{productdetailData.size.detail}}</span> -->
-      <preload-image [ratio]="{w:1, h:1}" [src]="productdetailData.size.detail"></preload-image>
-    </ion-item>
-    <ion-scroll scrollX="true" class="horizontal-categories">
-      <ion-row radio-group class="categories-row">
-        <ion-col width-30 class="horizontal-item" *ngFor="let data of productdetailData.size.sizedetail">
-          <ion-label>{{data.name}}</ion-label>
-          <ion-radio value="{{data.name}}"></ion-radio>
-        </ion-col>
-      </ion-row>
-      <!-- <ion-list class="radio-tags" radio-group *ngIf="productdetailData.size">
-        <ion-item *ngFor="let data of productdetailData.size.sizedetail" (tap)="selectSize(data.name)" class="radio-tag">
-          <ion-label>{{data.name}}</ion-label>
-          <ion-radio value="{{data.name}}"></ion-radio>
-        </ion-item>
-      </ion-list> -->
-    </ion-scroll>
-
     <ion-item class="detail-item" *ngIf="productdetailData.shop">
       <h3 class="categories-title-pomotion">
-        <!-- <ion-icon name="md-pricetags"></ion-icon>  -->
+        <ion-icon name="md-home"></ion-icon> 
         {{'Shop' | translate}}</h3>
       <ion-row>
         <ion-col width-35>
@@ -90,40 +68,50 @@
         </ion-col>
       </ion-row>
     </ion-item>
-
   </ion-list>
-  <h4 class="relation-title" *ngIf="productdetailData.relationProducts">Relation products</h4>
+
+  <h3 class="categories-title-pomotion" *ngIf="productdetailData.issize">
+    <!-- <ion-icon name="ios-resize-outline"></ion-icon> -->
+    {{'Select Size' | translate}}</h3>
+  <!-- <preload-image [ratio]="{w:1, h:1}" [src]="productdetailData.size.detail"></preload-image> -->
+  <ion-scroll scrollX="true" class="horizontal-categories">
+    <ion-row padding radio-group class="categories-row">
+      <ion-col width-30 class="horizontal-item" *ngFor="let data of productdetailData.size.sizedetail">
+        <ion-label>{{data.name}}</ion-label>
+        <ion-radio value="{{data.name}}"></ion-radio>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+
+  <h3 class="categories-title-pomotion" *ngIf="productdetailData.relationProducts">
+    {{'RELATEPRODUCT' | translate}}</h3>
   <list-scoll-x [populars]="productdetailData.relationProducts" *ngIf="productdetailData.relationProducts"></list-scoll-x>
 
-  <ion-item class="detail-item">
-    <h3 class="categories-title-pomotion">
-      <ion-icon name="md-help"></ion-icon> {{'Question' | translate}}</h3>
-    <div *ngFor="let item of productdetailData.qa">
-      <ion-item class="detail-item">
-        <h4 class="detail-textHeader">
-          <ion-icon name="md-person"></ion-icon> {{item.question}}</h4>
-        <p class="detail-text">
-          <ion-icon name="ios-redo-outline"></ion-icon> {{item.answer}}</p>
-      </ion-item>
-    </div>
-  </ion-item>
-  <ion-item class="detail-item">
-    <h3 class="categories-title-pomotion">
-      <ion-icon name="md-star-outline"></ion-icon>
-      {{'Review' | translate}}</h3>
-    <div *ngFor="let item of productdetailData.review">
-      <ion-item class="detail-item">
-        <ion-row>
-          <ion-col width-100>
-            <p class="detail-text">ดาว {{item.rate}}</p>
-            <rating [(ngModel)]="item.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
-              nullable="false"></rating>
-            <h4 class="detail-textHeader">{{item.comment}}</h4>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </div>
-  </ion-item>
+  <h3 class="categories-title-pomotion">
+    <ion-icon name="md-help"></ion-icon> {{'Question' | translate}}</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of productdetailData.qa">
+      <h4 class="detail-textHeader">
+        <ion-icon name="md-person"></ion-icon> {{item.question}}</h4>
+      <p class="detail-text">
+        <ion-icon name="ios-redo-outline"></ion-icon> {{item.answer}}</p>
+    </ion-item>
+  </ion-list>
+
+  <h3 class="categories-title-pomotion">
+    <ion-icon name="md-star"></ion-icon>
+    {{'Review' | translate}}</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of productdetailData.review">
+      <h4 class="detail-textHeader">
+        <ion-icon name="md-person"></ion-icon> ({{item.rate}})</h4>
+      <rating [(ngModel)]="item.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+        nullable="false"></rating>
+      <p class="detail-text">{{item.comment}}</p>
+    </ion-item>
+    <ion-item ></ion-item>
+  </ion-list>
+
 </ion-content>
 
 <ion-footer>
