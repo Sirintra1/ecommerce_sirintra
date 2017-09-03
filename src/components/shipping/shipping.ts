@@ -21,11 +21,9 @@ export class ShippingComponent {
     products: [],
     total: 0
   };
-  text: string;
-
+  
   constructor(public alertCtrl: AlertController) {
     console.log('Hello ShippingComponent Component');
-    this.text = 'Hello World';
   }
 
   showPrompt() {
