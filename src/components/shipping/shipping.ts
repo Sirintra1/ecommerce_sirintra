@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-import { IonFormWizardStepComponent } from "../ion-form-wizard-step/ion-form-wizard-step";
-
 /**
  * Generated class for the ShippingComponent component.
  *
