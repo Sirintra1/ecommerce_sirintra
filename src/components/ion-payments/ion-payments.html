@@ -1,0 +1,20 @@
+<!-- Generated template for the IonPaymentsComponent component -->
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-row>
+        <ion-col text-center *ngFor="let payment of paymentgateway">
+          <ion-segment color="light" class="md" [(ngModel)]="channel">
+            <ion-segment-button [value]="payment.name" [ngClass]="channel >= payment.value ? 'active' : '' ">
+              <preload-image [ratio]="{w:1, h:1}" src="{{payment.img}}"></preload-image>
+            </ion-segment-button>
+          </ion-segment>
+          <p>{{payment.name}}</p>
+        </ion-col>
+        <ion-col text-center>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ng-content></ng-content>

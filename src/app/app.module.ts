@@ -102,6 +102,11 @@ import { PaymentComponent } from '../components/payment/payment';
 import { ConfirmComponent } from '../components/confirm/confirm';
 import { CompleteOrderedPage } from "../pages/complete-ordered/complete-ordered";
 import { VoucherPage } from '../pages/voucher/voucher';
+import { CreditComponent } from '../components/credit/credit';
+import { DeliveryComponent } from '../components/delivery/delivery';
+import { CounterserviceComponent } from '../components/counterservice/counterservice';
+import { IonStepsComponent } from '../components/ion-steps/ion-steps';
+import { IonPaymentsComponent } from '../components/ion-payments/ion-payments';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -152,7 +157,12 @@ export function createTranslateLoader(http: Http) {
     IonFormWizardComponent,
     IonFormWizardStepComponent,
     PaymentComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CreditComponent,
+    DeliveryComponent,
+    CounterserviceComponent,
+    IonStepsComponent,
+    IonPaymentsComponent
   ],
   imports: [
     BrowserModule,
