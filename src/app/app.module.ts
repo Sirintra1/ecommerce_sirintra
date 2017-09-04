@@ -31,10 +31,8 @@ import { HttpModule } from '@angular/http';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -44,7 +42,8 @@ import { AppRate } from '@ionic-native/app-rate';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 import { EmailComposer } from '@ionic-native/email-composer';
-
+import { Facebook } from '@ionic-native/facebook';
+import { SocialSharing } from '@ionic-native/social-sharing';
 // Functionalities
 // import { FunctionalitiesPage } from '../pages/functionalities/functionalities';
 // import { MapsPage } from '../pages/maps/maps';
@@ -101,6 +100,7 @@ import { IonFormWizardStepComponent } from '../components/ion-form-wizard-step/i
 import { PaymentComponent } from '../components/payment/payment';
 import { ConfirmComponent } from '../components/confirm/confirm';
 import { CompleteOrderedPage } from "../pages/complete-ordered/complete-ordered";
+import { FacebookLoginService } from "../pages/facebook-login/facebook-login.service";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -220,7 +220,8 @@ export function createTranslateLoader(http: Http) {
     AuthorizeProvider,
     LoginServiceProvider,
     RegisterServiceProvider,
-    CheckoutServiceProvider
+    CheckoutServiceProvider,
+    FacebookLoginService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
