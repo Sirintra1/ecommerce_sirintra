@@ -1,4 +1,4 @@
-<!-- Generated template for the ConfirmComponent component -->
+<!-- Generated template for the confirmDataComponent component -->
 <ion-grid>
   <!--<ion-row>
     <ion-col>
@@ -7,20 +7,21 @@
   </ion-row>-->
   <ion-row>
     <ion-col>
-      {{confirmData}}
+      <!--{{confirmDataData.amount}}-->
+      <!-- Generated template for the confirmDataComponent component -->
       <ion-list no-lines>
         <ion-item>
           <p>มูลค่าสินค้า</p>
-          <p item-end> บาท</p>
+          <p item-end>{{confirmData.amount}} บาท</p>
         </ion-item>
         <ion-item>
           <p>ค่าธรรมเนียมการจัดส่งสินค้า</p>
-          <p item-end> บาท</p>
+          <p item-end>{{confirmData.discount}} บาท</p>
         </ion-item>
         <ion-row>
           <ion-col col-8>
             <ion-item>
-              <ion-input type="number"  placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
+              <ion-input type="number"  [(ngModel)]="confirmData.discount" placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-4>
@@ -29,41 +30,41 @@
         </ion-row>
         <ion-item>
           <p><b>ยอดสุทธิ (รวมภาษีมูลค่าเพิ่ม)</b></p>
-          <p item-end><b> บาท</b></p>
+          <p item-end><b>{{confirmData.amount- confirmData.discount}} บาท</b></p>
         </ion-item>
       </ion-list>
       <ion-row>
         <ion-col col-12>
-          <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>
+          <button ion-button block color="warning"  (click)="stepValidation()">สั่งสินค้า</button>
         </ion-col>
       </ion-row>
       <ion-item-group>
         <ion-item-divider color="light"><b>รายการ</b></ion-item-divider>
       </ion-item-group>
       <div class="list-mini">
-        <ion-list >
+        <ion-list *ngFor="let itm of confirmData.products">
           <ion-item>
             <ion-row>
               <ion-col col-12>
-                <p></p>
+                <p>{{itm.shop}}</p>
               </ion-col>
             </ion-row>
             <ion-row no-padding>
               <ion-col no-padding width-20 class="item-avatar">
-                <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src=""></preload-image>
+                <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{itm.img}}"></preload-image>
               </ion-col>
               <ion-col no-padding width-60 class="white-space">
-                <h3 class="item-title"></h3>
-                <p class="item-description">จำนวน: </p>
+                <h3 class="item-title">{{itm.name}}</h3>
+                <p class="item-description">จำนวน: {{itm.qty}}</p>
               </ion-col>
               <ion-col no-padding width-20>
-                <p> บาท</p>
+                <p>{{itm.price}} บาท</p>
               </ion-col>
             </ion-row>
             <ion-row no-padding>
               <ion-col padding width-100 text-center class="ion-col-deilvery">
-                <p></p>
-                <p></p>
+                <p>{{itm.choice.description}}</p>
+                <p>{{itm.choice.deliverytype}}</p>
               </ion-col>
             </ion-row>
           </ion-item>
@@ -71,10 +72,11 @@
         <ion-row>
           <p>ที่อยู่จัดส่ง</p>
           <ion-col col-12>
-            <p class="review-address"></p>
-            <p class="review-address">
+            <p class="review-address">{{confirmData.customer.displayName}}</p>
+            <p class="review-address">{{confirmData.customer.address.address}} {{confirmData.customer.address.subdistrict}} {{confirmData.customer.address.district}} {{confirmData.customer.address.province}}
+              {{confirmData.customer.address.postcode}}
             </p>
-            <p class="review-address">โทร : </p>
+            <p class="review-address">โทร : {{confirmData.customer.tel}}</p>
           </ion-col>
         </ion-row>
         <ion-row class="marginB">
