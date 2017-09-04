@@ -14,6 +14,10 @@ export class counter {
 }
 
 export class confirmModel {
+    confirm: confirmdata = new confirmdata();
+}
+
+export class confirmdata {
     price: number;
     total: number;
     amount: number;

@@ -60,6 +60,8 @@ export class CheckoutPage {
     this.checkoutServiceProvider.getConfirm().then((data) => {
       this.confirm = data;
       this.log.info(this.confirm);
+      
+      this.log.info(this.confirm.confirm.amount);
     }, (err) => {
       this.log.error(err);
     });
