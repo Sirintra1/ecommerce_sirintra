@@ -1,5 +1,6 @@
 import { Component, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { Slides, LoadingController } from "ionic-angular";
+import { Slides, LoadingController, NavController } from "ionic-angular";
+import { VoucherPage } from '../../pages/voucher/voucher';
 
 /**
  * Generated class for the SlideTabsComponent component.
@@ -23,7 +24,7 @@ export class SlideTabsComponent {
   selectPage: boolean = false;
   stopInterval: boolean = false;
 
-  constructor(public loadingCtrl: LoadingController) {
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController) {
     console.log('Hello SlideTabsComponent Component');
     // FIX : active tab 0, Slides delay render 1s
     let loading = this.loadingCtrl.create();
@@ -115,5 +116,7 @@ export class SlideTabsComponent {
     this.tabsSlider.lockSwipes(false);
     // console.log('touchend', e);
   }
-
+  selectedVoucher() {
+    this.navCtrl.push(VoucherPage);
+  }
 }
