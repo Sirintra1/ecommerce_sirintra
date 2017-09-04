@@ -8,6 +8,7 @@ import { shippingModel } from './checkout.model';
 import { confirmModel } from './checkout.model';
 import { addressModel } from './checkout.model';
 import { saveOrder } from "./checkout.model";
+import { paymentModel } from "./checkout.model";
 
 /*
   Generated class for the CheckoutServiceProvider provider.
@@ -21,6 +22,20 @@ export class CheckoutServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     console.log('Hello CheckoutServiceProvider Provider');
   }
+  getConfirm(): Promise<confirmModel> {
+    return this.http.get('./assets/example_data/confirm.json')
+      .toPromise()
+      .then(response => response.json() as confirmModel)
+      .catch(this.handleError);
+  }
+
+  getPayment(): Promise<paymentModel> {
+    return this.http.get('./assets/example_data/payments.json')
+      .toPromise()
+      .then(response => response.json() as paymentModel)
+      .catch(this.handleError);
+  }
+
   getShipping(): Promise<shippingModel> {
     return this.http.get('./assets/example_data/shipping.json')
       .toPromise()

@@ -21,13 +21,14 @@
   </form-wizard> -->
   <ion-form-wizard [steps]="steps" [(currentstep)]="currentstep">
     <ion-form-wizard-step [step]="1">
-        <shipping [listaddress]="address.address" [listshipping]="shipping"  (gotoNext)="completedShippingStep($event)"></shipping>
+      <shipping [listaddress]="address.address" [listshipping]="shipping" (gotoNext)="completedShippingStep($event)"></shipping>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="2">
-      <payment (gotoNext)="completedPaymentStep($event)"></payment>
+        <!-- <payment [paymentgateway]="payment" (paygateway)="paymentgateway($event)"></payment> -->
+      <payment [paymentgateway]="payment" (gotoNext)="completedPaymentStep($event)"></payment>
     </ion-form-wizard-step>
     <ion-form-wizard-step [step]="3">
-      <confirm (gotoNext)="completedConfirmStep($event)"></confirm>
+      <confirm [confirmData]="confirm.confirm" (gotoNext)="completedConfirmStep($event)"></confirm>
     </ion-form-wizard-step>
   </ion-form-wizard>
 </ion-content>

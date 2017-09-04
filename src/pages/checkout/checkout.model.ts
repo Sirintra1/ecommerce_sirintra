@@ -5,9 +5,7 @@ export class paymentModel {
 
 export class payment {
     name: string;
-    img: {
-        url: string;
-    };
+    img: string;
 }
 
 export class counter {
@@ -16,6 +14,10 @@ export class counter {
 }
 
 export class confirmModel {
+    confirm: confirmdata = new confirmdata();
+}
+
+export class confirmdata {
     price: number;
     total: number;
     amount: number;
