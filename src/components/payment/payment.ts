@@ -26,9 +26,9 @@ export class PaymentComponent {
 
   paymenttype(type) {
     this.data.paymenttype = type;
-    console.log(this.data.paymenttype);
   }
-
-
+  countername(name) {
+    this.data.counterservice = name;
+  }
 
 }
