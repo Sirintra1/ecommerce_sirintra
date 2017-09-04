@@ -9,32 +9,24 @@
         },
         {
             "name": "counterservice",
-            "img": "./assets/images/payment/payment-ion.png"
+            "img": "./assets/images/payment/bank-building.png"
         }
     ],
     "counterservice": [{
-            "name": "7-11",
-            "img": "./assets/images/payment/7-11.jpg"
+            "name": "KTB",
+            "img": "./assets/images/payment/KTBB.jpg"
         },
         {
-            "name": "Big C",
-            "img": "./assets/images/payment/big-c.jpg"
+            "name": "SCB",
+            "img": "./assets/images/payment/SCB.png"
         },
         {
-            "name": "Pay@Post",
-            "img": "./assets/images/payment/logo-pay-at-post.png"
+            "name": "krungsri",
+            "img": "./assets/images/payment/krungsri.jpg"
         },
         {
-            "name": "FamilyMart",
-            "img": "./assets/images/payment/FamilyMart.JPG"
-        },
-        {
-            "name": "Mpay",
-            "img": "./assets/images/payment/m-pay.jpg"
-        },
-        {
-            "name": "Lotus",
-            "img": "./assets/images/payment/main-logo.png"
+            "name": "bangkokbank",
+            "img": "./assets/images/payment/bangkokbank.png"
         }
     ]
 }
