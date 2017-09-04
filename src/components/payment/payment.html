@@ -1,5 +1,5 @@
 <!-- Generated template for the PaymentComponent component -->
-<ion-grid>
+<!-- <ion-grid>
   <ion-row>
     <ion-col>
       <button ion-button full color="danger" class="slide-next" (click)="stepValidation()">การชำระเงิน</button>
@@ -7,7 +7,130 @@
   </ion-row>
   <ion-row>
     <ion-col>
+      {{paymentgateway}}
       ประกันราคา
     </ion-col>
   </ion-row>
+</ion-grid> -->
+<ion-grid padding class="forms-examples-segment">
+  <ion-list class="radio-tags" radio-group [(ngModel)]="payment2">
+
+    <ion-row>
+      <ion-col col-4 *ngFor="let payment of paymentgateway.payment" (click)="paymenttype(payment.name)">
+        <ion-item class="radio-tag">
+          <ion-label>
+            <preload-image [ratio]="{w:1, h:1}" src="{{payment.img}}"></preload-image>
+            <p>{{payment.name}}</p>
+          </ion-label>
+          <ion-radio [value]="payment.name" (click)="paymenttype(payment.name)"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <!--<ion-col col-4>
+                <ion-item class="radio-tag">
+                    <ion-label>
+                        <preload-image [ratio]="{w:1, h:1}" src="assets/images/payment/cashondelivery.png"></preload-image>
+                        <p style="white-space: normal;">เก็บเงินปลายทาง</p>
+                    </ion-label>
+                    <ion-radio value="deliver"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <ion-item class="radio-tag">
+                    <ion-label>
+                        <preload-image [ratio]="{w:1, h:1}" src="assets/images/payment/payment-ion.png"></preload-image>
+                        <p style="white-space: normal;">ชำระเงินที่ร้านค้า</p>
+                    </ion-label>
+                    <ion-radio value="store"></ion-radio>
+                </ion-item>
+            </ion-col>-->
+    </ion-row>
+
+
+  </ion-list>
+</ion-grid>
+<ion-grid padding class="forms-examples-segment" *ngIf="payment2 === 'credit'">
+  <ion-row>
+    <ion-col col-12>
+      <ion-list>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>หมายเลขบัตรเครดิต</ion-label>
+              <ion-input [(ngModel)]="data.creditno" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>ชื่อบัตรเครดิต</ion-label>
+              <ion-input [(ngModel)]="data.creditname" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>วันที่บัตรหมดอายุ (MM/YY)</ion-label>
+              <ion-input [(ngModel)]="data.expdate" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>หมายเลขตรวจสอบและยืนยันบัตร</ion-label>
+              <ion-input [(ngModel)]="data.creditcvc" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <button ion-button full color="warning" icon-left (click)="gotoStep3()">
+        รีวิวการสั่งสินค้า
+      </button>
+</ion-grid>
+
+<ion-grid padding class="forms-examples-segment" *ngIf="payment2 === 'delivery'">
+  <ion-row>
+    <ion-col col-12>การชำระเงินผ่านระบบชำระเงินปลายทาง. ชำระเงินโดยตรงกับพนักงานส่งของในระหว่างการจัดส่งได้ทันที</ion-col>
+  </ion-row>
+  <button ion-button full color="warning" icon-left (click)="gotoStep3()">
+        รีวิวการสั่งสินค้า
+      </button>
+</ion-grid>
+
+<ion-grid padding class="forms-examples-segment" *ngIf="payment2 === 'counterservice'">
+  <ion-row>
+    <ion-col col-12>counterservice</ion-col>
+  </ion-row>
+  <button ion-button full color="warning" icon-left (click)="gotoStep3()">
+        รีวิวการสั่งสินค้า
+      </button>
+  <!-- <ion-row>
+        <ion-col col-12>
+            <ion-list class="radio-tags" radio-group [(ngModel)]="store">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 *ngFor="let counter of paymentgateway.counterservice" (click)="countername(counter.name)">
+                            <ion-item class="radio-tag">
+                                <ion-label>
+
+                                    <preload-image [ratio]="{w:1, h:1}" src="{{counter.img}}"></preload-image>
+                                    <p class="font-custom">{{counter.name}}</p>
+
+                                </ion-label>
+                                <ion-radio [value]="counter.name" (click)="countername(counter.name)"></ion-radio>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+    <button *ngIf="store" ion-button full color="warning" icon-left (click)="gotoStep3()">
+        Review Order
+      </button> -->
 </ion-grid>

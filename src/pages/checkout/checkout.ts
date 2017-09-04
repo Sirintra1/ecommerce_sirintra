@@ -5,7 +5,10 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { CheckoutServiceProvider } from './checkout.service';
 import { addressModel } from './checkout.model';
 import { shippingModel } from './checkout.model';
+import { paymentModel } from './checkout.model';
+import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
+
 
 /**
  * Generated class for the CheckoutPage page.
@@ -21,25 +24,27 @@ import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 export class CheckoutPage {
   address: addressModel = new addressModel();
   shipping: shippingModel = new shippingModel();
+  payment: paymentModel = new paymentModel();
+  confirm: confirmModel = new confirmModel();
   steps: Array<any> = [
     {
-      value : 1,
-      title : "SHIPPING"
+      value: 1,
+      title: "SHIPPING"
     },
     {
-      value : 2,
-      title : "PAYMENT"
+      value: 2,
+      title: "PAYMENT"
     },
     {
-      value : 3,
-      title : "CONFIRM"
+      value: 3,
+      title: "CONFIRM"
     }
   ];
-  currentstep:number = 1;
+  currentstep: number = 1;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public checkoutServiceProvider: CheckoutServiceProvider, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public checkoutServiceProvider: CheckoutServiceProvider,
     public log: LogServiceProvider
   ) {
   }
@@ -48,6 +53,24 @@ export class CheckoutPage {
     this.log.info('ionViewDidLoad CheckoutPage');
     this.getAddress();
     this.getShipping();
+    this.getPayment();
+    this.getConfirm();
+  }
+  getConfirm() {
+    this.checkoutServiceProvider.getConfirm().then((data) => {
+      this.confirm = data;
+      this.log.info(this.confirm);
+    }, (err) => {
+      this.log.error(err);
+    });
+  }
+  getPayment() {
+    this.checkoutServiceProvider.getPayment().then((data) => {
+      this.payment = data;
+      this.log.info(this.payment);
+    }, (err) => {
+      this.log.error(err);
+    });
   }
   getAddress() {
     this.checkoutServiceProvider
@@ -70,17 +93,17 @@ export class CheckoutPage {
       });
   }
 
-  completedShippingStep(e){
+  completedShippingStep(e) {
     alert('completedShippingStep');
     this.currentstep += 1;
   }
 
-  completedPaymentStep(e){
+  completedPaymentStep(e) {
     alert('completedPaymentStep');
     this.currentstep += 1;
   }
 
-  completedConfirmStep(e){
+  completedConfirmStep(e) {
     alert('completedConfirmStep');
     this.navCtrl.push(CompleteOrderedPage);
   }

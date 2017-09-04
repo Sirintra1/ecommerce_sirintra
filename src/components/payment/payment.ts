@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 /**
  * Generated class for the PaymentComponent component.
@@ -11,7 +11,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: 'payment.html'
 })
 export class PaymentComponent {
-  data: any;
+  data: any = {};
+  @Input() paymentgateway: any;
 
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
 
@@ -22,5 +23,12 @@ export class PaymentComponent {
   stepValidation() {
     this.gotoNext.emit(this.data);
   }
+
+  paymenttype(type) {
+    this.data.paymenttype = type;
+    console.log(this.data.paymenttype);
+  }
+
+
 
 }

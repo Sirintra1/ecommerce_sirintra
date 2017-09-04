@@ -5,9 +5,7 @@ export class paymentModel {
 
 export class payment {
     name: string;
-    img: {
-        url: string;
-    };
+    img: string;
 }
 
 export class counter {
