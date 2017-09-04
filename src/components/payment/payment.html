@@ -1,4 +1,4 @@
-<ion-payments [paymentgateway]="paymentgateway.payment">
+<ion-payments [paymentgateway]="paymentgateway.payment" [(channel)]="channel">
   <credit [value]="'credit'"></credit>
   <delivery [value]="'delivery'"></delivery>
   <counterservice [value]="'counterservice'" [paymentgateway]="paymentgateway.counterservice"></counterservice>

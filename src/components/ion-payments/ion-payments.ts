@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
 export class IonPaymentsComponent {
   @Input() paymentgateway: any;
   text: string;
-  channel: any;
+  @Input() channel: any;
 
   constructor() {
     console.log('Hello IonPaymentsComponent Component');

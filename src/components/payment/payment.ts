@@ -15,7 +15,7 @@ export class PaymentComponent {
   @Input() paymentgateway: any;
 
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
-
+  channel: string = 'credit';
   constructor() {
     console.log('Hello PaymentComponent Component');
   }
