@@ -10,6 +10,8 @@ import { HomePage } from "../pages/home/home";
 
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { TabsNavigationPage } from "../pages/tabs-navigation/tabs-navigation";
+import { LoginPage } from "../pages/login/login";
+import { ProductDetailPage } from "../pages/product-detail/product-detail";
 
 
 @Component({
@@ -24,7 +26,7 @@ export class MyApp {
   //rootPage: any = WalkthroughPage;
   // rootPage: any = FunctionalitiesPage;
   //  rootPage: any = HomePage;
-  rootPage: any = TabsNavigationPage;
+  rootPage: any = LoginPage;
   textDir: string = "ltr";
 
   pages: Array<{title: any, icon: string, component: any}>;
