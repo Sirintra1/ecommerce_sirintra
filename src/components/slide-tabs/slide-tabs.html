@@ -13,7 +13,8 @@
         <!-- <ads-header-bar [images]="items[page].images"></ads-header-bar> -->
 
         <h4 class="categories-title" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0">{{'PRODUCTVOUCHER' | translate}}</h4>
-        <image-list [images]="items[page].productvoucher" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0" (click)="selectedVoucher()"></image-list>
+        <image-list [images]="items[page].productvoucher" *ngIf="items[page].productvoucher && items[page].productvoucher.length > 0"
+          (click)="selectedVoucher()"></image-list>
 
         <h4 class="categories-title">{{'LASTVISIT' | translate}} <span class="see-all" (click)="productList('lastvisit')" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0">see all</span></h4>
         <list-scoll-x [populars]="items[page].lastvisit" (selectedItem)="clickItem($event)" *ngIf="items[page].lastvisit && items[page].lastvisit.length > 0"></list-scoll-x>

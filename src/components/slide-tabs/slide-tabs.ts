@@ -59,10 +59,10 @@ export class SlideTabsComponent {
     let scrollInterval = setInterval(() => {
       if (!this.stopInterval) {
         if (element.scrollLeft < scrollLeft && !this.selectPage) {
-          element.scrollLeft += 1;
+          element.scrollLeft += 5;
           scrollLeft = this.tabs * 100;
         } else {
-          element.scrollLeft -= 1;
+          element.scrollLeft -= 5;
           scrollLeft = this.tabs * 100;
         }
         let checked = scrollLeft - element.scrollLeft;
