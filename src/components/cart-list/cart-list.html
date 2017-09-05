@@ -57,7 +57,8 @@
           <ion-col width-60>
             <div class="counter-list">
               <ion-item no-lines class="counter-item">
-                <counter-input [(counterValue)]="data.qty" (click)="clickManageItem(carts)"></counter-input>
+                {{data.qty}}
+                <counter-input [counterValue]="data.qty" (click)="clickManageItem(carts)"></counter-input>
               </ion-item>
             </div>
           </ion-col>
