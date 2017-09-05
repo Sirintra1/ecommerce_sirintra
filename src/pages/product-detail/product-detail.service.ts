@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { ProductDetailModel } from '../product-detail/product-detail.model';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
+import { Constants } from "../../app/app.contants";
 /*
   Generated class for the ProductDetailServiceProvider provider.
 
@@ -14,15 +15,24 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 @Injectable()
 export class ProductDetailServiceProvider {
 
-  constructor(public http: Http, public log:LogServiceProvider) {
+  constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ProductDetailServiceProvider Provider');
   }
-  getProductDetail(): Promise<ProductDetailModel> {
-    return this.http.get('./assets/example_data/productdetail.json')
+  getProductDetail(id): Promise<ProductDetailModel> {
+    return this.http.get(Constants.URL + '/api/productmasters/' + id)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
   }
+
+  addToCart(product): Promise<ProductDetailModel> {
+    product.selecteduser = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    return this.http.post(Constants.URL + '/api/carts/add', product)
+      .toPromise()
+      .then(response => response.json() as ProductDetailModel)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

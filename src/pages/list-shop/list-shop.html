@@ -14,5 +14,5 @@
 
 
 <ion-content>
-<list-shops [items]="listShopData.items"></list-shops>
+<list-shops [items]="listShopData" (itemClicked)="selectShop($event)"></list-shops>
 </ion-content>

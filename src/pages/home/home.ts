@@ -22,40 +22,37 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 export class HomePage {
   //images: Array<string> = [];
   home: HomeModel = new HomeModel();
-  loading: any;
+  loading: any = this.loadingCtrl.create();
   constructor(public navCtrl: NavController,
     public homeService: HomeService,
     public loadingCtrl: LoadingController,
     public log: LogServiceProvider
   ) {
-
-    this.loading = this.loadingCtrl.create();
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad HomePage');
+    this.getHomeData();
+  }
+
+  getHomeData() {
     this.loading.present();
-    this.homeService
-      .getData()
-      .then(data => {
-        this.home = data;
-        console.log(this.home);
-        this.log.info(data);
-        this.loading.dismiss();
-      });
+    this.homeService.getData().then((data) => {
+      this.home = data;
+      this.loading.dismiss();
+    }, (error) => {
+      console.error(error);
+      this.loading.dismiss();
+    });
   }
 
   selectedItem(e) {
-    this.navCtrl.push(ProductDetailPage, e);
+    this.navCtrl.push(ProductDetailPage, { data: e });
   }
 
   selectedShop(e) {
-    this.navCtrl.push(ShopDetailPage, e);
+    this.navCtrl.push(ShopDetailPage, { data: e });
   }
 
-  xxxx(e) {
-    alert(e);
-  }
   openPageProductList(e) {
     console.log(e);
     this.navCtrl.push(ListProductPage);

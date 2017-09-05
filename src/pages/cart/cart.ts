@@ -38,27 +38,67 @@ export class CartPage {
     });
   }
 
-  ionViewDidLoad() {
-    this.log.info('ionViewDidLoad CartPage');
-    this.loading.present();
-    this.cartService
-      .getData()
-      .then(data => {
-        this.log.info(data);
-        this.cart = data;
-        this.loading.dismiss();
-      });
-  }
-
   ionViewWillEnter() {
     this.authorizeProvider.isAuthorization();
+    let user = this.authorizeProvider.getAuthorization()
+    if (user) {
+      this.getCartData();
+    }
+  }
+
+  ionViewDidLeave() {
+    let user = this.authorizeProvider.getAuthorization()
+    if (user && this.cart._id) {
+      this.updateCartDataService();
+    }
+  }
+
+  getCartData() {
+    this.loading.present();
+    this.cartService.getData().then((data) => {
+      this.log.info(data);
+      this.cart = data;
+      this.loading.dismiss();
+    }, (error) => {
+      this.log.error(error);
+      this.loading.dismiss();
+    });
+  }
+
+  updateCartDataService() {
+    this.loading.present();
+    this.cartService.updateCartData(this.cart).then((data) => {
+      window.localStorage.setItem('cart', JSON.stringify(data));
+      console.log(data);
+      this.loading.dismiss();
+    }, (error) => {
+      this.loading.dismiss();
+      console.error(error);
+    });
   }
 
   gotoProductDetail(item) {
     this.navCtrl.push(ProductDetailPage, item)
   }
 
-  gotocheckout(){
+  gotocheckout() {
     this.navCtrl.push(CheckoutPage)
+  }
+
+  deleteItem(e) {
+    this.cart.products.splice(e.index, 1);
+    this.onCalculate(e);
+  }
+
+  changeQtyItem(e) {
+    this.onCalculate(e);
+  }
+
+  onCalculate(item) {
+    let length = this.cart.products.length;
+    this.cart.amount = 0;
+    for (var i = 0; i < length; i++) {
+      this.cart.amount = this.cart.amount + this.cart.products[i].itemamount;
+    }
   }
 }
