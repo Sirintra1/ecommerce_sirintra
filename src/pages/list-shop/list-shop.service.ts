@@ -5,7 +5,8 @@ import 'rxjs/add/operator/toPromise';
 import { ListShopModel } from '../list-shop/list-shop.model';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
-
+import { Constants } from "../../app/app.contants";
+import { ShopItemModel } from "../../app/app.model";
 /*
   Generated class for the ListShopServiceProvider provider.
 
@@ -15,13 +16,13 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 @Injectable()
 export class ListShopServiceProvider {
 
-  constructor(public http: Http, public log:LogServiceProvider) {
+  constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ListShopServiceProvider Provider');
   }
-  getListShop(): Promise<ListShopModel> {
-    return this.http.get('./assets/example_data/listshop.json')
+  getListShop(): Promise<Array<ShopItemModel>> {
+    return this.http.get(Constants.URL + '/api/shopmasters')
       .toPromise()
-      .then(response => response.json() as ListShopModel)
+      .then(response => response.json() as Array<ShopItemModel>)
       .catch(this.handleError);
   }
 

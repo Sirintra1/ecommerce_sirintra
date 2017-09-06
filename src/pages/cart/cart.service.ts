@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { CartModel } from "./cart.model";
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
+import { Constants } from "../../app/app.contants";
 
 @Injectable()
 export class CartService {
@@ -13,10 +14,18 @@ export class CartService {
   }
 
   getData(): Promise<CartModel> {
-    return this.http.get('./assets/example_data/cart.json')
-     .toPromise()
-     .then(response => response.json() as CartModel)
-     .catch(this.handleError);
+    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
+      .toPromise()
+      .then(response => response.json() as CartModel)
+      .catch(this.handleError);
+  }
+
+  updateCartData(cart): Promise<CartModel> {
+    return this.http.put(Constants.URL + '/api/carts/get-by-user/' + cart._id, cart)
+      .toPromise()
+      .then(response => response.json() as CartModel)
+      .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

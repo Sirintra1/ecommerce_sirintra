@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SearchModel } from './search.model';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { SearchServiceProvider } from './search.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductDetailPage } from "../product-detail/product-detail";
+import { ProductItemModel } from "../../app/app.model";
 
 /**
  * Generated class for the SearchPage page.
@@ -17,8 +17,9 @@ import { ProductDetailPage } from "../product-detail/product-detail";
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  searchData: SearchModel = new SearchModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public searchServiceProvider: SearchServiceProvider, public log: LogServiceProvider) {
+  searchData: Array<ProductItemModel>;
+  loading: any = this.loadingCtrl.create();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public searchServiceProvider: SearchServiceProvider, public log: LogServiceProvider, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -27,13 +28,15 @@ export class SearchPage {
   }
 
   getSearchData() {
+    this.loading.present();
     this.searchServiceProvider.getData().then((data) => {
       this.searchData = data;
       window.localStorage.setItem('array', JSON.stringify(this.searchData));
-
-        this.log.info(this.searchData);
+      this.log.info(this.searchData);
+      this.loading.dismiss();
     }, (error) => {
-        this.log.error(error);
+      this.log.error(error);
+      this.loading.dismiss();
     });
   }
 
@@ -45,8 +48,8 @@ export class SearchPage {
   //   }
   // }
 
-  selectedItem(){
-    this.navCtrl.push(ProductDetailPage);
+  selectedItem(e) {
+    this.navCtrl.push(ProductDetailPage, { data: e });
   }
 
 }

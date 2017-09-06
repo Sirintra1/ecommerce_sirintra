@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthorizeModel } from "./login.model";
+import { Constants } from "../../app/app.contants";
 /*
   Generated class for the LoginServiceProvider provider.
 
@@ -17,12 +18,12 @@ export class LoginServiceProvider {
     console.log('Hello LoginServiceProvider Provider');
   }
 
-  onAuthorization(): Promise<AuthorizeModel> { // signup
-    return this.http.get('./assets/example_data/profile.json')
+  onAuthorization(user): Promise<AuthorizeModel> { // signup
+    return this.http.post(Constants.URL + '/api/auth/signin', user)
       .toPromise()
       .then(response => {
         let data = response.json() as AuthorizeModel;
-        window.localStorage.setItem('e7e_ecommerce_buy_user', JSON.stringify(data));
+        window.localStorage.setItem('e7e_jjecommerce_buy_user', JSON.stringify(data));
         return data;
       })
       .catch(this.handleError);

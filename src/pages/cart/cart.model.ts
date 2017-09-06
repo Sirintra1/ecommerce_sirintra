@@ -1,12 +1,13 @@
 import { ProductItemModel } from "../../app/app.model";
 
 export class CartModel {
-    items:Array<CartItemModel>;
-    totalamount:Number;
+    _id: string;
+    products: Array<CartItemModel>;
+    amount: number;
 };
-export class CartItemModel{
+export class CartItemModel {
     product: ProductItemModel;
-    price:Number;
-    qty:Number;
-    amount:Number;
+    price: number;
+    qty: number;
+    itemamount: number;
 };
