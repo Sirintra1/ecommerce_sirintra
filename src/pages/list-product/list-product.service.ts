@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { ListProductModel } from '../list-product/list-product.model';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
+import { Constants } from "../../app/app.contants";
+import { ProductItemModel } from "../../app/app.model";
 /*
   Generated class for the ListProductServiceProvider provider.
 
@@ -17,10 +18,17 @@ export class ListProductServiceProvider {
     this.log.info('Hello ListProductServiceProvider Provider');
   }
 
-  getListProfile(): Promise<ListProductModel> {
-    return this.http.get('./assets/example_data/listproduct.json')
+  getProductListByHome(view): Promise<Array<ProductItemModel>> {
+    return this.http.get(Constants.URL + '/' + view)
       .toPromise()
-      .then(response => response.json() as ListProductModel)
+      .then(response => response.json() as Array<ProductItemModel>)
+      .catch(this.handleError);
+  }
+
+  getProductListByShop(data): Promise<Array<ProductItemModel>> {
+    return this.http.get(Constants.URL + '/api/productsbycategorybyshop/all/' + data._id)
+      .toPromise()
+      .then(response => response.json() as Array<ProductItemModel>)
       .catch(this.handleError);
   }
 

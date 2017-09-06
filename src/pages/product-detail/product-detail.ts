@@ -6,6 +6,7 @@ import { CartPage } from '../cart/cart';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { SocialSharing } from "@ionic-native/social-sharing";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
+import { ShopDetailPage } from "../shop-detail/shop-detail";
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -54,6 +55,10 @@ export class ProductDetailPage {
     }).catch(err => {
       alert(err);
     });
+  }
+
+  goToShop() {
+    this.navCtrl.push(ShopDetailPage, { data: this.productdetailData.shop });
   }
 
 }

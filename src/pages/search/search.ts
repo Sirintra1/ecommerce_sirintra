@@ -18,7 +18,6 @@ import { ProductItemModel } from "../../app/app.model";
 })
 export class SearchPage {
   searchData: Array<ProductItemModel>;
-  loading: any = this.loadingCtrl.create();
   constructor(public navCtrl: NavController, public navParams: NavParams, public searchServiceProvider: SearchServiceProvider, public log: LogServiceProvider, public loadingCtrl: LoadingController) {
   }
 
@@ -28,15 +27,16 @@ export class SearchPage {
   }
 
   getSearchData() {
-    this.loading.present();
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.searchServiceProvider.getData().then((data) => {
       this.searchData = data;
       window.localStorage.setItem('array', JSON.stringify(this.searchData));
       this.log.info(this.searchData);
-      this.loading.dismiss();
+      loading.dismiss();
     }, (error) => {
       this.log.error(error);
-      this.loading.dismiss();
+      loading.dismiss();
     });
   }
 

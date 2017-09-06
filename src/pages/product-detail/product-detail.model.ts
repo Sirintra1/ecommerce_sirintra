@@ -12,10 +12,18 @@ export class ProductDetailModel {
     issize: boolean;
     size: ProductDataSize = new ProductDataSize();
     shipping: Array<ShippingModel>;
-    shopseller: string;
+    shop: ShopModel = new ShopModel();
     relationProducts: Array<RelationProductsModel>;
     selectedsize: string;
     title: string;
+}
+
+export class ShopModel {
+    name: string;
+    detail: string;
+    email: string;
+    image: string;
+    tel: string;
 }
 
 export class ProductDataSize {

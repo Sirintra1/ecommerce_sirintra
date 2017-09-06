@@ -53,7 +53,7 @@
     </ion-item>
   </ion-list>
 
-  <h4 *ngIf="products && products.length > 0" class="categories-title">{{'สินค้า'}}<span class="see-all">see all</span></h4>
-  <list-scoll-x *ngIf="products && products.length > 0" [populars]="products"></list-scoll-x>
+  <h4 *ngIf="products && products.length > 0" class="categories-title" (click)="goToProductList(shopDetailData)">{{'สินค้า'}}<span class="see-all">see all</span></h4>
+  <list-scoll-x *ngIf="products && products.length > 0" [populars]="products" (selectedItem)="goToProductDetail($event)"></list-scoll-x>
 
 </ion-content>

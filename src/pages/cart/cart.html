@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <cart-list [carts]="cart.products" (clickDeleteItem)="deleteItem($event)" (manageItem)="changeQtyItem($event)"></cart-list>
+  <cart-list [carts]="cart.products" (clickDeleteItem)="deleteItem($event)" (manageItem)="changeQtyItem()"></cart-list>
 </ion-content>
 
 <ion-footer>
