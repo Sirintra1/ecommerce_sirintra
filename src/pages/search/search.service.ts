@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { SearchModel } from './search.model';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
+import { Constants } from "../../app/app.contants";
+import { ProductItemModel } from "../../app/app.model";
 /*
   Generated class for the SearchServiceProvider provider.
 
@@ -14,14 +15,14 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 @Injectable()
 export class SearchServiceProvider {
 
-  constructor(public http: Http,public log:LogServiceProvider) {
+  constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello SearchServiceProvider Provider');
   }
 
-  getData(): Promise<SearchModel> {
-    return this.http.get('./assets/example_data/search.json')
+  getData(): Promise<Array<ProductItemModel>> {
+    return this.http.get(Constants.URL + '/api/productmasters')
       .toPromise()
-      .then(response => response.json() as SearchModel)
+      .then(response => response.json() as Array<ProductItemModel>)
       .catch(this.handleError);
   }
 

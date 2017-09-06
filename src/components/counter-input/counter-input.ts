@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnChanges } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
@@ -37,6 +37,7 @@ export class CounterInput implements ControlValueAccessor, OnChanges {
   @Input('counterValue') _counterValue = 0;
   @Input('max') counterRangeMax;
   @Input('min') counterRangeMin;
+  @Output() count: EventEmitter<any> = new EventEmitter();
 
   get counterValue() {
     return this._counterValue;
@@ -67,10 +68,14 @@ export class CounterInput implements ControlValueAccessor, OnChanges {
 
   increase() {
     this.counterValue++;
+    this.count.emit(this.counterValue);
   }
 
   decrease() {
-    this.counterValue--;
+    if (this.counterValue > 1) {
+      this.counterValue--;
+      this.count.emit(this.counterValue);
+    }
   }
 
   validate(c: FormControl) {

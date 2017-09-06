@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ShopModel } from '../shop-detail/shop-detail.model';
+import { ShopDetailModel, AddressModel } from '../shop-detail/shop-detail.model';
 import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ProductItemModel } from "../../app/app.model";
+import { ProductDetailPage } from "../product-detail/product-detail";
+import { ListProductPage } from "../list-product/list-product";
 
 /**
  * Generated class for the ShopDetailPage page.
@@ -15,23 +18,52 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
   templateUrl: 'shop-detail.html',
 })
 export class ShopDetailPage {
-  shopDetailData: ShopModel = new ShopModel();
+  shopDetailData: ShopDetailModel = new ShopDetailModel();
+  address: Array<AddressModel>;
+  products: Array<ProductItemModel>;
+  shop: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider) {
-
+    this.shop = this.navParams.get('data');
+    console.log(this.shop);
   }
 
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ShopDetailPage');
-    this.getShopDetailData() ;
+    this.getShopDetailData();
+    this.getProductsByShopData();
   }
+
   getShopDetailData() {
-    this.shopDetailService
-      .getShopDetail()
-      .then((data) => {
-        this.shopDetailData = data;
-        this.log.info(data);
-      }, (err) => {
-        this.log.error(err);
-      });
+    this.shopDetailService.getShopDetail(this.shop._id).then((data) => {
+      this.shopDetailData = data;
+      this.log.info(data);
+    }, (err) => {
+      this.log.error(err);
+    });
   }
+
+  getShopAddressData() {
+    this.shopDetailService.getShopAddressData().then((data) => {
+      this.address = data;
+    }, (err) => {
+      this.log.error(err);
+    });
+  }
+
+  getProductsByShopData() {
+    this.shopDetailService.getShopProductData(this.shop._id).then((data) => {
+      this.products = data;
+    }, (err) => {
+      this.log.error(err);
+    });
+  }
+
+  goToProductDetail(e) {
+    this.navCtrl.push(ProductDetailPage, { data: e });
+  }
+
+  goToProductList(e) {
+    this.navCtrl.push(ListProductPage, { data: e, view: 'shop' });
+  }
+
 }

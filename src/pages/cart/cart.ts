@@ -22,7 +22,6 @@ import { CheckoutPage } from "../checkout/checkout";
   templateUrl: 'cart.html',
 })
 export class CartPage {
-  loading: any;
   cart: CartModel = new CartModel();
   counterForm: any;
   constructor(public navCtrl: NavController,
@@ -32,33 +31,71 @@ export class CartPage {
     public log: LogServiceProvider,
     public authorizeProvider: AuthorizeProvider
   ) {
-    this.loading = loadingCtrl.create();
     this.counterForm = new FormGroup({
       counter: new FormControl()
     });
   }
 
-  ionViewDidLoad() {
-    this.log.info('ionViewDidLoad CartPage');
-    this.loading.present();
-    this.cartService
-      .getData()
-      .then(data => {
-        this.log.info(data);
-        this.cart = data;
-        this.loading.dismiss();
-      });
-  }
-
   ionViewWillEnter() {
     this.authorizeProvider.isAuthorization();
+    let user = this.authorizeProvider.getAuthorization()
+    if (user) {
+      this.getCartData();
+    }
+  }
+
+  ionViewDidLeave() {
+    let user = this.authorizeProvider.getAuthorization()
+    if (user && this.cart._id) {
+      this.updateCartDataService();
+    }
+  }
+
+  getCartData() {
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.cartService.getData().then((data) => {
+      this.log.info(data);
+      this.cart = data;
+      loading.dismiss();
+    }, (error) => {
+      this.log.error(error);
+      loading.dismiss();
+    });
+  }
+
+  updateCartDataService() {
+    this.cartService.updateCartData(this.cart).then((data) => {
+      window.localStorage.setItem('cart', JSON.stringify(data));
+      console.log(data);
+    }, (error) => {
+      console.error(error);
+    });
   }
 
   gotoProductDetail(item) {
     this.navCtrl.push(ProductDetailPage, item)
   }
 
-  gotocheckout(){
+  gotocheckout() {
     this.navCtrl.push(CheckoutPage)
+  }
+
+  deleteItem(e) {
+    this.cart.products.splice(e.index, 1);
+    this.onCalculate();
+  }
+
+  changeQtyItem(e) {
+    this.onCalculate();
+  }
+
+  onCalculate() {
+    let length = this.cart.products.length;
+    this.cart.amount = 0;
+    for (var i = 0; i < length; i++) {
+      this.cart.products[i].itemamount = this.cart.products[i].product.price * this.cart.products[i].qty;
+      this.cart.amount += this.cart.products[i].itemamount;
+    }
   }
 }

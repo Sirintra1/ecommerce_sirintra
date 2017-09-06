@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 /**
  * Generated class for the CartListComponent component.
@@ -11,12 +11,26 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
   templateUrl: 'cart-list.html'
 })
 export class CartListComponent {
-  @Input() carts: any;
+  @Input() carts: Array<any>;
+  @Output() clickDeleteItem: EventEmitter<any> = new EventEmitter();
+  @Output() manageItem: EventEmitter<any> = new EventEmitter();
+
   text: string;
 
   constructor(public log: LogServiceProvider) {
     this.log.info('Hello CartListComponent Component');
     this.text = 'Hello World';
+  }
+
+  clickDelete(item, i) {
+    console.log(i);
+    item.index = i;
+    this.clickDeleteItem.emit(item);
+  }
+
+  countItem(e, data) {
+    data.qty = e;
+    this.manageItem.emit();
   }
 
 }

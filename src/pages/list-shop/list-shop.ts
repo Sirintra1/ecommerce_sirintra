@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListShopModel } from '../list-shop/list-shop.model';
 import { ListShopServiceProvider } from '../list-shop/list-shop.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ShopItemModel } from "../../app/app.model";
+import { ShopDetailPage } from "../shop-detail/shop-detail";
 
 /**
  * Generated class for the ListShopPage page.
@@ -16,7 +18,7 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
   templateUrl: 'list-shop.html',
 })
 export class ListShopPage {
-  listShopData: ListShopModel = new ListShopModel();
+  listShopData: Array<ShopItemModel>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider) {
   }
 
@@ -25,14 +27,16 @@ export class ListShopPage {
     this.getListShopData();
   }
   getListShopData() {
-    this.listShopService
-      .getListShop()
-      .then((data) => {
-        this.listShopData = data;
-        this.log.info(this.listShopData);
-      }, (err) => {
-        this.log.error(err);
-      });
+    this.listShopService.getListShop().then((data) => {
+      this.listShopData = data;
+      this.log.info(this.listShopData);
+    }, (err) => {
+      this.log.error(err);
+    });
+  }
+
+  selectShop(e) {
+    this.navCtrl.push(ShopDetailPage, { data: e });
   }
 
 }

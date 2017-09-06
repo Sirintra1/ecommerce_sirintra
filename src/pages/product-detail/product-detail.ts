@@ -5,6 +5,8 @@ import { ProductDetailServiceProvider } from '../product-detail/product-detail.s
 import { CartPage } from '../cart/cart';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { SocialSharing } from "@ionic-native/social-sharing";
+import { AuthorizeProvider } from "../../providers/authorize/authorize";
+import { ShopDetailPage } from "../shop-detail/shop-detail";
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -18,8 +20,10 @@ import { SocialSharing } from "@ionic-native/social-sharing";
 export class ProductDetailPage {
   product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
-  constructor(private socialSharing: SocialSharing, public navCtrl: NavController, public navParams: NavParams, public productDetailService: ProductDetailServiceProvider, public log: LogServiceProvider) {
-    this.product = navParams.get('title');
+  constructor(private socialSharing: SocialSharing, public navCtrl: NavController, public navParams: NavParams, public productDetailService: ProductDetailServiceProvider, public log: LogServiceProvider, public authorizeProvider: AuthorizeProvider
+  ) {
+    this.product = navParams.get('data');
+    console.log(this.product);
   }
 
   ionViewDidLoad() {
@@ -27,18 +31,22 @@ export class ProductDetailPage {
     this.getProductdetailData();
   }
   getProductdetailData() {
-    this.productDetailService
-      .getProductDetail()
-      .then((data) => {
-        this.productdetailData = data;
-        this.log.info(this.productdetailData);
-      }, (err) => {
-        this.log.error(err);
-      });
+    this.productDetailService.getProductDetail(this.product._id).then((data) => {
+      this.productdetailData = data;
+    }, (err) => {
+      this.log.error(err);
+    });
   }
-  addToCart() {
-    alert('thank you');
-    this.navCtrl.push(CartPage);
+  addToCart(product) {
+    this.authorizeProvider.isAuthorization();
+    let user = this.authorizeProvider.getAuthorization()
+    if (user) {
+      this.productDetailService.addToCart(product).then((data) => {
+        this.navCtrl.push(CartPage)
+      }, (error) => {
+        console.error(error);
+      });
+    }
   }
 
   socialShare() {
@@ -47,6 +55,10 @@ export class ProductDetailPage {
     }).catch(err => {
       alert(err);
     });
+  }
+
+  goToShop() {
+    this.navCtrl.push(ShopDetailPage, { data: this.productdetailData.shop });
   }
 
 }

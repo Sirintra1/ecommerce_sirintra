@@ -15,7 +15,7 @@
     <button ion-item *ngFor="let item of items" (click)="onClick(item)">
           <ion-row>
             <ion-col no-padding width-33 class="magin-right-10-custom">
-              <preload-image [ratio]="{w:1, h:1}" [src]="item.image"></preload-image>
+              <preload-image [ratio]="{w:1, h:1}" [src]="item.image[0].url"></preload-image>
             </ion-col>
              <ion-col>
               <h3 class="h3-name">{{item.name}}</h3>

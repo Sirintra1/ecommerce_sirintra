@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 import { AuthorizeModel } from "./register.model";
@@ -19,7 +19,9 @@ import { RegisterServiceProvider } from "./register.service";
 export class RegisterPage {
   signup: FormGroup;
   userInfo: AuthorizeModel = new AuthorizeModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public regisService: RegisterServiceProvider) {
+  loading = this.loadingController.create();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public regisService: RegisterServiceProvider, public loadingController: LoadingController) {
     this.signup = new FormGroup({
       username: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -36,11 +38,15 @@ export class RegisterPage {
   }
 
   doSignup() {
+    this.loading.present();
     this.userInfo = this.signup.value;
-    this.regisService.newAuthorization().then((data) => {
+    console.log(this.userInfo);
+    this.regisService.newAuthorization(this.userInfo).then((data) => {
       this.navCtrl.pop();
+      this.loading.dismiss();
     }, (error) => {
       console.error(error);
+      this.loading.dismiss();      
     });
 
   }
