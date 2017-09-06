@@ -1,18 +1,18 @@
 export class ProductItemModel {
-  name: String;
+  name: string;
   image: Array<ImageModel>;
-  price: Number;
-  normalprice: Number;
-  discount: Number;
+  price: number;
+  normalprice: number;
+  discount: number;
   discounttype: String;
   currency: String;
-  rate: Number;
+  rate: number;
   description: string;
 }
 
 export class ShopItemModel {
-  name: String;
-  image: String;
+  name: string;
+  image: string;
 }
 
 export class ImageModel {

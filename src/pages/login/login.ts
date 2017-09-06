@@ -15,7 +15,6 @@ import { TabsNavigationPage } from "../tabs-navigation/tabs-navigation";
 export class LoginPage {
   login: FormGroup;
   credential: credentialModel = new credentialModel();
-  loading: any = this.loadingCtrl.create();
 
   constructor(public facebookLoginService: FacebookLoginService, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public loginServiceProvider: LoginServiceProvider) {
     this.login = new FormGroup({
@@ -30,14 +29,17 @@ export class LoginPage {
 
   doLogin() {
     this.credential = this.login.value;
-    this.loading.present();
 
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.loginServiceProvider.onAuthorization(this.credential).then((data) => {
       this.navCtrl.pop();
-      this.loading.dismiss();
+      loading.dismiss();
     }, (error) => {
+
+      loading.dismiss();
       console.error(error);
-      this.loading.dismiss();
+      alert(JSON.parse(error._body).message);
     });
   }
 

@@ -28,8 +28,9 @@ export class CartListComponent {
     this.clickDeleteItem.emit(item);
   }
 
-  clickManageItem(carts) {
-    this.manageItem.emit(carts);
+  countItem(e, data) {
+    data.qty = e;
+    this.manageItem.emit();
   }
 
 }

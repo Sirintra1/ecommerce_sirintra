@@ -35,7 +35,7 @@ export class ShopDetailServiceProvider {
   }
 
   getShopProductData(id): Promise<Array<ProductItemModel>> {
-    return this.http.get(Constants.URL + '/api/products/shopid/' + id)
+    return this.http.get(Constants.URL + '/api/productsbycategorybyshop/all/' + id)
       .toPromise()
       .then(response => response.json() as Array<ProductItemModel>)
       .catch(this.handleError);

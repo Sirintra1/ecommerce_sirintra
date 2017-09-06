@@ -22,7 +22,6 @@ import { CheckoutPage } from "../checkout/checkout";
   templateUrl: 'cart.html',
 })
 export class CartPage {
-  loading: any;
   cart: CartModel = new CartModel();
   counterForm: any;
   constructor(public navCtrl: NavController,
@@ -32,7 +31,6 @@ export class CartPage {
     public log: LogServiceProvider,
     public authorizeProvider: AuthorizeProvider
   ) {
-    this.loading = loadingCtrl.create();
     this.counterForm = new FormGroup({
       counter: new FormControl()
     });
@@ -54,25 +52,23 @@ export class CartPage {
   }
 
   getCartData() {
-    this.loading.present();
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.cartService.getData().then((data) => {
       this.log.info(data);
       this.cart = data;
-      this.loading.dismiss();
+      loading.dismiss();
     }, (error) => {
       this.log.error(error);
-      this.loading.dismiss();
+      loading.dismiss();
     });
   }
 
   updateCartDataService() {
-    this.loading.present();
     this.cartService.updateCartData(this.cart).then((data) => {
       window.localStorage.setItem('cart', JSON.stringify(data));
       console.log(data);
-      this.loading.dismiss();
     }, (error) => {
-      this.loading.dismiss();
       console.error(error);
     });
   }
@@ -87,18 +83,19 @@ export class CartPage {
 
   deleteItem(e) {
     this.cart.products.splice(e.index, 1);
-    this.onCalculate(e);
+    this.onCalculate();
   }
 
   changeQtyItem(e) {
-    this.onCalculate(e);
+    this.onCalculate();
   }
 
-  onCalculate(item) {
+  onCalculate() {
     let length = this.cart.products.length;
     this.cart.amount = 0;
     for (var i = 0; i < length; i++) {
-      this.cart.amount = this.cart.amount + this.cart.products[i].itemamount;
+      this.cart.products[i].itemamount = this.cart.products[i].product.price * this.cart.products[i].qty;
+      this.cart.amount += this.cart.products[i].itemamount;
     }
   }
 }

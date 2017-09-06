@@ -4,6 +4,8 @@ import { ShopDetailModel, AddressModel } from '../shop-detail/shop-detail.model'
 import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductItemModel } from "../../app/app.model";
+import { ProductDetailPage } from "../product-detail/product-detail";
+import { ListProductPage } from "../list-product/list-product";
 
 /**
  * Generated class for the ShopDetailPage page.
@@ -28,7 +30,9 @@ export class ShopDetailPage {
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ShopDetailPage');
     this.getShopDetailData();
+    this.getProductsByShopData();
   }
+
   getShopDetailData() {
     this.shopDetailService.getShopDetail(this.shop._id).then((data) => {
       this.shopDetailData = data;
@@ -52,6 +56,14 @@ export class ShopDetailPage {
     }, (err) => {
       this.log.error(err);
     });
+  }
+
+  goToProductDetail(e) {
+    this.navCtrl.push(ProductDetailPage, { data: e });
+  }
+
+  goToProductList(e) {
+    this.navCtrl.push(ListProductPage, { data: e, view: 'shop' });
   }
 
 }
