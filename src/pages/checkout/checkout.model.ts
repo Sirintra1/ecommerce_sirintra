@@ -1,6 +1,6 @@
 import { ProductItemModel } from "../../app/app.model";
 
-export class PaymentModel {
+export class ShippingModel {
     _id: string;
     products: Array<PaymentItemModel>;
     amount: number;
@@ -26,20 +26,20 @@ export class address {
     tel: string;
 }
 
-// export class paymentModel {
-//     payment: Array<payment>;
-//     counterservice: Array<counter>;
-// }
+export class paymentModel {
+    payment: Array<payment>;
+    counterservice: Array<counter>;
+}
 
-// export class payment {
-//     name: string;
-//     img: string;
-// }
+export class payment {
+    name: string;
+    img: string;
+}
 
-// export class counter {
-//     name: string;
-//     img: string;
-// }
+export class counter {
+    name: string;
+    img: string;
+}
 
 // export class confirmModel {
 //     confirm: confirmdata = new confirmdata();

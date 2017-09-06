@@ -7,7 +7,8 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 // import { confirmModel } from './checkout.model';
 import { address } from './checkout.model';
 // import { saveOrder } from "./checkout.model";
-import { PaymentModel } from "./checkout.model";
+import { ShippingModel } from "./checkout.model";
+import { paymentModel } from "./checkout.model";
 
 import { Constants } from "../../app/app.contants";
 
@@ -23,11 +24,11 @@ export class CheckoutServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     console.log('Hello CheckoutServiceProvider Provider');
   }
-  getData(): Promise<PaymentModel> {
+  getData(): Promise<ShippingModel> {
     let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
     return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
       .toPromise()
-      .then(response => response.json() as PaymentModel)
+      .then(response => response.json() as ShippingModel)
       .catch(this.handleError);
   }
 
@@ -44,6 +45,13 @@ export class CheckoutServiceProvider {
       .then(response => response.json())
       .catch(this.handleError);
   }
+  saveAddressData(address): Promise<address>{
+    return this.http.post(Constants.URL + '/api/addresses' , address)
+      .toPromise()
+      .then(response => response.json() as address)
+      .catch(this.handleError);
+  }
+
   // getConfirm(): Promise<confirmModel> {
   //   return this.http.get('./assets/example_data/confirm.json')
   //     .toPromise()
@@ -51,12 +59,12 @@ export class CheckoutServiceProvider {
   //     .catch(this.handleError);
   // }
 
-  // getPayment(): Promise<paymentModel> {
-  //   return this.http.get('./assets/example_data/payments.json')
-  //     .toPromise()
-  //     .then(response => response.json() as paymentModel)
-  //     .catch(this.handleError);
-  // }
+  getPayment(): Promise<paymentModel> {
+    return this.http.get('./assets/example_data/payments.json')
+      .toPromise()
+      .then(response => response.json() as paymentModel)
+      .catch(this.handleError);
+  }
 
   // getShipping(): Promise<shippingModel> {
   //   return this.http.get('./assets/example_data/shipping.json')

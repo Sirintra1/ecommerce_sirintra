@@ -30,7 +30,7 @@
     <ion-row>
       <ion-col>
         <ion-row>
-          <ion-col text-center *ngFor="let counter of paymentgateway">
+          <ion-col text-center *ngFor="let counter of paymentgateway" (click)="selectcounter(counter)">
             <ion-segment color="light" class="md" [(ngModel)]="counteractive">
               <ion-segment-button [value]="counter.name" [ngClass]="counteractive >= counter.value ? 'active' : '' ">
                 <preload-image [ratio]="{w:1, h:1}" src="{{counter.img}}"></preload-image>

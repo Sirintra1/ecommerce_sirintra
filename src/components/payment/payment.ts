@@ -13,7 +13,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 export class PaymentComponent {
   data: any = {};
   @Input() paymentgateway: any;
-
+  @Input() datashipping: any;
+  datapayment: any = {};
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
   channel: string = 'credit';
   constructor() {
@@ -21,14 +22,19 @@ export class PaymentComponent {
   }
 
   stepValidation() {
-    this.gotoNext.emit(this.data);
+    this.gotoNext.emit(this.datapayment);
   }
 
-  paymenttype(type) {
-    this.data.paymenttype = type;
-  }
+  // paymenttype(type) {
+  //   this.data.paymenttype = type;
+  // }
   countername(name) {
     this.data.counterservice = name;
   }
+
+  paymentType(e) {
+    this.datapayment = e;
+  }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
+import { CheckoutServiceProvider } from '../../pages/checkout/checkout.service';
 /**
  * Generated class for the ShippingComponent component.
  *
@@ -12,111 +13,129 @@ import { AlertController } from 'ionic-angular';
 })
 export class ShippingComponent {
   @Input() listaddress: Array<any>;
-  @Input() listshipping: Array<any>;
+  @Input() listshipping: any;
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
+  address = {};
   data: any = {
-    shipping: {},
-    products: [],
-    total: 0
+    order: {
+      shipping: {},
+      items:[],
+      payment: {},
+      amount: 0,
+      discount: 0,
+      totalamount: 0,
+      cart: ''
+    }
   };
-  
-  constructor(public alertCtrl: AlertController) {
+
+  constructor(public alertCtrl: AlertController, public checkoutServiceProvider: CheckoutServiceProvider) {
     console.log('Hello ShippingComponent Component');
   }
 
-  // showPrompt() {
-  //   let prompt = this.alertCtrl.create({
-  //     title: 'New Address',
-  //     inputs: [
-  //       {
-  //         name: 'firstname',
-  //         placeholder: 'Firstname'
-  //       },
-  //       {
-  //         name: 'lastname',
-  //         placeholder: 'Lastname'
-  //       },
-  //       {
-  //         name: 'tel',
-  //         placeholder: 'Tel'
-  //       },
-  //       {
-  //         name: 'address',
-  //         placeholder: 'Address'
-  //       },
-  //       {
-  //         name: 'subdistrict',
-  //         placeholder: 'Subdistrict'
-  //       },
-  //       {
-  //         name: 'district',
-  //         placeholder: 'District'
-  //       },
-  //       {
-  //         name: 'province',
-  //         placeholder: 'Province'
-  //       },
-  //       {
-  //         name: 'postcode',
-  //         placeholder: 'Postcode'
-  //       }
-  //     ],
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         handler: data => {
-  //           console.log('Cancel clicked');
-  //         }
-  //       },
-  //       {
-  //         text: 'Save',
-  //         handler: data => {
-  //           this.listaddress.push(data);
-  //           console.log('Saved clicked');
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   prompt.present();
-  // }
+  showPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'New Address',
+      inputs: [
+        {
+          name: 'firstname',
+          placeholder: 'Firstname'
+        },
+        {
+          name: 'lastname',
+          placeholder: 'Lastname'
+        },
+        {
+          name: 'tel',
+          placeholder: 'Tel'
+        },
+        {
+          name: 'address',
+          placeholder: 'Address'
+        },
+        {
+          name: 'subdistrict',
+          placeholder: 'Subdistrict'
+        },
+        {
+          name: 'district',
+          placeholder: 'District'
+        },
+        {
+          name: 'province',
+          placeholder: 'Province'
+        },
+        {
+          name: 'postcode',
+          placeholder: 'Postcode'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.listaddress.push(data);
+            this.saveAddressData(data)
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
 
-  // selectaddress(address) {
-  //   console.log(address);
-  //   this.data.shipping = address;
-  // }
-  // setproduct(product, shipping) {
-  //   var checkProduct = false;
-  //   if (this.data.products && this.data.products.length > 0) {
-  //     this.data.products.forEach(itm => {
-  //       if (itm.name === product.name) {
-  //         // console.log('checkProduct = true');
-  //         checkProduct = true;
-  //       }
-  //     });
-  //   }
-  //   if (!checkProduct) {
-  //     // console.log('checkProduct = false');
-  //     this.data.products.push({
-  //       name: product.name,
-  //       qty: product.qty,
-  //       price: product.price,
-  //       choice: {
-  //         discription: shipping.discription,
-  //         type: shipping.type
-  //       }
-  //     });
-  //   }
-  // }
-  // stepValidation() {
-  //   if (this.data.shipping && this.data.shipping.address) {
-  //     if (this.data.products.length === this.listshipping.products.length) {
-  //       this.gotoNext.emit(this.data);
-  //     } else {
-  //       alert('Please select products');
-  //     }
-  //   }else{
-  //     alert('Please select shipping');
-  //   }
-  // }
+  saveAddressData(data) {
+    this.address = data;
+    this.checkoutServiceProvider.saveAddressData(this.address).then((data) => {
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+
+
+
+  selectaddress(data) {
+    this.data.order.shipping = data;
+  }
+  setproduct(product, shipping) {
+    var checkProduct = false;
+    if (this.data.order.products && this.data.order.products.length > 0) {
+      // console.log('+++++++++++++++++++++++++++++++++');
+      this.data.order.products.forEach(itm => {
+        if (itm.name === product.name) {
+          checkProduct = true;
+        }
+      });
+    }
+    if (!checkProduct) {
+      this.data.order.items.push({
+        product: product,
+        qty: product.qty,
+        amount:  product.itemamount,
+        delivery: shipping.shipping
+      });
+    }
+  }
+  stepValidation() {
+    if (this.data.order.shipping && this.data.order.shipping.address) {
+      if (this.data.order.items.length === this.listshipping.products.length) {
+        this.data.order.amount = this.listshipping.amount;
+        this.data.order.cart = this.listshipping._id;
+        // console.log(this.listshipping);
+        // console.log(this.data);
+        this.gotoNext.emit(this.data);
+      } else {
+        alert('Please select products');
+      }
+    } else {
+      alert('Please select shipping');
+    }
+  }
 
 }

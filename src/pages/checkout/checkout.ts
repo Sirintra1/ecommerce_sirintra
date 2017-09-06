@@ -4,8 +4,8 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
 import { address } from './checkout.model';
-// import { shippingModel } from './checkout.model';
-import { PaymentModel } from './checkout.model';
+import { paymentModel } from './checkout.model';
+import { ShippingModel } from './checkout.model';
 // import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
@@ -26,10 +26,11 @@ export class CheckoutPage {
   loading: any;
   // address: address = new address();
   address: Array<address>;
-  // shipping: shippingModel = new shippingModel();
-  payment: PaymentModel = new PaymentModel();
+  payment: paymentModel = new paymentModel();
+  shipping: ShippingModel = new ShippingModel();
   // confirm: confirmModel = new confirmModel();
   // addressdata : Array<any> = [];
+  datashipping: any = {};
   steps: Array<any> = [
     {
       value: 1,
@@ -60,25 +61,26 @@ export class CheckoutPage {
     this.authorizeProvider.isAuthorization();
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
-      this.getPaymentData();
+      this.getShippingData();
       this.getAddressData();
+      this.getPayment();
     }
   }
 
   ionViewDidLeave() {
     this.log.info('ionViewDidLoad CheckoutPage');
     let user = this.authorizeProvider.getAuthorization()
-    if (user && this.payment._id) {
+    if (user && this.shipping._id) {
       // this.updateCartDataService();
     }
   }
 
-  getPaymentData() {
+  getShippingData() {
     // this.loading.present();
     this.checkoutServiceProvider.getData().then((data) => {
       // this.log.info(data);
-      this.payment = data;
-      console.log(this.payment);
+      this.shipping = data;
+      console.log(this.shipping);
       this.loading.dismiss();
     }, (error) => {
       this.log.error(error);
@@ -105,14 +107,15 @@ export class CheckoutPage {
   //     this.log.error(err);
   //   });
   // }
-  // getPayment() {
-  //   this.checkoutServiceProvider.getPayment().then((data) => {
-  //     this.payment = data;
-  //     this.log.info(this.payment);
-  //   }, (err) => {
-  //     this.log.error(err);
-  //   });
-  // }
+  getPayment() {
+    this.checkoutServiceProvider.getPayment().then((data) => {
+      this.payment = data;
+      console.log(this.payment);
+      this.log.info(this.payment);
+    }, (err) => {
+      this.log.error(err);
+    });
+  }
   // getAddress() {
   //   this.checkoutServiceProvider
   //     .getAddress()
@@ -135,11 +138,13 @@ export class CheckoutPage {
   // }
 
   completedShippingStep(e) {
+    this.datashipping = e;
     alert('completedShippingStep');
     this.currentstep += 1;
   }
 
   completedPaymentStep(e) {
+    console.log(e);
     alert('completedPaymentStep');
     this.currentstep += 1;
   }

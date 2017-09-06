@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the IonPaymentsComponent component.
@@ -12,12 +12,20 @@ import { Component, Input } from '@angular/core';
 })
 export class IonPaymentsComponent {
   @Input() paymentgateway: any;
-  text: string;
+  @Input() datashipping: any;
   @Input() channel: any;
+  @Output() datapayment: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     console.log('Hello IonPaymentsComponent Component');
-    this.text = 'Hello World';
   }
+
+  selectpayment(data) {
+    this.datashipping.order.payment = {
+      paymenttype: data.name
+    };
+    this.datapayment.emit(this.datashipping);
+  }
+
 
 }
