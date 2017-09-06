@@ -1,11 +1,5 @@
-<!-- Generated template for the CounterserviceComponent component -->
-<ion-grid padding class="forms-examples-segment" *ngIf="parent.channel == value">
-    <ion-row>
-      <ion-col col-12>counterservice</ion-col>
-    </ion-row>
-    <!-- <button ion-button full color="warning" icon-left (click)="stepValidation()">
-          รีวิวการสั่งสินค้า
-        </button> -->
+
+<!-- <ion-grid padding class="forms-examples-segment" *ngIf="parent.channel == value">
     <ion-row>
           <ion-col col-12>
               <ion-list class="radio-tags" radio-group [(ngModel)]="store">
@@ -30,4 +24,22 @@
       <button *ngIf="store" ion-button full color="warning" icon-left (click)="stepValidation()">
           Review Order
         </button>
+  </ion-grid> -->
+
+  <ion-grid text-right *ngIf="parent.channel == value">
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-col text-center *ngFor="let counter of paymentgateway">
+            <ion-segment color="light" class="md" [(ngModel)]="counteractive">
+              <ion-segment-button [value]="counter.name" [ngClass]="counteractive >= counter.value ? 'active' : '' ">
+                <preload-image [ratio]="{w:1, h:1}" src="{{counter.img}}"></preload-image>
+              </ion-segment-button>
+            </ion-segment>
+            <p>{{counter.name}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+  <ng-content></ng-content>

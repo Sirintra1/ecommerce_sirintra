@@ -1,6 +1,6 @@
 <!-- Generated template for the IonFormWizardComponent component -->
 <ion-navbar>
-  <ion-grid>
+  <ion-grid text-right>
     <ion-row>
       <ion-col *ngFor="let step of steps">
         <ion-row>
@@ -10,9 +10,9 @@
             </ion-segment>
             <p>{{step.title}}</p>
           </ion-col>
-          <ion-col text-center>
-            <!-- <div class="lines" [ngClass]="currentstep >= step.value + 1 ? 'active-lines' : '' "></div> -->
-          </ion-col>
+          <!-- <ion-col text-center>
+            <div class="lines" [ngClass]="currentstep >= step.value + 1 ? 'active-lines' : '' "></div>
+          </ion-col> -->
         </ion-row>
       </ion-col>
     </ion-row>

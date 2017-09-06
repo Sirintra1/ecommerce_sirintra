@@ -25,8 +25,8 @@ export class MyApp {
   // make WalkthroughPage the root (or first) page
   //rootPage: any = WalkthroughPage;
   // rootPage: any = FunctionalitiesPage;
-  //  rootPage: any = HomePage;
-  rootPage: any = LoginPage;
+   rootPage: any = TabsNavigationPage;
+  // rootPage: any = LoginPage;
   textDir: string = "ltr";
 
   pages: Array<{title: any, icon: string, component: any}>;
