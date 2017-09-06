@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
-import { addressModel } from './checkout.model';
-import { shippingModel } from './checkout.model';
-import { paymentModel } from './checkout.model';
-import { confirmModel } from './checkout.model';
+import { address } from './checkout.model';
+// import { shippingModel } from './checkout.model';
+import { PaymentModel } from './checkout.model';
+// import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
+import { AuthorizeProvider } from "../../providers/authorize/authorize";
 
 
 /**
@@ -22,10 +23,13 @@ import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
   templateUrl: 'checkout.html',
 })
 export class CheckoutPage {
-  address: addressModel = new addressModel();
-  shipping: shippingModel = new shippingModel();
-  payment: paymentModel = new paymentModel();
-  confirm: confirmModel = new confirmModel();
+  loading: any;
+  // address: address = new address();
+  address: Array<address>;
+  // shipping: shippingModel = new shippingModel();
+  payment: PaymentModel = new PaymentModel();
+  // confirm: confirmModel = new confirmModel();
+  // addressdata : Array<any> = [];
   steps: Array<any> = [
     {
       value: 1,
@@ -45,53 +49,90 @@ export class CheckoutPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public checkoutServiceProvider: CheckoutServiceProvider,
-    public log: LogServiceProvider
+    public loadingCtrl: LoadingController,
+    public log: LogServiceProvider,
+    public authorizeProvider: AuthorizeProvider
   ) {
+    this.loading = loadingCtrl.create();
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
+    this.authorizeProvider.isAuthorization();
+    let user = this.authorizeProvider.getAuthorization()
+    if (user) {
+      this.getPaymentData();
+      this.getAddressData();
+    }
+  }
+
+  ionViewDidLeave() {
     this.log.info('ionViewDidLoad CheckoutPage');
-    this.getAddress();
-    this.getShipping();
-    this.getPayment();
-    this.getConfirm();
+    let user = this.authorizeProvider.getAuthorization()
+    if (user && this.payment._id) {
+      // this.updateCartDataService();
+    }
   }
-  getConfirm() {
-    this.checkoutServiceProvider.getConfirm().then((data) => {
-      this.confirm = data;
-      this.log.info(this.confirm);
-    }, (err) => {
-      this.log.error(err);
-    });
-  }
-  getPayment() {
-    this.checkoutServiceProvider.getPayment().then((data) => {
+
+  getPaymentData() {
+    // this.loading.present();
+    this.checkoutServiceProvider.getData().then((data) => {
+      // this.log.info(data);
       this.payment = data;
-      this.log.info(this.payment);
-    }, (err) => {
-      this.log.error(err);
+      console.log(this.payment);
+      this.loading.dismiss();
+    }, (error) => {
+      this.log.error(error);
+      this.loading.dismiss();
     });
   }
-  getAddress() {
-    this.checkoutServiceProvider
-      .getAddress()
-      .then((data) => {
-        this.address = data;
-        this.log.info(this.address);
-      }, (err) => {
-        this.log.error(err);
-      });
+  getAddressData() {
+    // this.loading.present();
+    this.checkoutServiceProvider.getAddressData().then((data) => {
+      this.address = data;
+      console.log(this.address);
+      this.loading.dismiss();
+    }, (error) => {
+      this.log.error(error);
+      this.loading.dismiss();
+    });
   }
-  getShipping() {
-    this.checkoutServiceProvider
-      .getShipping()
-      .then((data) => {
-        this.shipping = data;
-        this.log.info(this.shipping);
-      }, (err) => {
-        this.log.error(err);
-      });
-  }
+
+  // getConfirm() {
+  //   this.checkoutServiceProvider.getConfirm().then((data) => {
+  //     this.confirm = data;
+  //     this.log.info(this.confirm);
+  //   }, (err) => {
+  //     this.log.error(err);
+  //   });
+  // }
+  // getPayment() {
+  //   this.checkoutServiceProvider.getPayment().then((data) => {
+  //     this.payment = data;
+  //     this.log.info(this.payment);
+  //   }, (err) => {
+  //     this.log.error(err);
+  //   });
+  // }
+  // getAddress() {
+  //   this.checkoutServiceProvider
+  //     .getAddress()
+  //     .then((data) => {
+  //       this.address = data;
+  //       this.log.info(this.address);
+  //     }, (err) => {
+  //       this.log.error(err);
+  //     });
+  // }
+  // getShipping() {
+  //   this.checkoutServiceProvider
+  //     .getShipping()
+  //     .then((data) => {
+  //       this.shipping = data;
+  //       this.log.info(this.shipping);
+  //     }, (err) => {
+  //       this.log.error(err);
+  //     });
+  // }
 
   completedShippingStep(e) {
     alert('completedShippingStep');
