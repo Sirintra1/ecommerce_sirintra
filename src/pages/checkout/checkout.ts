@@ -141,21 +141,29 @@ export class CheckoutPage {
 
   completedShippingStep(e) {
     this.datashipping = e;
-    alert('completedShippingStep');
+    // alert('completedShippingStep');
     this.currentstep += 1;
   }
 
   completedPaymentStep(e) {
     this.datapayment = e;
-    alert('completedPaymentStep');
+    // alert('completedPaymentStep');
     this.currentstep += 1;
   }
 
   completedConfirmStep(e) {
     this.dataconfirm = e;
-    console.log(this.dataconfirm);
-    alert('completedConfirmStep');
-    this.navCtrl.push(CompleteOrderedPage);
+    // console.log(this.dataconfirm);
+    // alert('completedConfirmStep');
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
+      this.navCtrl.push(CompleteOrderedPage);
+      loading.dismiss();
+    }, (error) => {
+      console.error(error);
+      loading.dismiss();
+    });
   }
 
 }

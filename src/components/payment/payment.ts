@@ -62,11 +62,11 @@ export class PaymentComponent {
     }
 
     if (chk) {
-      this.checkoutServiceProvider.saveOrderData(this.datapayment).then((data) => {
-        this.gotoNext.emit(this.datapayment);
-      }, (error) => {
-        console.error(error);
-      });
+      // this.checkoutServiceProvider.saveOrderData(this.datapayment).then((data) => {
+      this.gotoNext.emit(this.datapayment);
+      // }, (error) => {
+      //   console.error(error);
+      // });
     } else {
       alert('Please enter your payment');
     }
