@@ -53,8 +53,7 @@ export class CheckoutServiceProvider {
   }
 
   saveOrderData(order) {
-    console.log(order);
-    return this.http.post(Constants.URL + '/api/order', order)
+    return this.http.post(Constants.URL + '/api/order', order.order)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
