@@ -19,7 +19,7 @@ export class ListProductServiceProvider {
   }
 
   getProductListByHome(view): Promise<Array<ProductItemModel>> {
-    return this.http.get(Constants.URL + '/' + view)
+    return this.http.get(Constants.URL + '/api/getproducttop/' + view)
       .toPromise()
       .then(response => response.json() as Array<ProductItemModel>)
       .catch(this.handleError);

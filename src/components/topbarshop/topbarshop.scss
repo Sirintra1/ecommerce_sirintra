@@ -1,5 +1,9 @@
 topbarshop {
-ul {
+    rating {
+        position: inherit !important;
+    }
+    ul {
+        padding-right: 4px !important;
         padding: 0px;
         &.rating li {
             padding: 0px 0px !important;
@@ -72,8 +76,5 @@ ul {
     }
     .color-gold-custom {
         color: gold;
-    }
-    .hight-45{
-        height: 45% !important;
     }
 }
