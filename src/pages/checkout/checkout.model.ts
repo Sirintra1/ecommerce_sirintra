@@ -16,6 +16,7 @@ export class addressModel {
     address: Array<address>;
 }
 export class address {
+    _id: string;
     address: string;
     subdistrict: string;
     district: string;
