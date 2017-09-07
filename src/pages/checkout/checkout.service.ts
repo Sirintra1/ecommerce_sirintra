@@ -45,10 +45,17 @@ export class CheckoutServiceProvider {
       .then(response => response.json())
       .catch(this.handleError);
   }
-  saveAddressData(address): Promise<address>{
-    return this.http.post(Constants.URL + '/api/addresses' , address)
+  saveAddressData(address): Promise<address> {
+    return this.http.post(Constants.URL + '/api/addresses', address)
       .toPromise()
       .then(response => response.json() as address)
+      .catch(this.handleError);
+  }
+
+  saveOrderData(order) {
+    return this.http.post(Constants.URL + '/api/order', order)
+      .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

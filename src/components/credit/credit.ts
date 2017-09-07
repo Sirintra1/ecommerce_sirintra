@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IonPaymentsComponent } from "../ion-payments/ion-payments";
 
 /**
@@ -15,10 +15,16 @@ export class CreditComponent {
 
   text: string;
   @Input() value: string;
-
+  @Output() datacredit: EventEmitter<any> = new EventEmitter<any>();
+  data: any = {};
   constructor(public parent: IonPaymentsComponent) {
     console.log('Hello CreditComponent Component');
     this.text = 'Hello World';
+
   }
+  formcredit(data) {
+    this.datacredit.emit(data);
+  }
+
 
 }
