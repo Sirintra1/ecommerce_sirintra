@@ -31,6 +31,8 @@ export class CheckoutPage {
   // confirm: confirmModel = new confirmModel();
   // addressdata : Array<any> = [];
   datashipping: any = {};
+  datapayment: any = {};
+  dataconfirm: any = {};
   steps: Array<any> = [
     {
       value: 1,
@@ -144,12 +146,14 @@ export class CheckoutPage {
   }
 
   completedPaymentStep(e) {
-    console.log(e);
+    this.datapayment = e;
     alert('completedPaymentStep');
     this.currentstep += 1;
   }
 
   completedConfirmStep(e) {
+    this.dataconfirm = e;
+    console.log(this.dataconfirm);
     alert('completedConfirmStep');
     this.navCtrl.push(CompleteOrderedPage);
   }

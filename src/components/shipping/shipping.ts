@@ -19,12 +19,13 @@ export class ShippingComponent {
   data: any = {
     order: {
       shipping: {},
-      items:[],
+      items: [],
       payment: {},
       amount: 0,
       discount: 0,
       totalamount: 0,
-      cart: ''
+      cart: '',
+      tran: 0
     }
   };
 
@@ -117,7 +118,7 @@ export class ShippingComponent {
       this.data.order.items.push({
         product: product,
         qty: product.qty,
-        amount:  product.itemamount,
+        amount: product.itemamount,
         delivery: shipping.shipping
       });
     }
@@ -125,6 +126,10 @@ export class ShippingComponent {
   stepValidation() {
     if (this.data.order.shipping && this.data.order.shipping.address) {
       if (this.data.order.items.length === this.listshipping.products.length) {
+        this.data.order.items.forEach(itm => {
+          this.data.order.tran += itm.delivery.price;
+          // console.log(this.data.order.tran);
+        });
         this.data.order.amount = this.listshipping.amount;
         this.data.order.cart = this.listshipping._id;
         // console.log(this.listshipping);

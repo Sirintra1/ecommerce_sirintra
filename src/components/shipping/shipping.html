@@ -55,6 +55,7 @@
       <ion-list class="radio-tags" radio-group>
         <ion-item *ngFor="let itm of item.product.shippings" class="radio-tag" (click)="setproduct(item,itm)">
           <ion-label>
+            <p>{{itm.shipping.name}}</p>
             <p>{{itm.shipping.detail}}</p>
           </ion-label>
           <ion-radio (click)="setproduct(item,itm)"></ion-radio>
