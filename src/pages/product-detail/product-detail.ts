@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ProductDetailModel } from '../product-detail/product-detail.model';
 import { ProductDetailServiceProvider } from '../product-detail/product-detail.service';
 import { CartPage } from '../cart/cart';
@@ -20,7 +20,14 @@ import { ShopDetailPage } from "../shop-detail/shop-detail";
 export class ProductDetailPage {
   product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
-  constructor(private socialSharing: SocialSharing, public navCtrl: NavController, public navParams: NavParams, public productDetailService: ProductDetailServiceProvider, public log: LogServiceProvider, public authorizeProvider: AuthorizeProvider
+  constructor(
+    private socialSharing: SocialSharing,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public productDetailService: ProductDetailServiceProvider,
+    public log: LogServiceProvider,
+    public authorizeProvider: AuthorizeProvider,
+    public loadingCtrl: LoadingController
   ) {
     this.product = navParams.get('data');
     console.log(this.product);
@@ -31,14 +38,21 @@ export class ProductDetailPage {
     this.getProductdetailData();
   }
   getProductdetailData() {
+    let loadingCtrl = this.loadingCtrl.create();
+    loadingCtrl.present();
     this.productDetailService.getProductDetail(this.product._id).then((data) => {
+      loadingCtrl.dismiss();
       this.productdetailData = data;
     }, (err) => {
+      loadingCtrl.dismiss();      
       this.log.error(err);
     });
   }
+  
   addToCart(product) {
     this.authorizeProvider.isAuthorization();
+    let loadingCtrl = this.loadingCtrl.create();
+    loadingCtrl.present();
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
       this.productDetailService.addToCart(product).then((data) => {

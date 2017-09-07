@@ -1,13 +1,5 @@
-<ion-slides class="contact-slides" pager="false" *ngIf="dataTopBar.image && dataTopBar.image[0].url">
-  <ion-slide class="contact-slide" *ngFor="let data of dataTopBar.image">
-    <background-image [src]="data.url"></background-image>
-  </ion-slide>
-</ion-slides>
-<!-- <ion-slides pager="false" *ngIf="dataTopBar.image && !dataTopBar.image[0].url">
-  <ion-slide> -->
-<background-image class="hight-45" [src]="dataTopBar.image"></background-image>
-<!-- </ion-slide>
-</ion-slides> -->
+<!-- <background-image [src]="dataTopBar.image"></background-image> BUG -->
+<preload-image [ratio]="{w:5, h:3}" [src]="dataTopBar.image"></preload-image>
 <ion-row class="contact-details-row" wrap>
   <ion-col no-padding width-65>
     <h2 class="contact-name">{{dataTopBar.name}}</h2>
@@ -17,13 +9,12 @@
     <ion-icon (click)="onClick()" *ngIf="status" name="md-heart-outline" color="danger" class="circle-btn"></ion-icon>
   </ion-col>
 
-  <ion-col no-padding width-65>
+  <ion-col no-padding width-60>
     <p class="contact-description">
       {{dataTopBar.detail}}
     </p>
   </ion-col>
-  <ion-col no-padding width-35 class="rating-col">
-    <!--<p class="color-gold-custom"><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> (19)</p>-->
+  <ion-col no-padding width-40 class="rating-col">
     <rating [(ngModel)]="dataTopBar.rate" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
       starIconName="star" nullable="false"></rating>
   </ion-col>

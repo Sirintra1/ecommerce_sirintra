@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ShopDetailModel, AddressModel } from '../shop-detail/shop-detail.model';
 import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
@@ -22,7 +22,7 @@ export class ShopDetailPage {
   address: Array<AddressModel>;
   products: Array<ProductItemModel>;
   shop: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider, public loadingCtrl: LoadingController) {
     this.shop = this.navParams.get('data');
     console.log(this.shop);
   }
@@ -34,18 +34,26 @@ export class ShopDetailPage {
   }
 
   getShopDetailData() {
+    let loadingCtrl = this.loadingCtrl.create();
+    loadingCtrl.present();
     this.shopDetailService.getShopDetail(this.shop._id).then((data) => {
+      loadingCtrl.dismiss();
       this.shopDetailData = data;
       this.log.info(data);
     }, (err) => {
+      loadingCtrl.dismiss();
       this.log.error(err);
     });
   }
 
   getShopAddressData() {
+    let loadingCtrl = this.loadingCtrl.create();
+    loadingCtrl.present();
     this.shopDetailService.getShopAddressData().then((data) => {
+      loadingCtrl.dismiss();
       this.address = data;
     }, (err) => {
+      loadingCtrl.dismiss();
       this.log.error(err);
     });
   }
