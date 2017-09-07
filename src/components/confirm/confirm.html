@@ -45,19 +45,19 @@
             <ion-item>
               <ion-row>
                 <ion-col col-12>
-                  <p>{{item.product.product.shop.name}}</p>
+                  <p>{{item.product.shop.name}}</p>
                 </ion-col>
               </ion-row>
               <ion-row no-padding>
                 <ion-col no-padding width-20 class="item-avatar">
-                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.product.image[0].url}}"></preload-image>
+                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.image[0].url}}"></preload-image>
                 </ion-col>
                 <ion-col no-padding width-60 class="white-space">
-                  <h3 class="item-title">{{item.product.product.name}}</h3>
-                  <p class="item-description">จำนวน: {{item.product.qty}}</p>
+                  <h3 class="item-title">{{item.product.name}}</h3>
+                  <p class="item-description">จำนวน: {{item.qty}}</p>
                 </ion-col>
                 <ion-col no-padding width-20>
-                  <p>{{item.product.product.price}} บาท</p>
+                  <p>{{item.product.price}} บาท</p>
                 </ion-col>
               </ion-row>
               <ion-row no-padding>

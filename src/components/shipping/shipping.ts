@@ -116,7 +116,7 @@ export class ShippingComponent {
     }
     if (!checkProduct) {
       this.data.order.items.push({
-        product: product,
+        product: product.product,
         qty: product.qty,
         amount: product.itemamount,
         delivery: shipping.shipping

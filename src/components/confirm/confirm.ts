@@ -16,6 +16,7 @@ export class ConfirmComponent {
   confirmdiscount: number;
   constructor() {
     console.log('Hello ConfirmComponent Component');
+    // console.log(this.confirmgateway);
   }
 
   discount(data) {
@@ -32,6 +33,8 @@ export class ConfirmComponent {
   }
 
   stepValidation() {
+    // console.log(this.confirmgateway);
+
     if (this.confirmdiscount && !undefined) {
       console.log('มีส่วนลด');
       this.confirmgateway.order.totalamount = ((this.confirmgateway.order.tran || 0) + (this.confirmgateway.order.amount || 0)) - (this.confirmdiscount || 0);
