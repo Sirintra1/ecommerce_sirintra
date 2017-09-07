@@ -24,4 +24,15 @@ export class TabsNavigationPage {
     this.tab4Root = FavoritePage;
     this.tab5Root = ProfilePage;
   }
+  countBadgeCart() {
+    let cart = JSON.parse(window.localStorage.getItem('cart'));
+    let length = 0;
+    if (cart) {
+      let cartLength = cart.products ? cart.products.length : 0;
+      for (let i = 0; i < cartLength; i++) {
+        length += cart.products[i].qty;
+      }
+    }
+    return length > 0 ? length.toString() : '';
+  }
 }

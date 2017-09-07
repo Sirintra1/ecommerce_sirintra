@@ -12,6 +12,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { TabsNavigationPage } from "../pages/tabs-navigation/tabs-navigation";
 import { LoginPage } from "../pages/login/login";
 import { ProductDetailPage } from "../pages/product-detail/product-detail";
+import { CartService } from "../pages/cart/cart.service";
 
 
 @Component({
@@ -25,12 +26,12 @@ export class MyApp {
   // make WalkthroughPage the root (or first) page
   //rootPage: any = WalkthroughPage;
   // rootPage: any = FunctionalitiesPage;
-   rootPage: any = TabsNavigationPage;
+  rootPage: any = TabsNavigationPage;
   // rootPage: any = LoginPage;
   textDir: string = "ltr";
 
-  pages: Array<{title: any, icon: string, component: any}>;
-  pushPages: Array<{title: any, icon: string, component: any}>;
+  pages: Array<{ title: any, icon: string, component: any }>;
+  pushPages: Array<{ title: any, icon: string, component: any }>;
 
   constructor(
     platform: Platform,
@@ -39,7 +40,8 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public statusBar: StatusBar,
     public translate: TranslateService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public cartService: CartService
   ) {
     translate.setDefaultLang('th');
     translate.use('th');
@@ -51,21 +53,22 @@ export class MyApp {
       this.statusBar.styleDefault();
     });
 
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) =>
-      {
-        if(event.lang == 'ar')
-        {
-          platform.setDir('rtl', true);
-          platform.setDir('ltr', false);
-        }
-        else
-        {
-          platform.setDir('ltr', true);
-          platform.setDir('rtl', false);
-        }
-        
-      });
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      if (event.lang == 'ar') {
+        platform.setDir('rtl', true);
+        platform.setDir('ltr', false);
+      }
+      else {
+        platform.setDir('ltr', true);
+        platform.setDir('rtl', false);
+      }
 
+    });
+
+    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    if (user) {
+      this.getCartDataService();
+    }
   }
 
   openPage(page) {
@@ -80,5 +83,13 @@ export class MyApp {
     this.menu.close();
     // rootNav is now deprecated (since beta 11) (https://forum.ionicframework.com/t/cant-access-rootnav-after-upgrade-to-beta-11/59889)
     this.app.getRootNav().push(page.component);
+  }
+
+  getCartDataService() {
+    this.cartService.getData().then((data) => {
+      window.localStorage.setItem('cart', JSON.stringify(data));
+    }, (error) => {
+      console.error(error);
+    });
   }
 }

@@ -55,6 +55,7 @@ export class CartPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.cartService.getData().then((data) => {
+      window.localStorage.setItem('cart', JSON.stringify(data));
       this.log.info(data);
       this.cart = data;
       loading.dismiss();
