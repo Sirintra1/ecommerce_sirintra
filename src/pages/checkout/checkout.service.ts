@@ -32,19 +32,19 @@ export class CheckoutServiceProvider {
       .catch(this.handleError);
   }
 
-  // getAddressData(): Promise<addressModel> {
-  //   return this.http.get(Constants.URL + '/api/addressesbyuser')
-  //     .toPromise()
-  //     .then(response => response.json() as addressModel)
-  //     .catch(this.handleError);
-  // }
-
   getAddressData() {
-    return this.http.get(Constants.URL + '/api/addresses')
+    return this.http.get(Constants.URL + '/api/addressesbyuser')
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
   }
+
+  // getAddressData() {
+  //   return this.http.get(Constants.URL + '/api/addresses')
+  //     .toPromise()
+  //     .then(response => response.json())
+  //     .catch(this.handleError);
+  // }
   saveAddressData(address): Promise<address> {
     return this.http.post(Constants.URL + '/api/addresses', address)
       .toPromise()
