@@ -44,11 +44,11 @@ export class ProductDetailPage {
       loadingCtrl.dismiss();
       this.productdetailData = data;
     }, (err) => {
-      loadingCtrl.dismiss();      
+      loadingCtrl.dismiss();
       this.log.error(err);
     });
   }
-  
+
   addToCart(product) {
     this.authorizeProvider.isAuthorization();
     let loadingCtrl = this.loadingCtrl.create();
@@ -56,8 +56,10 @@ export class ProductDetailPage {
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
       this.productDetailService.addToCart(product).then((data) => {
+        loadingCtrl.dismiss();
         this.navCtrl.push(CartPage)
       }, (error) => {
+        loadingCtrl.dismiss();
         console.error(error);
       });
     }
