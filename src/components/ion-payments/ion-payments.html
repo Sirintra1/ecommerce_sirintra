@@ -3,7 +3,7 @@
   <ion-row>
     <ion-col>
       <ion-row>
-        <ion-col text-center *ngFor="let payment of paymentgateway">
+        <ion-col text-center *ngFor="let payment of paymentgateway" (click)="selectpayment(payment)">
           <ion-segment color="light" class="md" [(ngModel)]="channel">
             <ion-segment-button [value]="payment.name" [ngClass]="channel >= payment.value ? 'active' : '' ">
               <preload-image [ratio]="{w:1, h:1}" src="{{payment.img}}"></preload-image>

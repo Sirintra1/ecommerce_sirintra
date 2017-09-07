@@ -6,7 +6,7 @@
 <ion-tabs>
   <ion-tab tabTitle="{{'HOME' | translate}}" [root]="tab1Root" tabIcon="home"></ion-tab>
   <ion-tab tabTitle="{{'SEARCH' | translate}}" [root]="tab2Root" tabIcon="search"></ion-tab>
-  <ion-tab tabTitle="{{'CART' | translate}}" [root]="tab3Root" tabIcon="cart"></ion-tab>
+  <ion-tab tabTitle="{{'CART' | translate}}" [root]="tab3Root" tabIcon="cart" tabBadge="{{countBadgeCart()}}" tabBadgeStyle="danger"></ion-tab>
   <ion-tab tabTitle="{{'FAVORITE' | translate}}" [root]="tab4Root" tabIcon="heart"></ion-tab>
   <ion-tab tabTitle="{{'PROFILE' | translate}}" [root]="tab5Root" tabIcon="contact"></ion-tab>
 </ion-tabs>

@@ -8,7 +8,7 @@
             "img": "./assets/images/payment/cashondelivery.png"
         },
         {
-            "name": "counterservice",
+            "name": "bank",
             "img": "./assets/images/payment/bank-building.png"
         }
     ],

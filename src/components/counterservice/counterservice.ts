@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IonPaymentsComponent } from "../ion-payments/ion-payments";
 
 /**
@@ -14,11 +14,19 @@ import { IonPaymentsComponent } from "../ion-payments/ion-payments";
 export class CounterserviceComponent {
   @Input() paymentgateway: any;
   @Input() value: string;
-  text: string;
+  @Input() datapayment: any;
+
 
   constructor(public parent: IonPaymentsComponent) {
     console.log('Hello CounterserviceComponent Component');
-    this.text = 'Hello World';
   }
+
+  selectcounter(data) {
+    this.datapayment = this.datapayment ? this.datapayment : {};
+    this.datapayment.order.payment.counterservice = data.name;
+  }
+
+
+
 
 }
