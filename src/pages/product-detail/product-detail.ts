@@ -52,9 +52,9 @@ export class ProductDetailPage {
   addToCart(product) {
     this.authorizeProvider.isAuthorization();
     let loadingCtrl = this.loadingCtrl.create();
-    loadingCtrl.present();
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
+      loadingCtrl.present();
       this.productDetailService.addToCart(product).then((data) => {
         loadingCtrl.dismiss();
         this.navCtrl.push(CartPage)
