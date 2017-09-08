@@ -6,6 +6,7 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { Constants } from "../../app/app.contants";
 import { ProductItemModel } from "../../app/app.model";
+import { SearchModel } from "./search.model";
 /*
   Generated class for the SearchServiceProvider provider.
 
@@ -19,10 +20,11 @@ export class SearchServiceProvider {
     this.log.info('Hello SearchServiceProvider Provider');
   }
 
-  getData(): Promise<Array<ProductItemModel>> {
-    return this.http.get(Constants.URL + '/api/productmasters')
+  getData(): Promise<SearchModel> {
+    // return this.http.get(Constants.URL + '/api/productmasters')
+    return this.http.get('./assets/example_data/search.json')
       .toPromise()
-      .then(response => response.json() as Array<ProductItemModel>)
+      .then(response => response.json() as SearchModel)
       .catch(this.handleError);
   }
 

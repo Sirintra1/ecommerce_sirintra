@@ -6,14 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{'SEARCH' | translate}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{'SEARCH' | translate}}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="list-big-content">
-  <list-items [items]="searchData" [showSearch]="true" [showToolbar]="false" (itemClicked)="selectedItem($event)"></list-items>
-
+    <list-items [items]="searchData.items" [showSearch]="true" [showToolbar]="false" (itemClicked)="selectedItem($event)"></list-items>
 </ion-content>

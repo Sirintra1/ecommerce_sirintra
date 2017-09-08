@@ -1,31 +1,29 @@
 <div>
-  <div *ngIf="showSearch || showToolbar">
-      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  </div>
-  <ion-row class="filter-bar" *ngIf="showToolbar">
-    <ion-col col-5>
-      <ion-icon name="ios-funnel"></ion-icon> Filter</ion-col>
-    <ion-col col-5>
-      <ion-icon name="swap"></ion-icon> Sort</ion-col>
-    <ion-col col-2>
-      <ion-icon name="list"></ion-icon>
-    </ion-col>
-  </ion-row>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="onClick(item)">
+    <div *ngIf="showSearch || showToolbar">
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    </div>
+    <ion-row class="filter-bar" *ngIf="showToolbar">
+        <ion-col col-5>
+            <ion-icon name="ios-funnel"></ion-icon> Filter</ion-col>
+        <ion-col col-5>
+            <ion-icon name="swap"></ion-icon> Sort</ion-col>
+        <ion-col col-2>
+            <ion-icon name="list"></ion-icon>
+        </ion-col>
+    </ion-row>
+    <ion-list>
+        <button ion-item *ngFor="let item of items" (click)="onClick(item)">
           <ion-row>
             <ion-col no-padding width-33 class="magin-right-10-custom">
-              <preload-image [ratio]="{w:1, h:1}" [src]="item.image[0].url"></preload-image>
+              <preload-image [ratio]="{w:1, h:1}" [src]="item.image"></preload-image>
             </ion-col>
              <ion-col>
               <h3 class="h3-name">{{item.name}}</h3>
               <p class="color-orenge-custom">{{item.price | number}} {{item.currency | translate}}</p>
               <p><span class="text-decoration">{{item.normalprice | number}} {{item.currency | translate}}</span> -{{item.discount | number}} {{item.discounttype | translate}}</p>
               <rating [(ngModel)]="item.rate" readOnly="false"  max="5"  emptyStarIconName="star-outline" halfStarIconName="star-half"starIconName="star" nullable="false"></rating>
-              <!--<p class="color-gold-custom"><ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> -->
-              <!--<ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> <ion-icon name="star"></ion-icon> (19)</p>-->
             </ion-col> 
           </ion-row>
         </button>
-  </ion-list>
+    </ion-list>
 </div>
