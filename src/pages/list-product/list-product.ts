@@ -4,6 +4,7 @@ import { ListProductServiceProvider } from '../list-product/list-product.service
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { ProductItemModel } from "../../app/app.model";
+import { ListProductModel } from "./list-product.model";
 /**
  * Generated class for the ListProductPage page.
  *
@@ -16,36 +17,44 @@ import { ProductItemModel } from "../../app/app.model";
   templateUrl: 'list-product.html',
 })
 export class ListProductPage {
-  listProductData: Array<ProductItemModel>;
+  // listProductData: Array<ProductItemModel>;
+  listProductData: ListProductModel = new ListProductModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ListProductPage');
-    let view = this.navParams.get('view');
-    if (view === 'shop') {
-      let data = this.navParams.get('data');
-      this.getListProductByShop(data);
-    } else {
-      this.getListProductByHome(view);
-    }
+    // let view = this.navParams.get('view');
+    // if (view === 'shop') {
+    //   let data = this.navParams.get('data');
+    //   this.getListProductByShop(data);
+    // } else {
+    //   this.getListProductByHome(view);
+    // }
+    this.getListProduct();
   }
-
-  getListProductByShop(data) {
-    this.listProductService.getProductListByShop(data).then((data) => {
+  getListProduct() {
+    this.listProductService.getProductList().then(data => {
       this.listProductData = data;
     }, (err) => {
       this.log.error(err);
-    });
+    })
   }
+  // getListProductByShop(data) {
+  //   this.listProductService.getProductListByShop(data).then((data) => {
+  //     this.listProductData = data;
+  //   }, (err) => {
+  //     this.log.error(err);
+  //   });
+  // }
 
-  getListProductByHome(view) {
-    this.listProductService.getProductListByHome(view).then((data) => {
-      this.listProductData = data;
-    }, (err) => {
-      this.log.error(err);
-    });
-  }
+  // getListProductByHome(view) {
+  //   this.listProductService.getProductListByHome(view).then((data) => {
+  //     this.listProductData = data;
+  //   }, (err) => {
+  //     this.log.error(err);
+  //   });
+  // }
 
   selectedItem(e) {
     this.navCtrl.push(ProductDetailPage);

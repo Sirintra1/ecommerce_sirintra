@@ -1,6 +1,6 @@
 export class ProductItemModel {
   name: string;
-  image: Array<ImageModel>;
+  image: string;
   price: number;
   normalprice: number;
   discount: number;
@@ -15,7 +15,7 @@ export class ShopItemModel {
   image: string;
 }
 
-export class ImageModel {
-  id: string;
-  url: string;
-}
+// export class ImageModel {
+//   id: string;
+//   url: string;
+// }
