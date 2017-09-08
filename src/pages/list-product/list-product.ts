@@ -57,6 +57,6 @@ export class ListProductPage {
   // }
 
   selectedItem(e) {
-    this.navCtrl.push(ProductDetailPage);
+    this.navCtrl.push(ProductDetailPage, { data: e });
   }
 }
