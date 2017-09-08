@@ -22,9 +22,8 @@
       <ion-icon name="mail"></ion-icon>
     </button>
   </div>
-
-  <div *ngIf="shopDetailData.map && shopDetailData.map.lat && shopDetailData.map.lng">
-    <preload-image [ratio]="{w:4, h:2}" src="https://maps.googleapis.com/maps/api/staticmap?center={{shopDetailData.map.lat}},{{shopDetailData.map.lng}}&zoom=15&size=400x300&scale=2&markers=icon:https://s3-us-west-2.amazonaws.com/ionicthemes-apps-assets/ion2FullApp/pin.min.png|{{shopDetailData.map.lat}},{{shopDetailData.map.lng}}"
+  <div *ngIf="shopDetailData.map && shopDetailData.map.lat && shopDetailData.map.long">
+    <preload-image [ratio]="{w:4, h:2}" src="https://maps.googleapis.com/maps/api/staticmap?center={{shopDetailData.map.lat}},{{shopDetailData.map.lng}}&zoom=15&size=400x300&scale=2&markers=icon:https://s3-us-west-2.amazonaws.com/ionicthemes-apps-assets/ion2FullApp/pin.min.png|{{shopDetailData.map.lat}},{{shopDetailData.map.long}}"
       alt="location map" title="shop name - shop detail"></preload-image>
   </div>
 
@@ -43,7 +42,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-list class="details-list" *ngIf="address && address.length > 0">
+  <!-- <ion-list class="details-list" *ngIf="address && address.length > 0">
     <ion-item *ngFor="let itm of address" class="detail-item">
       <ion-avatar item-left>
         <ion-icon name="pin"></ion-icon>
@@ -51,9 +50,9 @@
       <span class="detail-text">{{itm.address}} {{itm.district}} {{itm.subdistrict}} {{itm.province}} {{itm.postcode}}</span>
       <span class="detail-text">{{itm.firstname}} {{itm.lastname}} tel: {{itm.tel}}</span>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 
-  <h4 *ngIf="products && products.length > 0" class="categories-title" (click)="goToProductList(shopDetailData)">{{'สินค้า'}}<span class="see-all">see all</span></h4>
-  <list-scoll-x *ngIf="products && products.length > 0" [populars]="products" (selectedItem)="goToProductDetail($event)"></list-scoll-x>
+  <h4 *ngIf="shopDetailData.products && shopDetailData.products.length > 0" class="categories-title" (click)="goToProductList(shopDetailData)">{{'สินค้า'}}<span class="see-all">see all</span></h4>
+  <list-scoll-x *ngIf="shopDetailData.products && shopDetailData.products.length > 0" [populars]="shopDetailData.products" (selectedItem)="goToProductDetail($event)"></list-scoll-x>
 
 </ion-content>

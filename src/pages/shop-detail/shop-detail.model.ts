@@ -4,10 +4,7 @@ export class ShopDetailModel {
     email: string;
     tel: string;
     map: map = new map();
-    image: {
-        id: string,
-        url: string
-    };
+    image: string;
     coverimg: {
         id: string,
         url: string

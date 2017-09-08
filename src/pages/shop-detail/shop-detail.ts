@@ -30,7 +30,7 @@ export class ShopDetailPage {
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ShopDetailPage');
     this.getShopDetailData();
-    this.getProductsByShopData();
+    // this.getProductsByShopData();
   }
 
   getShopDetailData() {
@@ -39,6 +39,7 @@ export class ShopDetailPage {
     this.shopDetailService.getShopDetail(this.shop._id).then((data) => {
       loadingCtrl.dismiss();
       this.shopDetailData = data;
+      console.log(this.shopDetailData);
       this.log.info(data);
     }, (err) => {
       loadingCtrl.dismiss();
@@ -46,25 +47,25 @@ export class ShopDetailPage {
     });
   }
 
-  getShopAddressData() {
-    let loadingCtrl = this.loadingCtrl.create();
-    loadingCtrl.present();
-    this.shopDetailService.getShopAddressData().then((data) => {
-      loadingCtrl.dismiss();
-      this.address = data;
-    }, (err) => {
-      loadingCtrl.dismiss();
-      this.log.error(err);
-    });
-  }
+  // getShopAddressData() {
+  //   let loadingCtrl = this.loadingCtrl.create();
+  //   loadingCtrl.present();
+  //   this.shopDetailService.getShopAddressData().then((data) => {
+  //     loadingCtrl.dismiss();
+  //     this.address = data;
+  //   }, (err) => {
+  //     loadingCtrl.dismiss();
+  //     this.log.error(err);
+  //   });
+  // }
 
-  getProductsByShopData() {
-    this.shopDetailService.getShopProductData(this.shop._id).then((data) => {
-      this.products = data;
-    }, (err) => {
-      this.log.error(err);
-    });
-  }
+  // getProductsByShopData() {
+  //   this.shopDetailService.getShopProductData(this.shop._id).then((data) => {
+  //     this.products = data;
+  //   }, (err) => {
+  //     this.log.error(err);
+  //   });
+  // }
 
   goToProductDetail(e) {
     this.navCtrl.push(ProductDetailPage, { data: e });
