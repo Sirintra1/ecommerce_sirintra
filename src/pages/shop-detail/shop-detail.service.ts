@@ -19,27 +19,33 @@ export class ShopDetailServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ShopDetailServiceProvider Provider');
   }
+  // getShopDetail(id): Promise<ShopDetailModel> {
+  //   return this.http.get(Constants.URL + '/api/shopmasters/' + id)
+  //     .toPromise()
+  //     .then(response => response.json() as ShopDetailModel)
+  //     .catch(this.handleError);
+  // }
   getShopDetail(id): Promise<ShopDetailModel> {
-    return this.http.get(Constants.URL + '/api/shopmasters/' + id)
+    return this.http.get('./assets/example_data/shopdetail.json')
       .toPromise()
       .then(response => response.json() as ShopDetailModel)
       .catch(this.handleError);
   }
 
-  getShopAddressData(): Promise<Array<AddressModel>> {
-    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
-    return this.http.get(Constants.URL + '/api/addresses/userid/' + user._id)
-      .toPromise()
-      .then(response => response.json() as Array<AddressModel>)
-      .catch(this.handleError);
-  }
+  // getShopAddressData(): Promise<Array<AddressModel>> {
+  //   let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+  //   return this.http.get(Constants.URL + '/api/addresses/userid/' + user._id)
+  //     .toPromise()
+  //     .then(response => response.json() as Array<AddressModel>)
+  //     .catch(this.handleError);
+  // }
 
-  getShopProductData(id): Promise<Array<ProductItemModel>> {
-    return this.http.get(Constants.URL + '/api/productsbycategorybyshop/all/' + id)
-      .toPromise()
-      .then(response => response.json() as Array<ProductItemModel>)
-      .catch(this.handleError);
-  }
+  // getShopProductData(id): Promise<Array<ProductItemModel>> {
+  //   return this.http.get(Constants.URL + '/api/productsbycategorybyshop/all/' + id)
+  //     .toPromise()
+  //     .then(response => response.json() as Array<ProductItemModel>)
+  //     .catch(this.handleError);
+  // }
 
   private handleError(error: any): Promise<any> {
     this.log.errorService('An error occurred', error); // for demo purposes only

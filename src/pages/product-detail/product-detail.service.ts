@@ -18,8 +18,14 @@ export class ProductDetailServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ProductDetailServiceProvider Provider');
   }
+  // getProductDetail(id): Promise<ProductDetailModel> {
+  //   return this.http.get(Constants.URL + '/api/productmasters/' + id)
+  //     .toPromise()
+  //     .then(response => response.json() as ProductDetailModel)
+  //     .catch(this.handleError);
+  // }
   getProductDetail(id): Promise<ProductDetailModel> {
-    return this.http.get(Constants.URL + '/api/productmasters/' + id)
+    return this.http.get('./assets/example_data/productdetail.json')
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
