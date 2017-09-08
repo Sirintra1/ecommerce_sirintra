@@ -11,8 +11,15 @@ import { Constants } from "../../app/app.contants";
 export class HomeService {
   constructor(public http: Http, public log: LogServiceProvider) {}
 
+  // getData(): Promise<HomeModel> {
+  //   return this.http.get(Constants.URL + '/api/homes')
+  //    .toPromise()
+  //    .then(response => response.json() as HomeModel)
+  //    .catch(this.handleError);
+  // }
+
   getData(): Promise<HomeModel> {
-    return this.http.get(Constants.URL + '/api/homes')
+    return this.http.get('./assets/example_data/home.json')
      .toPromise()
      .then(response => response.json() as HomeModel)
      .catch(this.handleError);
