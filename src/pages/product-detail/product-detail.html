@@ -32,11 +32,11 @@
                     starIconName="star" nullable="false"></rating>
             </ion-col>
             <ion-col width-50 text-right class="product-user-action">
-                <button ion-button color="danger" clear icon-only>
+                <button ion-button color="danger" clear icon-only (click)="socialShare()">
                     <ion-icon name='ios-share-outline' is-active="false"></ion-icon>
                 </button>
-                <button ion-button color="danger" clear icon-only>
-                        <ion-icon name='ios-heart-outline' is-active="false"></ion-icon>
+                <button ion-button color="danger" clear icon-only (click)="liked()">
+                        <ion-icon [name]='nameOfLike' is-active="false" ></ion-icon>
                 </button>
             </ion-col>
         </ion-row>
@@ -69,7 +69,7 @@
         </ion-col>
     </ion-row>
 
-    <ion-grid class="product-detail-card">
+    <ion-grid class="product-detail-card" (click)="goToShop()">
 
         <ion-row>
             <ion-col>
@@ -131,7 +131,7 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <button ion-button block outline>{{'WRITEREVIEW' | translate}}</button>
+                <button ion-button block outline (click)="writeReview()">{{'WRITEREVIEW' | translate}}</button>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -165,7 +165,7 @@
         </ion-col>
     </ion-row>
 
-    <list-scoll-x [populars]="productdetailData.other.products" *ngIf="productdetailData.other"></list-scoll-x>
+    <list-scoll-x [populars]="productdetailData.other.products" *ngIf="productdetailData.other" (selectedItem)="gotoOtherProduct($event)"></list-scoll-x>
 
     <!-- <ion-list class="details-list">
         <ion-item class="detail-item">

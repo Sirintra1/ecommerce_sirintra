@@ -109,6 +109,7 @@ import { IonStepsComponent } from '../components/ion-steps/ion-steps';
 import { IonPaymentsComponent } from '../components/ion-payments/ion-payments';
 import { TopbarshopComponent } from '../components/topbarshop/topbarshop';
 import { SlideImagesComponent } from '../components/slide-images/slide-images';
+import { WriteReviewPage } from "../pages/write-review/write-review";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -133,6 +134,8 @@ export function createTranslateLoader(http: Http) {
     CheckoutPage,
     CompleteOrderedPage,
     VoucherPage,
+    WriteReviewPage,
+
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -201,7 +204,8 @@ export function createTranslateLoader(http: Http) {
     RegisterPage,
     CheckoutPage,
     CompleteOrderedPage,
-    VoucherPage
+    VoucherPage,
+    WriteReviewPage
 
   ],
   providers: [
