@@ -6,6 +6,8 @@ export class ProductDetailModel {
     detail: string;
     price: number;
     promotionprice: number; //calculate from active promotions
+    percentofdiscount: number;
+    currency: string;
     images: Array<string>;
     rate: number; // calculate from reviews
     reviews: Array<ReviewsModel>; // relate of Reviews
@@ -14,7 +16,7 @@ export class ProductDetailModel {
     shippings: Array<ShippingModel>;
     shop: ShopModel = new ShopModel();
     otherproducts: Array<ProductItemModel>; //display if not signin
-    
+
 }
 
 export class ShopModel {
@@ -31,8 +33,12 @@ export class ProductDataSize {
 }
 
 export class ReviewsModel {
+    _id: string;
+    topic: string;
     comment: string;
     rate: number;
+    created: Date;
+    user: any;
 }
 
 export class QASModel {
@@ -71,7 +77,8 @@ export class SizeDetailModel {
 // }
 
 export class ShippingModel {
-    shipping: string;
+    _id: string;
+    name: string;
 }
 
 export class RelationProductsModel {

@@ -19,20 +19,23 @@ import { LoginPage } from "../login/login";
 })
 export class ProfilePage {
   profileData: ProfileModel = new ProfileModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public profileService: ProfileServiceProvider, public log: LogServiceProvider, public authorizeProvider: AuthorizeProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public profileService: ProfileServiceProvider, 
+    public log: LogServiceProvider) {
   }
 
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ProfilePage');
-    // this.getProfileData();
+    this.getProfileData();
   }
 
   ionViewWillEnter() {
-    this.getUser();
+    //this.getUser();
   }
 
   getUser() {
-    this.profileData = this.authorizeProvider.getAuthorization();
+    //this.profileData = this.authorizeProvider.getAuthorization();
   }
 
   goLogin() {
@@ -40,16 +43,16 @@ export class ProfilePage {
   }
 
   logout() {
-    this.authorizeProvider.unAuthorization();
+    //this.authorizeProvider.unAuthorization();
     this.getUser();
   }
-  // getProfileData() {
-  //   this.profileService
-  //     .getProfile()
-  //     .then((data) => {
-  //       this.profileData = data;
-  //     }, (err) => {
-  //       this.log.error(err);
-  //     });
-  // }
+  getProfileData() {
+    this.profileService
+      .getProfile()
+      .then((data) => {
+        this.profileData = data;
+      }, (err) => {
+        this.log.error(err);
+      });
+  }
 }

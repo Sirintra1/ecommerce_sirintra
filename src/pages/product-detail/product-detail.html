@@ -1,19 +1,213 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Product Detail</ion-title>
-        <ion-buttons end>
+        <ion-title>{{'PRODUCTDETAIL' | translate}}</ion-title>
+        <!-- <ion-buttons end>
             <button ion-button icon-only color="royal" (click)="socialShare()">
               <ion-icon name="md-share"></ion-icon>
             </button>
-        </ion-buttons>
+        </ion-buttons> -->
     </ion-navbar>
 </ion-header>
 
 
 <ion-content class="contact-card-content">
-    <topbar [dataTopBar]="productdetailData"></topbar>
+    <slide-images [images]="productdetailData.images"></slide-images>
 
-    <ion-list class="details-list">
+    <ion-grid class="product-detail-card">
+        <ion-row>
+            <ion-col>
+                <p class="text-title">{{productdetailData.name}}</p>
+                <p>{{productdetailData.detail}}</p>
+                <p>
+                    <span class="text-big-red">{{productdetailData.promotionprice}} {{productdetailData.currency | translate}}</span>
+                    <span class="text-decoration">{{productdetailData.price}} {{productdetailData.currency | translate}}</span>
+                    <span>{{productdetailData.percentofdiscount}} %</span>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col width-50>
+                <rating [(ngModel)]="productdetailData.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+                    starIconName="star" nullable="false"></rating>
+            </ion-col>
+            <ion-col width-50 text-right class="product-user-action">
+                <button ion-button color="danger" clear icon-only>
+                    <ion-icon name='ios-share-outline' is-active="false"></ion-icon>
+                </button>
+                <button ion-button color="danger" clear icon-only>
+                        <ion-icon name='ios-heart-outline' is-active="false"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-row class="promotion-row">
+        <ion-col text-left>
+            {{'SHIPPINGMETHOD' | translate}}
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="product-detail-card">
+
+        <ion-row>
+            <ion-col>
+                <p>
+                    <span class="text-big-red">
+                                <ion-icon name="ios-pin-outline"></ion-icon>
+                            </span>
+                    <span class="icon-text">current location</span>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let shipping of productdetailData.shippings">
+            <ion-col>
+                <p>
+                    <span class="text-big-red">
+                        <ion-icon name="ios-archive-outline"></ion-icon>
+                    </span>
+                    <span class="icon-text">{{shipping.name}}</span>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <p>
+                    <span class="text-big-red">
+                        <ion-icon name="md-cash"></ion-icon>
+                    </span>
+                    <span class="icon-text">สามารถชำระเงินปลายทางได้</span>
+                </p>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-row class="promotion-row">
+        <ion-col text-left>
+            {{'SALLER' | translate}}
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="product-detail-card">
+
+        <ion-row>
+            <ion-col>
+                <span class="text-sub-title">{{productdetailData.shop.name}}</span>
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col text-left>
+                <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+                    starIconName="star" nullable="false"></rating>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-row class="promotion-row">
+        <ion-col text-left>
+            {{'REVIEWS' | translate}}
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="product-detail-card">
+
+        <ion-row>
+            <ion-col width-50>
+                <ion-row>
+                    <ion-col>
+                        <rating [(ngModel)]="productdetailData.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+                            starIconName="star" nullable="false"></rating>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-title"> {{productdetailData.rate}} </span> <span class="text-readonly">{{'FROM' | translate}} 5</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">{{productdetailData.reviews ? productdetailData.reviews.length : 0}} รีวิว</span>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col width-50 text-right>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">5 ดาว</span>
+                        <ion-badge item-end>2</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">4 ดาว</span>
+                        <ion-badge item-end>2</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">3 ดาว</span>
+                        <ion-badge item-end>2</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">2 ดาว</span>
+                        <ion-badge item-end>2</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <span class="text-readonly">1 ดาว</span>
+                        <ion-badge item-end>2</ion-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button block outline>{{'WRITEREVIEW' | translate}}</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <hr>
+
+    <ion-list class="product-detail-card">
+        <ion-item-divider *ngFor="let review of productdetailData.reviews">
+            <p>
+                <ion-row>
+                    <ion-col no-padding width-60 text-left>
+                        <p class="text-sub-title">{{review.topic}}</p>
+                    </ion-col>
+                    <ion-col width-40 text-right>
+                        <p>{{review.created}}</p>
+                        <p>{{review.user ? review.user.displayname : ''}}</p>
+                    </ion-col>
+                </ion-row>
+            </p>
+            <p>
+                <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+                    starIconName="star" nullable="false"></rating>
+            </p>
+
+            <br>
+            <p>{{review.comment}}</p>
+            <p></p>
+        </ion-item-divider>
+    </ion-list>
+    
+    <ion-row class="promotion-row" *ngIf="productdetailData.other">
+        <ion-col text-left>
+            {{productdetailData.other.name | translate}}
+        </ion-col>
+    </ion-row>
+
+    <list-scoll-x [populars]="productdetailData.other.products" *ngIf="productdetailData.other"></list-scoll-x>
+
+    <!-- <ion-list class="details-list">
         <ion-item class="detail-item">
             <ion-row>
                 <ion-col width-35>
@@ -58,17 +252,16 @@
                     <span class="detail-textHeader">{{productdetailData.shop.shop}}</span>
                 </ion-col>
                 <ion-col width-50 text-right>
-                    <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false"></rating>
+                    <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+                        starIconName="star" nullable="false"></rating>
                 </ion-col>
             </ion-row>
         </ion-item>
-    </ion-list>
+    </ion-list> -->
 
-    <div *ngIf="productdetailData.issize">
+    <!-- <div *ngIf="productdetailData.issize">
         <h3 class="categories-title-pomotion" *ngIf="productdetailData.issize">
-            <!-- <ion-icon name="ios-resize-outline"></ion-icon> -->
             {{'Select Size' | translate}}</h3>
-        <!-- <preload-image [ratio]="{w:1, h:1}" [src]="productdetailData.size.detail"></preload-image> -->
         <ion-scroll scrollX="true" class="horizontal-categories">
             <ion-row padding radio-group class="categories-row">
                 <ion-col width-30 class="horizontal-item" *ngFor="let data of productdetailData.size.sizedetail">
@@ -77,9 +270,9 @@
                 </ion-col>
             </ion-row>
         </ion-scroll>
-    </div>
+    </div> -->
 
-    <h3 class="categories-title-pomotion" *ngIf="productdetailData.relationProducts">
+    <!-- <h3 class="categories-title-pomotion" *ngIf="productdetailData.relationProducts">
         {{'RELATEPRODUCT' | translate}}</h3>
     <list-scoll-x [populars]="productdetailData.relationProducts" *ngIf="productdetailData.relationProducts"></list-scoll-x>
 
@@ -104,12 +297,13 @@
             <ion-item *ngFor="let item of productdetailData.review">
                 <h4 class="detail-textHeader">
                     <ion-icon name="md-person"></ion-icon> ({{item.rate}})</h4>
-                <rating [(ngModel)]="item.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false"></rating>
+                <rating [(ngModel)]="item.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+                    nullable="false"></rating>
                 <p class="detail-text">{{item.comment}}</p>
             </ion-item>
             <ion-item></ion-item>
         </ion-list>
-    </div>
+    </div> -->
 </ion-content>
 
 <ion-footer>

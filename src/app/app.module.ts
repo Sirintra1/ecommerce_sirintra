@@ -108,6 +108,7 @@ import { CounterserviceComponent } from '../components/counterservice/counterser
 import { IonStepsComponent } from '../components/ion-steps/ion-steps';
 import { IonPaymentsComponent } from '../components/ion-payments/ion-payments';
 import { TopbarshopComponent } from '../components/topbarshop/topbarshop';
+import { SlideImagesComponent } from '../components/slide-images/slide-images';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -164,7 +165,8 @@ export function createTranslateLoader(http: Http) {
     CounterserviceComponent,
     IonStepsComponent,
     IonPaymentsComponent,
-    TopbarshopComponent
+    TopbarshopComponent,
+    SlideImagesComponent
   ],
   imports: [
     BrowserModule,

@@ -48,8 +48,7 @@
     "TIME": "Time",
     "TEMPERATURE": "Temperature",
     "ADD_AN_EVENT": "Add an event",
-    "FROM": "From",
-    "TO": "To",
+    "TO": "ถึง",
     "CREDICT_CARD_INFORMATION": "Credict card information",
     "CARD_NUMBER": "Card number",
     "CARD_HOLDER": "Card Holder",
@@ -142,6 +141,13 @@
     "POLICY": "นโยบาย",
     "HELP": "ช่วยเหลือ",
     "WELCOME": "สวัสดี,",
-    "VOUCHER":"บัตรกำนัล"
+    "VOUCHER":"บัตรกำนัล",
+    "PRODUCTDETAIL":"รายละเอียดสินค้า",
+    "SHIPPINGMETHOD":"เลือกวิธีจัดส่ง",
+    "SALLER": "จัดจำหน่าย",
+    "REVIEWS": "ให้คะแนนและการแสดงความเห็น",
+    "LASTVIEWS": "สินค้าที่คุณดูล่าสุด",
+    "FROM": "จาก",
+    "WRITEREVIEW": "เขียนรีวิว"
   }
   

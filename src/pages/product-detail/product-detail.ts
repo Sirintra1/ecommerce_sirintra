@@ -29,7 +29,7 @@ export class ProductDetailPage {
     public authorizeProvider: AuthorizeProvider,
     public loadingCtrl: LoadingController
   ) {
-    this.product = navParams.get('data');
+    this.product = navParams.get('data') || { _id: 'test'};
     console.log(this.product);
   }
 
