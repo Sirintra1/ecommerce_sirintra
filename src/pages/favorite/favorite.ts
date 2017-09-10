@@ -36,8 +36,9 @@ export class FavoritePage {
       });
   }
 
-  selectedItem(){
-    this.navCtrl.push(ProductDetailPage);
+  selectedItem(e) {
+    console.log(e);
+    this.navCtrl.push(ProductDetailPage, { data: e });
   }
 
 }

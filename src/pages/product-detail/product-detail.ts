@@ -43,6 +43,7 @@ export class ProductDetailPage {
     this.productDetailService.getProductDetail(this.product._id).then((data) => {
       loadingCtrl.dismiss();
       this.productdetailData = data;
+      console.log(this.productdetailData);
     }, (err) => {
       loadingCtrl.dismiss();
       this.log.error(err);

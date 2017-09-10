@@ -6,16 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{'FAVORITE' | translate}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{'FAVORITE' | translate}}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
 
-  <!--<ion-segment [(ngModel)]="tabs">
+    <!--<ion-segment [(ngModel)]="tabs">
     <ion-segment-button value="0" (click)="selectTab(0)">
       1
     </ion-segment-button>
@@ -50,5 +50,5 @@
       <h1>ContentTab 5</h1>
     </ion-slide>
   </ion-slides>-->
-  <list-items [items]="favoriteData.items" (click)="selectedItem()"></list-items>
+    <list-items [items]="favoriteData.items" (itemClicked)="selectedItem($event)"></list-items>
 </ion-content>
