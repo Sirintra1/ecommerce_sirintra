@@ -1,21 +1,20 @@
+import { ProductItemModel } from "../../app/app.model";
+
 export class ProductDetailModel {
-    id: string;
+    _id: string;
     name: string;
     detail: string;
-    unitprice: number;
-    image: Array<ImgsModel>;
-    review: Array<ReviewsModel>;
-    rate: number;
-    qa: Array<QASModel>;
-    promotions: Array<PromotionsModel>;
-    qty: number;
-    issize: boolean;
+    price: number;
+    promotionprice: number; //calculate from active promotions
+    images: Array<string>;
+    rate: number; // calculate from reviews
+    reviews: Array<ReviewsModel>; // relate of Reviews
+    questions: Array<QASModel>; // relate of QA Transactions
     size: ProductDataSize = new ProductDataSize();
-    shipping: Array<ShippingModel>;
+    shippings: Array<ShippingModel>;
     shop: ShopModel = new ShopModel();
-    relationProducts: Array<RelationProductsModel>;
-    selectedsize: string;
-    title: string;
+    otherproducts: Array<ProductItemModel>; //display if not signin
+    
 }
 
 export class ShopModel {
@@ -29,11 +28,6 @@ export class ShopModel {
 export class ProductDataSize {
     detail: string;
     sizedetail: Array<SizeDetailModel>;
-}
-
-export class ImgsModel {
-    url: string;
-    id: string;
 }
 
 export class ReviewsModel {
