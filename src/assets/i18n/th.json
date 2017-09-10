@@ -143,11 +143,12 @@
     "WELCOME": "สวัสดี,",
     "VOUCHER":"บัตรกำนัล",
     "PRODUCTDETAIL":"รายละเอียดสินค้า",
-    "SHIPPINGMETHOD":"เลือกวิธีจัดส่ง",
-    "SALLER": "จัดจำหน่าย",
+    "SHIPPINGMETHOD":"วิธีจัดส่ง",
+    "SALLER": "จัดจำหน่ายโดย",
     "REVIEWS": "ให้คะแนนและการแสดงความเห็น",
     "LASTVIEWS": "สินค้าที่คุณดูล่าสุด",
     "FROM": "จาก",
-    "WRITEREVIEW": "เขียนรีวิว"
+    "WRITEREVIEW": "เขียนรีวิว",
+    "STAR": "ดาว"
   }
   

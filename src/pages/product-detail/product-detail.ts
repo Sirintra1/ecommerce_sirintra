@@ -20,6 +20,9 @@ import { ShopDetailPage } from "../shop-detail/shop-detail";
 export class ProductDetailPage {
   product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
+  groups:Array<any>;
+  
+
   constructor(
     private socialSharing: SocialSharing,
     public navCtrl: NavController,
@@ -43,7 +46,34 @@ export class ProductDetailPage {
     this.productDetailService.getProductDetail(this.product._id).then((data) => {
       loadingCtrl.dismiss();
       this.productdetailData = data;
-      console.log(this.productdetailData);
+      this.groups = [
+        {
+            name: '5',
+            percent: '60%',
+            sum: 2
+          },
+          {
+            name: '4',
+            percent: '25%',
+            sum: 1
+          },
+          {
+            name: '3',
+            percent: '0%',
+            sum: 0
+          },
+          {
+            name: '2',
+            percent: '0%',
+            sum: 0
+          },
+          {
+            name: '1',
+            percent: '25%',
+            sum: 1
+          }
+        ];
+      //console.log(this.productdetailData);
     }, (err) => {
       loadingCtrl.dismiss();
       this.log.error(err);

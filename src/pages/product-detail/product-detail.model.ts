@@ -6,30 +6,16 @@ export class ProductDetailModel {
     detail: string;
     price: number;
     promotionprice: number; //calculate from active promotions
-    percentofdiscount: number;
+    percentofdiscount: number; //calculate from active promotions
     currency: string;
     images: Array<string>;
     rate: number; // calculate from reviews
     reviews: Array<ReviewsModel>; // relate of Reviews
-    questions: Array<QASModel>; // relate of QA Transactions
+    questions: Array<QuestionModel>; // relate of QA Transactions
     size: ProductDataSize = new ProductDataSize();
     shippings: Array<ShippingModel>;
     shop: ShopModel = new ShopModel();
     otherproducts: Array<ProductItemModel>; //display if not signin
-
-}
-
-export class ShopModel {
-    name: string;
-    detail: string;
-    email: string;
-    image: string;
-    tel: string;
-}
-
-export class ProductDataSize {
-    detail: string;
-    sizedetail: Array<SizeDetailModel>;
 }
 
 export class ReviewsModel {
@@ -41,53 +27,29 @@ export class ReviewsModel {
     user: any;
 }
 
-export class QASModel {
+export class QuestionModel {
+    _id: string;
     question: string;
     answer: number;
 }
 
-export class PromotionsModel {
-    name: string;
-    desc: string;
-    code: string;
+export class ProductDataSize {
+    _id: string;
+    detail: string;
+    sizedetail: Array<string>;
 }
 
-// export class StockvalueModel {
-//     in: number;
-//     out: number;
-// }
-
-export class SizeDetailModel {
+export class ShopModel {
+    _id: string;
     name: string;
+    detail: string;
+    email: string;
+    image: string;
+    tel: string;
 }
-
-// export class CategoryModel {
-//     name: string;
-//     desc: string;
-//     subcategory: Array<SubcategoryModel>;
-// }
-
-// export class SubcategoryModel {
-//     name: string;
-//     desc: string;
-// }
-
-// export class PaymentModel {
-//     payment: string;
-// }
 
 export class ShippingModel {
     _id: string;
     name: string;
 }
 
-export class RelationProductsModel {
-    name: string;
-    img: string;
-    unitprice: number;
-}
-// ////////////////to use/////////////////////
-// export class ProductModel {
-//     product: ProductItemsModel = new ProductItemsModel();
-// }
-// ///////////////////////////////////////////
