@@ -25,7 +25,11 @@ export class QuestionModel {
   question: string;
   answer: number;
 }
-
+export class ShopItemModel {
+  _id: string;
+  name: string;
+  image: string;
+}
 // export class ImageModel {
 //   id: string;
 //   url: string;
