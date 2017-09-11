@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { ShopDetailModel, AddressModel } from '../shop-detail/shop-detail.model';
+import { NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { ShopDetailModel } from '../shop-detail/shop-detail.model';
 import { ShopDetailServiceProvider } from '../shop-detail/shop-detail.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductItemModel } from "../../app/app.model";
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { ListProductPage } from "../list-product/list-product";
+import { WriteReviewPage } from '../write-review/write-review';
 
 /**
  * Generated class for the ShopDetailPage page.
@@ -19,10 +20,10 @@ import { ListProductPage } from "../list-product/list-product";
 })
 export class ShopDetailPage {
   shopDetailData: ShopDetailModel = new ShopDetailModel();
-  address: Array<AddressModel>;
+  // address: Array<AddressModel>;
   products: Array<ProductItemModel>;
   shop: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public shopDetailService: ShopDetailServiceProvider, public log: LogServiceProvider, public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
     this.shop = this.navParams.get('data');
     console.log(this.shop);
   }
@@ -74,5 +75,13 @@ export class ShopDetailPage {
   goToProductList(e) {
     this.navCtrl.push(ListProductPage, { data: e, view: 'shop' });
   }
-
+  writeReview(e) {
+      console.log("log on parent");
+    let modal = this.modalCtrl.create(WriteReviewPage);
+    // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
 }

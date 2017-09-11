@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { ReviewsModel } from '../../app/app.model';
 
 /**
  * Generated class for the WriteReviewPage page.
@@ -13,7 +14,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'write-review.html',
 })
 export class WriteReviewPage {
-  data:any;
+  data: any;
+  reviewData: ReviewsModel = new ReviewsModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.data = navParams.get('data');
     console.log(this.data);
@@ -23,12 +25,15 @@ export class WriteReviewPage {
     console.log('ionViewDidLoad WriteReviewPage');
   }
 
-  writeReview(){
-    this.viewCtrl.dismiss({data:'test'});
+  writeReview() {
+    this.viewCtrl.dismiss({ data: 'test' });
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
   }
-
+  addReview() {
+    console.log(this.reviewData);
+    this.viewCtrl.dismiss(this.reviewData);
+  }
 }

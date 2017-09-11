@@ -1,5 +1,5 @@
 import { ProductItemModel, ReviewsModel, QuestionModel } from "../../app/app.model";
-
+import { ShopModel } from '../shop-form/shop-form.model';
 export class ProductDetailModel {
     _id: string;
     name: string;
@@ -23,15 +23,6 @@ export class ProductDataSize {
     _id: string;
     detail: string;
     sizedetail: Array<string>;
-}
-
-export class ShopModel {
-    _id: string;
-    name: string;
-    detail: string;
-    email: string;
-    image: string;
-    tel: string;
 }
 
 export class ShippingModel {

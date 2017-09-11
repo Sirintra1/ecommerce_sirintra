@@ -8,10 +8,9 @@ export class ShopDetailModel {
     map: map = new map();
     image: string;
     detail: string;
-    review: Array<ReviewsModel>;
+    reviews: Array<ReviewsModel>;
     rate: number;
-    historylog: Array<HistorylogsModel>;
-    products: Array<ProductsModel>;
+    // products: Array<ProductsModel>;
 }
 
 export class map {
@@ -19,22 +18,6 @@ export class map {
     long: string;
 }
 
-export class AddressModel {
-    _id: string;
-    firstname: string;
-    lastname: string;
-    tel: string;
-    address: string;
-    subdistrict: string;
-    district: string;
-    province: string;
-    postcode: string;
-}
-
-export class HistorylogsModel {
-    customerid: string;
-    historydate: string;
-}
 
 export class ProductsModel {
     name: string;

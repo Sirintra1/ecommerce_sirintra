@@ -13,49 +13,25 @@
         "url": "img/001"
     },
     "detail": "ขายรองเท้ามือสอง สภาพดี ราคาถูก",
-    "review": [
+    "reviews": [
         {
-            "rate": 4,
-            "comment": "ของดีสมราคา",
-            "user": "xxx"
+            "topic": "สวย",
+            "comment": "สินค้าตัวจริงสวยมากเลยค่ะ",
+            "rate": 4.5,
+            "user": {
+                "displayname": "theerasak.t"
+            },
+            "created": ""
         },
         {
-            "rate": 5,
-            "comment": "รองเท้าสวย ราคาไม่แพง",
-            "user": "xxx"
+            "topic": "จัดส่งไว",
+            "comment": "ถ้าได้สินค้าแล้วจะกลับมาเพิ่มดาวให้นะ",
+            "rate": 1.5,
+            "user": {
+                "displayname": "theerasak.t"
+            },
+            "created": ""
         }
     ],
-    "rate": 4.5,
-    "historylog": [
-        {
-            "customerid": "xxx",
-            "historydate": "2017-08-10T06:25:00"
-        },
-        {
-            "customerid": "xxx",
-            "historydate": "2017-08-05T14:05:59"
-        }
-    ],
-    "products": [
-        {
-            "name": "NIKE",
-            "image": "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
-            "unitprice": 100
-        },
-        {
-            "name": "ADIDAS",
-            "image": "http://th-live-01.slatic.net/p/7/adidas-men-run-shoe-duramo8-bb4656-2290-1493865078-91437671-31f932a8c992f98dc9ba8c6b4dec3f6e-catalog_233.jpg",
-            "unitprice": 100
-        },
-        {
-            "name": "PUMA",
-            "image": "http://gadgets.siamsport.co.th/wp-content/uploads/puma-nrgy-sneakers.jpg",
-            "unitprice": 100
-        },
-        {
-            "name": "ONITSUKA",
-            "image": "https://th-live-02.slatic.net/p/7/onitsuka-tiger-womens-serrano-shoes-d471l-1494928131-7120789-b60f98a3253f8a5230b4a0cf110588e1.jpg",
-            "unitprice": 100
-        }
-    ]
+    "rate": 4.5
 }

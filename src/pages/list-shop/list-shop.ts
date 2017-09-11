@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ListShopModel } from '../list-shop/list-shop.model';
 import { ListShopServiceProvider } from '../list-shop/list-shop.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ShopDetailPage } from "../shop-detail/shop-detail";
+import { ShopFormPage } from '../shop-form/shop-form';
 
 /**
  * Generated class for the ListShopPage page.
@@ -17,8 +18,8 @@ import { ShopDetailPage } from "../shop-detail/shop-detail";
   templateUrl: 'list-shop.html',
 })
 export class ListShopPage {
-  listShopData: ListShopModel;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider) {
+  listShopData: ListShopModel = new ListShopModel();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -37,5 +38,21 @@ export class ListShopPage {
   selectShop(e) {
     this.navCtrl.push(ShopDetailPage, { data: e });
   }
+  createShop() {
+    let modal = this.modalCtrl.create(ShopFormPage);
+    // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      console.log('MODAL DATA', data);
+      this.listShopService.addShop(data)
+        .then((resp) => {
+          console.log(resp);
+          this.getListShopData();
+        }, (err) => {
+          console.log(err);
+        });
+    });
+    modal.present();
+  }
+
 
 }

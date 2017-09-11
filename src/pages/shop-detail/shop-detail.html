@@ -42,6 +42,7 @@
     </ion-item>
   </ion-list>
 
+  <review [items]="shopDetailData.reviews" [rate]="shopDetailData.rate" (modalReview)="writeReview($event)"></review>
   <!-- <ion-list class="details-list" *ngIf="address && address.length > 0">
     <ion-item *ngFor="let itm of address" class="detail-item">
       <ion-avatar item-left>
@@ -53,6 +54,7 @@
   </ion-list> -->
 
   <h4 *ngIf="shopDetailData.products && shopDetailData.products.length > 0" class="categories-title" (click)="goToProductList(shopDetailData)">{{'สินค้า'}}<span class="see-all">see all</span></h4>
-  <list-scoll-x *ngIf="shopDetailData.products && shopDetailData.products.length > 0" [populars]="shopDetailData.products" (selectedItem)="goToProductDetail($event)"></list-scoll-x>
+  <list-scoll-x *ngIf="shopDetailData.products && shopDetailData.products.length > 0" [populars]="shopDetailData.products"
+    (selectedItem)="goToProductDetail($event)"></list-scoll-x>
 
 </ion-content>
