@@ -32,9 +32,9 @@ export class ShopDetailServiceProvider {
       .then(response => response.json() as ShopDetailModel)
       .catch(this.handleError);
   }
-  writeReview(id): Promise<ShopDetailModel> {
+  writeReview(id, reviewData): Promise<ShopDetailModel> {
     // return this.http.get('./assets/example_data/shopdetail.json')
-    return this.http.get('http://localhost:3000/api/shops/' + id)
+    return this.http.post('http://localhost:3000/api/shop/review/' + id, reviewData)
       .toPromise()
       .then(response => response.json() as ShopDetailModel)
       .catch(this.handleError);

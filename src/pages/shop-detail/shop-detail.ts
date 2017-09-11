@@ -76,10 +76,15 @@ export class ShopDetailPage {
     this.navCtrl.push(ListProductPage, { data: e, view: 'shop' });
   }
   writeReview(e) {
-      console.log("log on parent");
+    console.log("log on parent");
     let modal = this.modalCtrl.create(WriteReviewPage);
     // Getting data from the modal:
     modal.onDidDismiss(data => {
+      this.shopDetailService.writeReview(this.shop._id, data).then((resp) => {
+        this.getShopDetailData();
+      }, (err) => {
+        console.log(err);
+      });
       console.log(data);
     });
     modal.present();

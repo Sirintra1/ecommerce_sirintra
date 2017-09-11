@@ -1,6 +1,6 @@
 import { ReviewsModel, QuestionModel } from "../../app/app.model";
-import { ProductDataSize, ShopModel, ShippingMethodModel } from "../product-detail/product-detail.model";
-
+import { ProductDataSize, ShippingMethodModel } from "../product-detail/product-detail.model";
+import { ShopModel } from '../shop-form/shop-form.model';
 export class ProductModel {
     _id: string;
     name: string;
