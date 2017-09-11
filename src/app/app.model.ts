@@ -3,12 +3,10 @@ export class ProductItemModel {
   name: string;
   image: string;
   price: number;
-  normalprice: number;
-  discount: number;
-  discounttype: String;
+  promotionprice: number;
+  percentofdiscount: number;
   currency: String;
   rate: number;
-  description: string;
 }
 
 export class ReviewsModel {

@@ -5,14 +5,12 @@
             "_id": "1",
             "name": "Crossfit WorldWide Event",
             "image": "https://images-eu.ssl-images-amazon.com/images/G/02/AMAZON-FASHION/2016/SHOES/SPORT/MISC/Nikemobilefootball",
-            "price": 1800,
-            "normalprice": 20000,
-            "discount" : 10,
-            "discounttype" : "%",
+            "price": 20000,
+            "promotionprice": 18000,
+            "percentofdiscount" : 10,
             "currency": "THB",
-            "rate":5,
-            "description": "At the Crossfit WorldWide Event athletes at compete in workouts that they learn about hours or days beforehand, consisting mostly of an assortment of standard aerobic, weightlifting, and gymnastics movement."
-          },
+            "rate":5
+           },
           {
             "_id": "2",
             "name": "US Open",

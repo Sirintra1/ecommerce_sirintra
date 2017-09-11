@@ -13,7 +13,7 @@ export class ProductDetailModel {
     reviews: Array<ReviewsModel>; // relate of Reviews
     questions: Array<QuestionModel>; // relate of QA Transactions
     size: ProductDataSize = new ProductDataSize();
-    shippings: Array<ShippingModel>;
+    shippings: Array<ShippingMethodModel>;
     shop: ShopModel = new ShopModel();
     otherproducts: Array<ProductItemModel>; //display if not signin
 }
@@ -34,7 +34,7 @@ export class ShopModel {
     tel: string;
 }
 
-export class ShippingModel {
+export class ShippingMethodModel {
     _id: string;
     name: string;
 }
