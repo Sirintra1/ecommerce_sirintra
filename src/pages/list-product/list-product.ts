@@ -4,7 +4,7 @@ import { ListProductServiceProvider } from '../list-product/list-product.service
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { ProductItemModel } from "../../app/app.model";
-import { ListProductModel } from "./list-product.model";
+import { ListProductViewModel } from "./list-product.model";
 /**
  * Generated class for the ListProductPage page.
  *
@@ -18,7 +18,7 @@ import { ListProductModel } from "./list-product.model";
 })
 export class ListProductPage {
   // listProductData: Array<ProductItemModel>;
-  listProductData: ListProductModel = new ListProductModel();
+  listProductData: ListProductViewModel = new ListProductViewModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider) {
   }
 
