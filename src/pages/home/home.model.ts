@@ -15,6 +15,7 @@ export class HomeModel {
 }
 
 export class VoucherModel {
+  _id: string;
   name: string;
   image: string;
 }
