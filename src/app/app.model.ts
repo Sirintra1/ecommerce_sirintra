@@ -11,10 +11,19 @@ export class ProductItemModel {
   description: string;
 }
 
-export class ShopItemModel {
+export class ReviewsModel {
   _id: string;
-  name: string;
-  image: string;
+  topic: string;
+  comment: string;
+  rate: number;
+  created: Date;
+  user: any;
+}
+
+export class QuestionModel {
+  _id: string;
+  question: string;
+  answer: number;
 }
 
 // export class ImageModel {

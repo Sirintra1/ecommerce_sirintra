@@ -1,4 +1,4 @@
-import { ProductItemModel, ShopItemModel } from "../../app/app.model";
+import { ProductItemModel } from "../../app/app.model";
 
 export class HomeCategoryModel {
   categories: Array<HomeModel>;
@@ -12,6 +12,12 @@ export class HomeModel {
   popularshops: Array<ShopItemModel>;
   productvoucher: Array<VoucherModel>;
   shopvoucher: Array<VoucherModel>;
+}
+
+export class ShopItemModel {
+  _id: string;
+  name: string;
+  image: string;
 }
 
 export class VoucherModel {

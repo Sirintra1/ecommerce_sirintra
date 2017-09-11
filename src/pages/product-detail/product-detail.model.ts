@@ -1,4 +1,4 @@
-import { ProductItemModel } from "../../app/app.model";
+import { ProductItemModel, ReviewsModel, QuestionModel } from "../../app/app.model";
 
 export class ProductDetailModel {
     _id: string;
@@ -18,20 +18,6 @@ export class ProductDetailModel {
     otherproducts: Array<ProductItemModel>; //display if not signin
 }
 
-export class ReviewsModel {
-    _id: string;
-    topic: string;
-    comment: string;
-    rate: number;
-    created: Date;
-    user: any;
-}
-
-export class QuestionModel {
-    _id: string;
-    question: string;
-    answer: number;
-}
 
 export class ProductDataSize {
     _id: string;

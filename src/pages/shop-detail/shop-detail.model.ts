@@ -1,14 +1,12 @@
+import { ReviewsModel } from "../../app/app.model";
+
 export class ShopDetailModel {
-    id: string;
+    _id: string;
     name: string;
     email: string;
     tel: string;
     map: map = new map();
     image: string;
-    coverimg: {
-        id: string,
-        url: string
-    };
     detail: string;
     review: Array<ReviewsModel>;
     rate: number;
@@ -31,12 +29,6 @@ export class AddressModel {
     district: string;
     province: string;
     postcode: string;
-}
-
-export class ReviewsModel {
-    rate: number;
-    comment: string;
-    user: string;
 }
 
 export class HistorylogsModel {
