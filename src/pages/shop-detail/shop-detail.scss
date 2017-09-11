@@ -10,10 +10,11 @@
 }
 
 page-shop-detail {
- $contact-card-slides-height: 45%;
+    $contact-card-slides-height: 45%;
     $categories-heading-image-height: 150px;
     $categories-grid-padding: 10px;
     $categories-horizontal-list-padding: 10px;
+    background-color: #fff;
     .contact-card-content {
         .contact-slides {
             height: $contact-card-slides-height;

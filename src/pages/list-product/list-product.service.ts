@@ -19,8 +19,8 @@ export class ListProductServiceProvider {
     this.log.info('Hello ListProductServiceProvider Provider');
   }
   getProductList(): Promise<ListProductModel> {
-    return this.http.get(Constants.URL + '/api/productlistbytitle/Productlist')
-    // return this.http.get('./assets/example_data/listproduct.json')
+    //return this.http.get(Constants.URL + '/api/productlistbytitle/Productlist')
+    return this.http.get('./assets/example_data/listproduct.json')
       .toPromise()
       .then(response => response.json() as ListProductModel)
       .catch(this.handleError);

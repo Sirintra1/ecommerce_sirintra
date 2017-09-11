@@ -1,5 +1,9 @@
 $list-big-description-font-size: 12px;
 page-search {
+    background-color: #fff;
+    .list{
+        margin-bottom: 1px;
+    }
     .list-big-content {
         background-color: color($colors, background, base);
         .list-big {

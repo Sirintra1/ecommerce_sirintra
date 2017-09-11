@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListShopModel } from '../list-shop/list-shop.model';
 import { ListShopServiceProvider } from '../list-shop/list-shop.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
-import { ShopItemModel } from "../../app/app.model";
 import { ShopDetailPage } from "../shop-detail/shop-detail";
 
 /**
@@ -18,7 +17,7 @@ import { ShopDetailPage } from "../shop-detail/shop-detail";
   templateUrl: 'list-shop.html',
 })
 export class ListShopPage {
-  listShopData: Array<ShopItemModel>;
+  listShopData: ListShopModel;
   constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider) {
   }
 

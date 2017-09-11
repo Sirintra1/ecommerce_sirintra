@@ -19,10 +19,11 @@ export class ListShopServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ListShopServiceProvider Provider');
   }
-  getListShop(): Promise<Array<ShopItemModel>> {
-    return this.http.get(Constants.URL + '/api/shopmasters')
+  getListShop(): Promise<ListShopModel> {
+    //return this.http.get(Constants.URL + '/api/shopmasters')
+    return this.http.get('./assets/example_data/listshop.json')
       .toPromise()
-      .then(response => response.json() as Array<ShopItemModel>)
+      .then(response => response.json() as ListShopModel)
       .catch(this.handleError);
   }
 

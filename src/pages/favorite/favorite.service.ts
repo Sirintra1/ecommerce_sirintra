@@ -19,8 +19,8 @@ export class FavoriteServiceProvider {
     this.log.info('Hello FavoriteServiceProvider Provider');
   }
   getFavorite(): Promise<FavoriteModel> {
-    // return this.http.get('./assets/example_data/favorite.json')
-    return this.http.get(Constants.URL + '/api/productlistbytitle/Favoritelist')
+    return this.http.get('./assets/example_data/favorite.json')
+    //return this.http.get(Constants.URL + '/api/productlistbytitle/Favoritelist')
     
       .toPromise()
       .then(response => response.json() as FavoriteModel)

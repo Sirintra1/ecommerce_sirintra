@@ -1,4 +1,5 @@
 export class ProductItemModel {
+  _id: string;
   name: string;
   image: string;
   price: number;
@@ -11,6 +12,7 @@ export class ProductItemModel {
 }
 
 export class ShopItemModel {
+  _id: string;
   name: string;
   image: string;
 }
