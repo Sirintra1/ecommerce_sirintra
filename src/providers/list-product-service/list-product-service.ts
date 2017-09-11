@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ProductModel } from "../../pages/product-form/product-form.model";
 /*
   Generated class for the ListProductServiceProvider provider.
 

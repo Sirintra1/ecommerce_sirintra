@@ -4,8 +4,10 @@ import 'rxjs/add/operator/map';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { Constants } from "../../app/app.contants";
+import { ListProductViewModel } from "./list-product.model";
+import { ProductModel } from "../product-form/product-form.model";
 // import { ProductItemModel } from "../../app/app.model";
-import { ListProductModel } from "./list-product.model";
+
 /*
   Generated class for the ListProductServiceProvider provider.
 
@@ -18,11 +20,18 @@ export class ListProductServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     this.log.info('Hello ListProductServiceProvider Provider');
   }
-  getProductList(): Promise<ListProductModel> {
+  getProductList(): Promise<ListProductViewModel> {
     //return this.http.get(Constants.URL + '/api/productlistbytitle/Productlist')
-    return this.http.get('./assets/example_data/listproduct.json')
+    return this.http.get('http://localhost:3000/api/products')
       .toPromise()
-      .then(response => response.json() as ListProductModel)
+      .then(response => response.json() as ListProductViewModel)
+      .catch(this.handleError);
+  }
+
+  postProduct(product): Promise<ProductModel> {
+    return this.http.post('http://localhost:3000/api/products', product)
+      .toPromise()
+      .then(response => response.json() as ProductModel)
       .catch(this.handleError);
   }
   // getProductListByHome(view): Promise<ListProductModel> {

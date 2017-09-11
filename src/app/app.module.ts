@@ -112,6 +112,7 @@ import { SlideImagesComponent } from '../components/slide-images/slide-images';
 import { WriteReviewPage } from "../pages/write-review/write-review";
 import { ShopFormPage } from '../pages/shop-form/shop-form';
 import { ReviewComponent } from '../components/review/review';
+import { ProductFormPage } from "../pages/product-form/product-form";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -138,6 +139,7 @@ export function createTranslateLoader(http: Http) {
     VoucherPage,
     WriteReviewPage,
     ShopFormPage,
+    ProductFormPage,
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -209,7 +211,8 @@ export function createTranslateLoader(http: Http) {
     CompleteOrderedPage,
     VoucherPage,
     WriteReviewPage,
-    ShopFormPage
+    ShopFormPage,
+    ProductFormPage
 
   ],
   providers: [

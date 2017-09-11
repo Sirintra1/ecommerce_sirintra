@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ListProductServiceProvider } from '../list-product/list-product.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { ProductItemModel } from "../../app/app.model";
-import { ListProductModel } from "./list-product.model";
+import { ListProductViewModel } from "./list-product.model";
+import { ProductFormPage } from "../product-form/product-form";
 /**
  * Generated class for the ListProductPage page.
  *
@@ -18,8 +19,9 @@ import { ListProductModel } from "./list-product.model";
 })
 export class ListProductPage {
   // listProductData: Array<ProductItemModel>;
-  listProductData: ListProductModel = new ListProductModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider) {
+  listProductData: ListProductViewModel = new ListProductViewModel();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController, public listProductServiceProvider: ListProductServiceProvider
+  ) {
   }
 
   ionViewDidLoad() {
@@ -58,5 +60,19 @@ export class ListProductPage {
 
   selectedItem(e) {
     this.navCtrl.push(ProductDetailPage, { data: e });
+  }
+
+  openModal() {
+    let modal = this.modalCtrl.create(ProductFormPage);
+    modal.onDidDismiss((data) => {
+      console.log(data);
+      this.listProductServiceProvider.postProduct(data.data).then((res) => {
+        console.log('OK');
+        this.getListProduct();
+      }, (error) => {
+        console.error(error);
+      })
+    })
+    modal.present();
   }
 }

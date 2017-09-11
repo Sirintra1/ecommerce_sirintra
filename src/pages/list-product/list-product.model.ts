@@ -1,6 +1,6 @@
 import { ProductItemModel } from "../../app/app.model";
 
-export class ListProductModel {
+export class ListProductViewModel {
     title:string;
     items: Array<ProductItemModel>;
 }

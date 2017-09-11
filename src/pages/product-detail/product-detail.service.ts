@@ -39,6 +39,8 @@ export class ProductDetailServiceProvider {
       .catch(this.handleError);
   }
 
+  
+
   private handleError(error: any): Promise<any> {
     this.log.errorService('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
