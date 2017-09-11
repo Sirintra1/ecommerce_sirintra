@@ -13,9 +13,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'write-review.html',
 })
 export class WriteReviewPage {
-
+  data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    
+    this.data = navParams.get('data');
+    console.log(this.data);
   }
 
   ionViewDidLoad() {
@@ -23,7 +24,7 @@ export class WriteReviewPage {
   }
 
   writeReview(){
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({data:'test'});
   }
 
   dismiss() {

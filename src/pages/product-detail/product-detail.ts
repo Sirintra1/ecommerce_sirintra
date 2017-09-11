@@ -22,8 +22,8 @@ export class ProductDetailPage {
   product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
   groups: Array<any>;
-  isLiked:boolean;
-  nameOfLike:string;
+  isLiked: boolean;
+  nameOfLike: string;
 
   constructor(
     private socialSharing: SocialSharing,
@@ -142,14 +142,18 @@ export class ProductDetailPage {
     });
   }
 
-  liked(){
+  liked() {
     this.isLiked = !this.isLiked;
     this.nameOfLike = this.isLiked ? 'ios-heart' : 'ios-heart-outline';
     //alert(this.isLiked);
   }
 
-  writeReview(){
-    let modal = this.modalCtrl.create(WriteReviewPage);
+  writeReview() {
+    let modal = this.modalCtrl.create(WriteReviewPage, { data: this.product },);
+    // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      console.log('MODAL DATA', data);
+    });
     modal.present();
   }
 
@@ -157,7 +161,7 @@ export class ProductDetailPage {
     this.navCtrl.push(ShopDetailPage, { data: this.productdetailData.shop });
   }
 
-  gotoOtherProduct(e){
+  gotoOtherProduct(e) {
     this.navCtrl.push(ProductDetailPage, { data: e });
   }
 
