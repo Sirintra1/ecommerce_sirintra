@@ -1,11 +1,6 @@
 <ion-header>
     <ion-navbar>
         <ion-title>{{'PRODUCTDETAIL' | translate}}</ion-title>
-        <!-- <ion-buttons end>
-            <button ion-button icon-only color="royal" (click)="socialShare()">
-              <ion-icon name="md-share"></ion-icon>
-            </button>
-        </ion-buttons> -->
     </ion-navbar>
 </ion-header>
 
@@ -44,26 +39,26 @@
     </ion-grid>
 
     <!-- shipping -->
-    <ion-row class="promotion-row" *ngIf="productdetailData.shippings">
+    <ion-row class="promotion-row" *ngIf="productdetailData.shippings && productdetailData.shippings.length > 0">
         <ion-col text-left>
             {{'SHIPPINGMETHOD' | translate}}
         </ion-col>
     </ion-row>
 
-    <ion-list *ngIf="productdetailData.shippings">
-        <ion-item-divider>
+    <ion-list *ngIf="productdetailData.shippings && productdetailData.shippings.length > 0">
+        <!-- <ion-item-divider>
             <ion-icon item-start name="ios-pin-outline"></ion-icon> current location
-        </ion-item-divider>
+        </ion-item-divider> -->
         <ion-item-divider *ngFor="let shipping of productdetailData.shippings">
             <ion-icon item-start name="ios-archive-outline"></ion-icon> {{shipping.name}}
         </ion-item-divider>
-        <ion-item-divider>
-            <ion-icon item-start name="ios-cash-outline"></ion-icon> สามารถชำระเงินปลายทางได้
+        <ion-item-divider *ngIf="productdetailData.cod">
+            <ion-icon item-start name="ios-cash-outline"></ion-icon> {{'COD' | translate}}
         </ion-item-divider>
     </ion-list>
 
     <!-- saller -->
-    <ion-row class="promotion-row">
+    <ion-row class="promotion-row" *ngIf="productdetailData.shop">
         <ion-col text-left>
             {{'SALLER' | translate}}
         </ion-col>
