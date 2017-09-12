@@ -113,6 +113,8 @@ import { WriteReviewPage } from "../pages/write-review/write-review";
 import { ShopFormPage } from '../pages/shop-form/shop-form';
 import { ReviewComponent } from '../components/review/review';
 import { ProductFormPage } from "../pages/product-form/product-form";
+import { NotificationsServiceProvider } from '../pages/notifications/notifications.service';
+import { NotificationsPage } from "../pages/notifications/notifications";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -140,6 +142,7 @@ export function createTranslateLoader(http: Http) {
     WriteReviewPage,
     ShopFormPage,
     ProductFormPage,
+    NotificationsPage,
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -212,7 +215,8 @@ export function createTranslateLoader(http: Http) {
     VoucherPage,
     WriteReviewPage,
     ShopFormPage,
-    ProductFormPage
+    ProductFormPage,
+    NotificationsPage
 
   ],
   providers: [
@@ -248,7 +252,8 @@ export function createTranslateLoader(http: Http) {
     LoginServiceProvider,
     RegisterServiceProvider,
     CheckoutServiceProvider,
-    FacebookLoginService
+    FacebookLoginService,
+    NotificationsServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
