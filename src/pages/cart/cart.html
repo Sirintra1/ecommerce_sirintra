@@ -14,19 +14,21 @@
 
 
 <ion-content>
-  <cart-list [carts]="cart.products" (clickDeleteItem)="deleteItem($event)" (manageItem)="changeQtyItem()"></cart-list>
+  <cart-list [carts]="cart.items" (clickDeleteItem)="deleteItem($event)" (manageItem)="changeQtyItem()"></cart-list>
 </ion-content>
 
 <ion-footer>
-  <div *ngIf="cart.products && cart.products.length > 0">
+  <div *ngIf="cart.items && cart.items.length > 0">
     <ion-row class="categories-title">
       <ion-col width-60>
-        <p class="color-black-custom font-bold">Total price</p>
+        <p class="color-black-custom font-bold">ราคารวม</p>
+        <p class="color-black-custom font-bold">ส่วนลด</p>
+        <p class="color-black-custom font-bold">รวมสุทธิ</p>
       </ion-col>
       <ion-col width-40 text-right>
-        <p class="color-black-custom font-bold">{{cart.amount | number}} Baht</p>
-      </ion-col>
-      <ion-col width-100>
+        <p class="color-black-custom font-bold">{{cart.amount | number}} {{currency | translate}}</p>
+        <p class="color-black-custom font-bold">{{cart.discount | number}} {{currency | translate}}</p>
+        <p class="color-black-custom font-bold">{{cart.totalamount | number}} {{currency | translate}}</p>
       </ion-col>
     </ion-row>
     <button ion-button full color="danger" (click)="gotocheckout()">{{"PAYMENT" | translate}}</button>

@@ -14,8 +14,9 @@ export class CartService {
   }
 
   getData(): Promise<CartModel> {
-    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
-    return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
+    // let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    return this.http.get('./assets/example_data/cart.json')    
+    // return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
       .toPromise()
       .then(response => response.json() as CartModel)
       .catch(this.handleError);

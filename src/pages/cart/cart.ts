@@ -47,7 +47,7 @@ export class CartPage {
   ionViewDidLeave() {
     let user = this.authorizeProvider.getAuthorization()
     if (user && this.cart._id) {
-      this.updateCartDataService();
+      // this.updateCartDataService();
     }
   }
 
@@ -74,16 +74,12 @@ export class CartPage {
     });
   }
 
-  gotoProductDetail(item) {
-    this.navCtrl.push(ProductDetailPage, item)
-  }
-
   gotocheckout() {
     this.navCtrl.push(CheckoutPage)
   }
 
   deleteItem(e) {
-    this.cart.products.splice(e.index, 1);
+    this.cart.items.splice(e.index, 1);
     this.onCalculate();
   }
 
@@ -92,11 +88,22 @@ export class CartPage {
   }
 
   onCalculate() {
-    let length = this.cart.products.length;
+    let length = this.cart.items.length;
     this.cart.amount = 0;
+    this.cart.discount = 0;
+    this.cart.totalamount = 0;
+
     for (var i = 0; i < length; i++) {
-      this.cart.products[i].itemamount = this.cart.products[i].product.price * this.cart.products[i].qty;
-      this.cart.amount += this.cart.products[i].itemamount;
+      // By Check promotionprice
+      let price = this.cart.items[i].product.promotionprice ? this.cart.items[i].product.promotionprice : this.cart.items[i].product.price;
+      // By Items
+      this.cart.items[i].amount = this.cart.items[i].product.price * this.cart.items[i].qty;
+      this.cart.items[i].discount = (this.cart.items[i].product.price - price) * this.cart.items[i].qty;
+      this.cart.items[i].totalamount = this.cart.items[i].amount - this.cart.items[i].discount;
+      // By Cart
+      this.cart.amount += this.cart.items[i].amount;
+      this.cart.discount += this.cart.items[i].discount;
+      this.cart.totalamount += this.cart.items[i].totalamount;
     }
   }
 }
