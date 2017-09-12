@@ -6,6 +6,7 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
 import { LoginPage } from "../login/login";
 import { NotificationsPage } from "../notifications/notifications";
+import { HistoriesPage } from "../histories/histories";
 
 /**
  * Generated class for the ProfilePage page.
@@ -59,9 +60,15 @@ export class ProfilePage {
   }
 
   notification() {
-    // alert('noti');
     let modal = this.modalCtrl.create(NotificationsPage);
-    // // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
+  histories() {
+    let modal = this.modalCtrl.create(HistoriesPage);
     modal.onDidDismiss(data => {
       console.log(data);
     });
