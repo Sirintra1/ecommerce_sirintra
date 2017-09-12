@@ -8,6 +8,8 @@ import { LoginPage } from "../login/login";
 import { NotificationsPage } from "../notifications/notifications";
 import { HistoriesPage } from "../histories/histories";
 import { LocationsPage } from "../locations/locations";
+import { SettingPage } from "../setting/setting";
+import { LangaugePage } from "../langauge/langauge";
 
 /**
  * Generated class for the ProfilePage page.
@@ -83,4 +85,21 @@ export class ProfilePage {
     });
     modal.present();
   }
+
+  setting() {
+    let modal = this.modalCtrl.create(SettingPage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
+  language() {
+    let modal = this.modalCtrl.create(LangaugePage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
 }
