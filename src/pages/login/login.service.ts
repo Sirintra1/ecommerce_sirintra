@@ -19,7 +19,8 @@ export class LoginServiceProvider {
   }
 
   onAuthorization(user): Promise<AuthorizeModel> { // signup
-    return this.http.post(Constants.URL + '/api/auth/signin', user)
+    return this.http.post('http://localhost:3000/api/auth/signin', user)
+    // return this.http.post(Constants.URL + '/api/auth/signin', user)
       .toPromise()
       .then(response => {
         let data = response.json() as AuthorizeModel;

@@ -25,7 +25,16 @@ export class ProductDetailServiceProvider {
   //     .catch(this.handleError);
   // }
   getProductDetail(id): Promise<ProductDetailModel> {
-    return this.http.get('./assets/example_data/productdetail.json')
+    // return this.http.get('./assets/example_data/productdetail.json')
+    return this.http.get('http://localhost:3000/api/products/' + id)
+      .toPromise()
+      .then(response => response.json() as ProductDetailModel)
+      .catch(this.handleError);
+  }
+
+  postProductReview(id, review): Promise<ProductDetailModel> {
+    // return this.http.get('./assets/example_data/productdetail.json')
+    return this.http.post('http://localhost:3000/api/products/review/' + id, review)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
@@ -39,7 +48,7 @@ export class ProductDetailServiceProvider {
       .catch(this.handleError);
   }
 
-  
+
 
   private handleError(error: any): Promise<any> {
     this.log.errorService('An error occurred', error); // for demo purposes only

@@ -113,6 +113,20 @@ import { WriteReviewPage } from "../pages/write-review/write-review";
 import { ShopFormPage } from '../pages/shop-form/shop-form';
 import { ReviewComponent } from '../components/review/review';
 import { ProductFormPage } from "../pages/product-form/product-form";
+import { NotificationsServiceProvider } from '../pages/notifications/notifications.service';
+import { NotificationsPage } from "../pages/notifications/notifications";
+import { HistoriesServiceProvider } from '../pages/histories/histories.service';
+import { HistoriesPage } from "../pages/histories/histories";
+import { LocationsServiceProvider } from '../pages/locations/locations.service';
+import { LocationsPage } from "../pages/locations/locations";
+import { SettingServiceProvider } from '../pages/setting/setting.service';
+import { SettingPage } from "../pages/setting/setting";
+import { LangaugeServiceProvider } from '../pages/langauge/langauge.service';
+import { LangaugePage } from "../pages/langauge/langauge";
+import { PolicyServiceProvider } from '../pages/policy/policy.service';
+import { PolicyPage } from "../pages/policy/policy";
+import { HelpServiceProvider } from '../pages/help/help.service';
+import { HelpPage } from "../pages/help/help";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -140,6 +154,13 @@ export function createTranslateLoader(http: Http) {
     WriteReviewPage,
     ShopFormPage,
     ProductFormPage,
+    NotificationsPage,
+    HistoriesPage,
+    LocationsPage,
+    SettingPage,
+    LangaugePage,
+    PolicyPage,
+    HelpPage,
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -212,8 +233,14 @@ export function createTranslateLoader(http: Http) {
     VoucherPage,
     WriteReviewPage,
     ShopFormPage,
-    ProductFormPage
-
+    ProductFormPage,
+    NotificationsPage,
+    HistoriesPage,
+    LocationsPage,
+    SettingPage,
+    LangaugePage,
+    PolicyPage,
+    HelpPage
   ],
   providers: [
     HomeService,
@@ -248,7 +275,14 @@ export function createTranslateLoader(http: Http) {
     LoginServiceProvider,
     RegisterServiceProvider,
     CheckoutServiceProvider,
-    FacebookLoginService
+    FacebookLoginService,
+    NotificationsServiceProvider,
+    HistoriesServiceProvider,
+    LocationsServiceProvider,
+    SettingServiceProvider,
+    LangaugeServiceProvider,
+    PolicyServiceProvider,
+    HelpServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
