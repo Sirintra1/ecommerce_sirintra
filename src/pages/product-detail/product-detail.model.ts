@@ -11,8 +11,6 @@ export class ProductDetailModel {
     images: Array<string>;
     rate: number; // calculate from reviews
     reviews: Array<ReviewsModel>; // relate of Reviews
-    questions: Array<QuestionModel>; // relate of QA Transactions
-    size: ProductDataSize = new ProductDataSize();
     shippings: Array<ShippingMethodModel>;
     shop: ShopModel = new ShopModel();
     otherproducts: Array<ProductItemModel>; //display if not signin
