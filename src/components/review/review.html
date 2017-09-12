@@ -57,7 +57,7 @@
                         <p class="text-sub-title">{{review.topic}}</p>
                     </ion-col>
                     <ion-col width-40 text-right>
-                        <p>{{review.created}}</p>
+                        <p>{{review.created | moment: 'LL'}}</p>
                         <p>{{review.user ? review.user.displayname : ''}}</p>
                     </ion-col>
                 </ion-row>

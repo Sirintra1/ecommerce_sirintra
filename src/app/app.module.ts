@@ -127,6 +127,7 @@ import { PolicyServiceProvider } from '../pages/policy/policy.service';
 import { PolicyPage } from "../pages/policy/policy";
 import { HelpServiceProvider } from '../pages/help/help.service';
 import { HelpPage } from "../pages/help/help";
+import { MomentPipe } from '../pipes/moment/moment';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -195,7 +196,8 @@ export function createTranslateLoader(http: Http) {
     IonPaymentsComponent,
     TopbarshopComponent,
     SlideImagesComponent,
-    ReviewComponent
+    ReviewComponent,
+    MomentPipe
   ],
   imports: [
     BrowserModule,

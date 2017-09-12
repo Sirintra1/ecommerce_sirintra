@@ -13,6 +13,7 @@ import { TabsNavigationPage } from "../pages/tabs-navigation/tabs-navigation";
 import { LoginPage } from "../pages/login/login";
 import { ProductDetailPage } from "../pages/product-detail/product-detail";
 import { CartService } from "../pages/cart/cart.service";
+import { Constants } from "./app.contants";
 
 
 @Component({
@@ -43,8 +44,8 @@ export class MyApp {
     public toastCtrl: ToastController,
     public cartService: CartService
   ) {
-    translate.setDefaultLang('th');
-    translate.use('th');
+    translate.setDefaultLang(Constants.locale);
+    translate.use(Constants.locale);
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
