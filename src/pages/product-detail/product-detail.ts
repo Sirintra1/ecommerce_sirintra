@@ -8,6 +8,7 @@ import { SocialSharing } from "@ionic-native/social-sharing";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
 import { ShopDetailPage } from "../shop-detail/shop-detail";
 import { WriteReviewPage } from "../write-review/write-review";
+import { CartService } from "../cart/cart.service";
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -21,7 +22,7 @@ import { WriteReviewPage } from "../write-review/write-review";
 export class ProductDetailPage {
   product: any;
   productdetailData: ProductDetailModel = new ProductDetailModel;
- 
+
   isLiked: boolean;
   nameOfLike: string;
 
@@ -33,10 +34,11 @@ export class ProductDetailPage {
     public log: LogServiceProvider,
     public authorizeProvider: AuthorizeProvider,
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public cartService: CartService
   ) {
     this.product = navParams.get('data') || { _id: 'test' };
-   
+
     this.isLiked = false;
     this.nameOfLike = this.isLiked ? 'ios-heart' : 'ios-heart-outline';
     //console.log(this.product);
@@ -54,14 +56,14 @@ export class ProductDetailPage {
       loadingCtrl.dismiss();
       this.productdetailData = data;
       // this.reviewSummary(this.productdetailData.reviews);
-      //console.log(this.productdetailData);
+      console.log(this.productdetailData);
     }, (err) => {
       loadingCtrl.dismiss();
       this.log.error(err);
     });
   }
 
-  
+
 
   addToCart(product) {
     this.authorizeProvider.isAuthorization();
@@ -69,13 +71,8 @@ export class ProductDetailPage {
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
       loadingCtrl.present();
-      this.productDetailService.addToCart(product).then((data) => {
-        loadingCtrl.dismiss();
-        this.navCtrl.push(CartPage)
-      }, (error) => {
-        loadingCtrl.dismiss();
-        console.error(error);
-      });
+      this.cartService.cookingLocalCart(product);
+      loadingCtrl.dismiss();      
     }
   }
 
@@ -94,10 +91,15 @@ export class ProductDetailPage {
   }
 
   writeReview() {
-    let modal = this.modalCtrl.create(WriteReviewPage, { data: this.product },);
+    let modal = this.modalCtrl.create(WriteReviewPage, { data: this.product }, );
     // Getting data from the modal:
     modal.onDidDismiss(data => {
-      console.log('MODAL DATA', data);
+      this.productDetailService.postProductReview(this.product._id, data).then((resp) => {
+        this.getProductdetailData();
+      }, (error) => {
+        console.error(error);
+      });
+
     });
     modal.present();
   }

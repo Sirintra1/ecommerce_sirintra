@@ -1,69 +1,31 @@
-<!-- <ion-list class="counter-list" *ngFor="let item of carts.items">
-    <ion-item class="counter-item">
-      <ion-avatar item-left>
-        <preload-image [ratio]="{w:1, h:1}" [src]="item.product.image"></preload-image>
-      </ion-avatar>
-      <h2>{{item.product.name}}</h2>
-      <p *ngIf="item.product.issize"><b> Size : {{item.product.size.detail}} - {{item.selectedsize}}</b></p>
-      <p><b>{{item.amount}} Baht</b></p>
-      <button ion-button icon-only clear color="danger"> 
-        <ion-icon name="md-heart-outline"></ion-icon>
-      </button>
-      <button ion-button icon-only clear color="gray">
-        <ion-icon name="ios-trash-outline"></ion-icon>
-      </button>
-      <counter-input [counterValue]="item.qty"></counter-input>
-    </ion-item>
-  </ion-list> -->
 <ion-list>
-  <!-- <ion-item *ngFor="let data of carts.items">
-    <ion-col no-padding width-25 item-left class="magin-right-10-custom">
-      <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image"></preload-image>
-    </ion-col>
-    <ion-col>
-      <h2 class="item-title">{{data.product.name}}</h2>
-      <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
-      <p><b>{{data.amount}} Baht</b></p>
-      <button ion-button icon-only clear color="danger" class="circle-btn"> 
-          <ion-icon name="md-heart-outline"></ion-icon>
-        </button>
-      <button ion-button icon-only clear color="gray" class="circle-btn">
-          <ion-icon name="ios-trash-outline"></ion-icon>
-        </button>
-      <div class="counter-list">
-        <ion-item no-lines class="counter-item">
-          <counter-input [counterValue]="data.qty"></counter-input>
-        </ion-item>
-      </div>
-    </ion-col>
-  </ion-item> -->
-
-  <div ion-item *ngFor="let data of carts; let i = index">
+  <div ion-item *ngFor="let item of carts; let i = index">
     <ion-row>
       <ion-col no-padding width-33 class="magin-right-10-custom">
-        <preload-image [ratio]="{w:1, h:1}" [src]="data.product.image[0].url"></preload-image>
+        <preload-image [ratio]="{w:1, h:1}" *ngIf="item.product.images" [src]="item.product.images[0]"></preload-image>
+        <preload-image [ratio]="{w:1, h:1}" *ngIf="item.product.image" [src]="item.product.image"></preload-image>        
       </ion-col>
       <ion-col>
-        <h3 class="h3-name">{{data.product.name}}</h3>
-        <p *ngIf="data.product.issize"><b> Size : {{data.product.size.detail}} - {{data.selectedsize}}</b></p>
-        <p class="color-orenge-custom"> {{data.itemamount | number}} Baht</p>
+        <h3 class="h3-name">{{item.product.name}}</h3>
+        <p class="color-orenge-custom" *ngIf="item.discount > 0">{{item.amount | number}} {{item.currency | translate}}</p>
+        <p *ngIf="item.discount > 0"><span class="text-decoration">{{item.discount | number}} {{item.currency | translate}}</span> - {{item.product.percentofdiscount
+          | number}}%</p>
+        <p><span>{{item.totalamount | number}} {{item.product.currency | translate}}</span></p>
         <ion-row>
           <ion-col width-15>
             <ion-icon name="md-heart-outline" class="icon-item" color="danger"></ion-icon>
           </ion-col>
           <ion-col width-25>
-            <ion-icon name="ios-trash-outline" class="icon-item" color="gray" (click)="clickDelete(data,i)"></ion-icon>
+            <ion-icon name="ios-trash-outline" class="icon-item" color="gray" (click)="clickDelete(item,i)"></ion-icon>
           </ion-col>
           <ion-col width-60>
             <div class="counter-list">
               <ion-item no-lines class="counter-item">
-                <counter-input [counterValue]="data.qty" (count)="countItem($event,data)"></counter-input>
+                <counter-input [counterValue]="item.qty" (count)="countItem($event,item)"></counter-input>
               </ion-item>
             </div>
           </ion-col>
         </ion-row>
-
-
       </ion-col>
     </ion-row>
   </div>

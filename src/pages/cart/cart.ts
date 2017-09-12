@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CartService } from "./cart.service";
-import { CartModel } from "./cart.model";
+import { CartViewModel } from "./cart.model";
 import { ProductDetailPage } from "../product-detail/product-detail";
 import { FormGroup, FormControl } from '@angular/forms';
 import { counterRangeValidator } from '../../components/counter-input/counter-input';
@@ -22,7 +22,7 @@ import { CheckoutPage } from "../checkout/checkout";
   templateUrl: 'cart.html',
 })
 export class CartPage {
-  cart: CartModel = new CartModel();
+  cartData: CartViewModel = new CartViewModel();
   counterForm: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,13 +40,17 @@ export class CartPage {
     this.authorizeProvider.isAuthorization();
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
-      this.getCartData();
+      this.cartData = JSON.parse(window.localStorage.getItem('cart'));
+      if (!this.cartData) {
+        this.getCartData();
+      }
+      console.log(this.cartData);
     }
   }
 
   ionViewDidLeave() {
     let user = this.authorizeProvider.getAuthorization()
-    if (user && this.cart._id) {
+    if (user && this.cartData.cart) {
       this.updateCartDataService();
     }
   }
@@ -55,9 +59,8 @@ export class CartPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.cartService.getData().then((data) => {
+      this.cartData = data;
       window.localStorage.setItem('cart', JSON.stringify(data));
-      this.log.info(data);
-      this.cart = data;
       loading.dismiss();
     }, (error) => {
       this.log.error(error);
@@ -66,7 +69,7 @@ export class CartPage {
   }
 
   updateCartDataService() {
-    this.cartService.updateCartData(this.cart).then((data) => {
+    this.cartService.updateCartData(this.cartData.cart).then((data) => {
       window.localStorage.setItem('cart', JSON.stringify(data));
       console.log(data);
     }, (error) => {
@@ -74,16 +77,12 @@ export class CartPage {
     });
   }
 
-  gotoProductDetail(item) {
-    this.navCtrl.push(ProductDetailPage, item)
-  }
-
   gotocheckout() {
     this.navCtrl.push(CheckoutPage)
   }
 
   deleteItem(e) {
-    this.cart.products.splice(e.index, 1);
+    this.cartData.cart.items.splice(e.index, 1);
     this.onCalculate();
   }
 
@@ -92,11 +91,22 @@ export class CartPage {
   }
 
   onCalculate() {
-    let length = this.cart.products.length;
-    this.cart.amount = 0;
+    let length = this.cartData.cart.items.length;
+    this.cartData.cart.amount = 0;
+    this.cartData.cart.discount = 0;
+    this.cartData.cart.totalamount = 0;
+
     for (var i = 0; i < length; i++) {
-      this.cart.products[i].itemamount = this.cart.products[i].product.price * this.cart.products[i].qty;
-      this.cart.amount += this.cart.products[i].itemamount;
+      // By Check promotionprice
+      let price = this.cartData.cart.items[i].product.promotionprice ? this.cartData.cart.items[i].product.promotionprice : this.cartData.cart.items[i].product.price;
+      // By Items
+      this.cartData.cart.items[i].amount = this.cartData.cart.items[i].product.price * this.cartData.cart.items[i].qty;
+      this.cartData.cart.items[i].discount = (this.cartData.cart.items[i].product.price - price) * this.cartData.cart.items[i].qty;
+      this.cartData.cart.items[i].totalamount = this.cartData.cart.items[i].amount - this.cartData.cart.items[i].discount;
+      // By Cart
+      this.cartData.cart.amount += this.cartData.cart.items[i].amount;
+      this.cartData.cart.discount += this.cartData.cart.items[i].discount;
+      this.cartData.cart.totalamount += this.cartData.cart.items[i].totalamount;
     }
   }
 }

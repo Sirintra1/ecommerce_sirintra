@@ -1,13 +1,21 @@
 import { ProductItemModel } from "../../app/app.model";
 
+export class CartViewModel {
+    title: String;
+    cart: CartModel = new CartModel();
+};
+
 export class CartModel {
     _id: string;
-    products: Array<CartItemModel>;
+    items: Array<CartItemModel>;
     amount: number;
+    discount: number;
+    totalamount: number;
 };
 export class CartItemModel {
     product: ProductItemModel;
-    price: number;
     qty: number;
-    itemamount: number;
+    amount: number;
+    discount: number; 
+    totalamount: number;
 };
