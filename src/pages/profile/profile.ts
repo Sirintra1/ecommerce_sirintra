@@ -30,7 +30,8 @@ export class ProfilePage {
     public navParams: NavParams,
     public profileService: ProfileServiceProvider,
     public log: LogServiceProvider,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public authorizeProvider: AuthorizeProvider) {
   }
 
   ionViewDidLoad() {
@@ -51,7 +52,8 @@ export class ProfilePage {
   }
 
   logout() {
-    //this.authorizeProvider.unAuthorization();
+    this.authorizeProvider.unAuthorization();
+    window.localStorage.removeItem('cart');
     this.getUser();
   }
   getProfileData() {
