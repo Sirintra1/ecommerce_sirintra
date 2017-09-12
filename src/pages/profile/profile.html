@@ -48,11 +48,11 @@
             </button>
     </ion-list>
     <ion-list class="magin-top-10-bottom-0">
-        <button ion-item>
+        <button ion-item (click)="policy()">
                 <ion-icon name="ios-document-outline" item-start></ion-icon>
                 {{'POLICY' | translate}}                                                                
             </button>
-        <button ion-item>
+        <button ion-item (click)="help()">
                 <ion-icon name="ios-help-circle-outline" item-start></ion-icon>
                 {{'HELP' | translate}}                                                                
             </button>

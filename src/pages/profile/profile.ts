@@ -10,6 +10,8 @@ import { HistoriesPage } from "../histories/histories";
 import { LocationsPage } from "../locations/locations";
 import { SettingPage } from "../setting/setting";
 import { LangaugePage } from "../langauge/langauge";
+import { PolicyPage } from "../policy/policy";
+import { HelpPage } from "../help/help";
 
 /**
  * Generated class for the ProfilePage page.
@@ -96,6 +98,22 @@ export class ProfilePage {
 
   language() {
     let modal = this.modalCtrl.create(LangaugePage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
+  policy() {
+    let modal = this.modalCtrl.create(PolicyPage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
+  help() {
+    let modal = this.modalCtrl.create(HelpPage);
     modal.onDidDismiss(data => {
       console.log(data);
     });

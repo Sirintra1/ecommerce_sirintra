@@ -123,6 +123,10 @@ import { SettingServiceProvider } from '../pages/setting/setting.service';
 import { SettingPage } from "../pages/setting/setting";
 import { LangaugeServiceProvider } from '../pages/langauge/langauge.service';
 import { LangaugePage } from "../pages/langauge/langauge";
+import { PolicyServiceProvider } from '../pages/policy/policy.service';
+import { PolicyPage } from "../pages/policy/policy";
+import { HelpServiceProvider } from '../pages/help/help.service';
+import { HelpPage } from "../pages/help/help";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -155,6 +159,8 @@ export function createTranslateLoader(http: Http) {
     LocationsPage,
     SettingPage,
     LangaugePage,
+    PolicyPage,
+    HelpPage,
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -232,8 +238,9 @@ export function createTranslateLoader(http: Http) {
     HistoriesPage,
     LocationsPage,
     SettingPage,
-    LangaugePage
-
+    LangaugePage,
+    PolicyPage,
+    HelpPage
   ],
   providers: [
     HomeService,
@@ -273,7 +280,9 @@ export function createTranslateLoader(http: Http) {
     HistoriesServiceProvider,
     LocationsServiceProvider,
     SettingServiceProvider,
-    LangaugeServiceProvider
+    LangaugeServiceProvider,
+    PolicyServiceProvider,
+    HelpServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
