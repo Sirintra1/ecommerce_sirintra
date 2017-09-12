@@ -117,6 +117,8 @@ import { NotificationsServiceProvider } from '../pages/notifications/notificatio
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { HistoriesServiceProvider } from '../pages/histories/histories.service';
 import { HistoriesPage } from "../pages/histories/histories";
+import { LocationsServiceProvider } from '../pages/locations/locations.service';
+import { LocationsPage } from "../pages/locations/locations";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -146,6 +148,7 @@ export function createTranslateLoader(http: Http) {
     ProductFormPage,
     NotificationsPage,
     HistoriesPage,
+    LocationsPage,
     PreloadImage,
     BackgroundImage,
     ShowHideContainer,
@@ -220,7 +223,8 @@ export function createTranslateLoader(http: Http) {
     ShopFormPage,
     ProductFormPage,
     NotificationsPage,
-    HistoriesPage
+    HistoriesPage,
+    LocationsPage
 
   ],
   providers: [
@@ -258,7 +262,8 @@ export function createTranslateLoader(http: Http) {
     CheckoutServiceProvider,
     FacebookLoginService,
     NotificationsServiceProvider,
-    HistoriesServiceProvider
+    HistoriesServiceProvider,
+    LocationsServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

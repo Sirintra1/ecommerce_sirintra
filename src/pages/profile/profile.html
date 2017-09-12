@@ -30,7 +30,7 @@
                 <ion-icon name="ios-filing-outline" item-start></ion-icon>
                 {{'HISTORY_LOG' | translate}}                
             </button>
-            <button ion-item *ngIf="profileData">
+            <button ion-item *ngIf="profileData" (click)="locations()">
                 <ion-icon name="ios-pin-outline" item-start></ion-icon>
                 {{'LOCATION' | translate}}                
             </button>

@@ -7,6 +7,7 @@ import { AuthorizeProvider } from "../../providers/authorize/authorize";
 import { LoginPage } from "../login/login";
 import { NotificationsPage } from "../notifications/notifications";
 import { HistoriesPage } from "../histories/histories";
+import { LocationsPage } from "../locations/locations";
 
 /**
  * Generated class for the ProfilePage page.
@@ -69,6 +70,14 @@ export class ProfilePage {
 
   histories() {
     let modal = this.modalCtrl.create(HistoriesPage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
+  }
+
+  locations() {
+    let modal = this.modalCtrl.create(LocationsPage);
     modal.onDidDismiss(data => {
       console.log(data);
     });
