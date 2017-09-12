@@ -27,16 +27,16 @@ export class PaymentComponent {
 
   formcredit(e) {
     if (e.creditno) {
-      this.datapayment.order.payment.creditno = e.creditno
+      this.datashipping.order.payment.creditno = e.creditno
     }
     if (e.creditname) {
-      this.datapayment.order.payment.creditname = e.creditname
+      this.datashipping.order.payment.creditname = e.creditname
     }
     if (e.expdate) {
-      this.datapayment.order.payment.expdate = e.expdate
+      this.datashipping.order.payment.expdate = e.expdate
     }
     if (e.creditcvc) {
-      this.datapayment.order.payment.creditcvc = e.creditcvc
+      this.datashipping.order.payment.creditcvc = e.creditcvc
     }
   }
 

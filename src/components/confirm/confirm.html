@@ -20,7 +20,7 @@
           <ion-row>
             <ion-col col-8>
               <ion-item>
-                <ion-input type="text" [(ngModel)]="confirmgateway.order.discount" placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
+                <ion-input type="text" [(ngModel)]="confirmgateway.order.discount" (ngModelChange)="discount(confirmgateway.order.discount)" placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-4>
@@ -29,14 +29,14 @@
           </ion-row>
           <ion-item>
             <p><b>ยอดสุทธิ (รวมภาษีมูลค่าเพิ่ม)</b></p>
-            <p item-end><b>{{((confirmgateway.order.tran || 0) + (confirmgateway.order.amount || 0)) - (confirmdiscount || 0) | number}} บาท</b></p>
+            <p item-end><b>{{((confirmgateway.order.tran || 0) + (confirmgateway.order.amount || 0)) - (confirmgateway.order.discount || 0) | number}} บาท</b></p>
           </ion-item>
         </ion-list>
-        <ion-row>
+        <!-- <ion-row>
           <ion-col col-12>
             <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>
           </ion-col>
-        </ion-row>
+        </ion-row> -->
         <ion-item-group>
           <ion-item-divider color="light"><b>รายการ</b></ion-item-divider>
         </ion-item-group>
@@ -50,7 +50,7 @@
               </ion-row>
               <ion-row no-padding>
                 <ion-col no-padding width-20 class="item-avatar">
-                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.image[0].url}}"></preload-image>
+                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.image}}"></preload-image>
                 </ion-col>
                 <ion-col no-padding width-60 class="white-space">
                   <h3 class="item-title">{{item.product.name}}</h3>

@@ -4,8 +4,12 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
 import { address } from './checkout.model';
+import { addressModel } from './checkout.model';
 import { paymentModel } from './checkout.model';
 import { ShippingModel } from './checkout.model';
+
+import { CheckoutModel } from './checkout.model';
+
 // import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
@@ -24,10 +28,10 @@ import { AuthorizeProvider } from "../../providers/authorize/authorize";
 })
 export class CheckoutPage {
   loading: any;
-  // address: address = new address();
-  address: Array<address>;
+  address: addressModel = new addressModel();
+  // address: Array<address>;
   payment: paymentModel = new paymentModel();
-  shipping: ShippingModel = new ShippingModel();
+  shipping: CheckoutModel = new CheckoutModel();
   // confirm: confirmModel = new confirmModel();
   // addressdata : Array<any> = [];
   datashipping: any = {};
@@ -78,9 +82,7 @@ export class CheckoutPage {
   }
 
   getShippingData() {
-    // this.loading.present();
     this.checkoutServiceProvider.getData().then((data) => {
-      // this.log.info(data);
       this.shipping = data;
       console.log(this.shipping);
       this.loading.dismiss();
@@ -90,7 +92,6 @@ export class CheckoutPage {
     });
   }
   getAddressData() {
-    // this.loading.present();
     this.checkoutServiceProvider.getAddressData().then((data) => {
       this.address = data;
       console.log(this.address);
@@ -153,17 +154,19 @@ export class CheckoutPage {
 
   completedConfirmStep(e) {
     this.dataconfirm = e;
-    // console.log(this.dataconfirm);
-    // alert('completedConfirmStep');
-    let loading = this.loadingCtrl.create();
-    loading.present();
-    this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
+    console.log(this.dataconfirm);
+    if (this.dataconfirm && this.dataconfirm.order) {
       this.navCtrl.push(CompleteOrderedPage);
-      loading.dismiss();
-    }, (error) => {
-      console.error(error);
-      loading.dismiss();
-    });
+    }
+    // let loading = this.loadingCtrl.create();
+    // loading.present();
+    // this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
+    //   this.navCtrl.push(CompleteOrderedPage);
+    //   loading.dismiss();
+    // }, (error) => {
+    //   console.error(error);
+    //   loading.dismiss();
+    // });
   }
 
 }

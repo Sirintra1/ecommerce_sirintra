@@ -16,31 +16,31 @@ export class ConfirmComponent {
   confirmdiscount: number;
   constructor() {
     console.log('Hello ConfirmComponent Component');
-    // console.log(this.confirmgateway);
   }
 
   discount(data) {
-    if (data > 0) {
+    if (data && data > 0) {
       if (this.confirmgateway.order.amount && this.confirmgateway.order.amount >= data) {
-        this.confirmdiscount = data;
+        this.confirmgateway.order.discount = data;
       } else {
-        this.confirmdiscount = this.confirmgateway.order.amount;
+        this.confirmgateway.order.discount = this.confirmgateway.order.amount;
       }
     } else {
-      this.confirmdiscount = 0;
+      this.confirmgateway.order.discount = 0;
     }
 
   }
 
   stepValidation() {
-    // console.log(this.confirmgateway);
 
-    if (this.confirmdiscount && !undefined) {
+    if (this.confirmgateway.order.discount && this.confirmgateway.order.discount > 0 && !undefined) {
       console.log('มีส่วนลด');
-      this.confirmgateway.order.totalamount = ((this.confirmgateway.order.tran || 0) + (this.confirmgateway.order.amount || 0)) - (this.confirmdiscount || 0);
+      this.confirmgateway.order.totalamount = ((this.confirmgateway.order.tran || 0) + (this.confirmgateway.order.amount || 0)) - (this.confirmgateway.order.discount || 0);
     } else {
       this.confirmgateway.order.totalamount = ((this.confirmgateway.order.tran || 0) + (this.confirmgateway.order.amount || 0));
     }
+    // console.log(this.confirmgateway);
+    
     this.gotoNext.emit(this.confirmgateway);
   }
 

@@ -6,9 +6,11 @@ import { LogServiceProvider } from '../../providers/log-service/log-service';
 // import { shippingModel } from './checkout.model';
 // import { confirmModel } from './checkout.model';
 import { address } from './checkout.model';
+import { addressModel } from './checkout.model';
 // import { saveOrder } from "./checkout.model";
 import { ShippingModel } from "./checkout.model";
 import { paymentModel } from "./checkout.model";
+import { CheckoutModel } from "./checkout.model";
 
 import { Constants } from "../../app/app.contants";
 
@@ -24,18 +26,20 @@ export class CheckoutServiceProvider {
   constructor(public http: Http, public log: LogServiceProvider) {
     console.log('Hello CheckoutServiceProvider Provider');
   }
-  getData(): Promise<ShippingModel> {
-    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
-    return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
+  getData(): Promise<CheckoutModel> {
+    // let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    // return this.http.get(Constants.URL + '/api/carts/get-by-user/' + user._id)
+    return this.http.get('./assets/example_data/checkout.json')
       .toPromise()
-      .then(response => response.json() as ShippingModel)
+      .then(response => response.json() as CheckoutModel)
       .catch(this.handleError);
   }
 
-  getAddressData() {
-    return this.http.get(Constants.URL + '/api/addressesbyuser')
+  getAddressData(): Promise<addressModel> {
+    // return this.http.get(Constants.URL + '/api/addressesbyuser')
+    return this.http.get('./assets/example_data/address.json')
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json() as addressModel)
       .catch(this.handleError);
   }
 

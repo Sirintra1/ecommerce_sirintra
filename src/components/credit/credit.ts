@@ -23,6 +23,7 @@ export class CreditComponent {
 
   }
   formcredit(data) {
+    console.log(data);
     this.datacredit.emit(data);
   }
 

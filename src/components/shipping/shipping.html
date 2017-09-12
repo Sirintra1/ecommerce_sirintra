@@ -2,7 +2,7 @@
 <ion-content>
   <ion-label class="label label-ios"> ส่งที่ </ion-label>
   <ion-list class="radio-group" radio-group>
-    <ion-item class="radio-item" *ngFor="let item of listaddress" (click)="selectaddress(item)">
+    <ion-item class="radio-item" *ngFor="let item of listaddress.address" (click)="selectaddress(item)">
       <ion-label class="detail-style">
         <ion-row>
           <ion-col width-33>
@@ -27,7 +27,7 @@
   <ion-label class="label label-ios"> โปรดเลือกแบบของการส่งสินค้า </ion-label>
   <!--  -->
   <ion-list>
-    <div *ngFor="let item of listshipping.products">
+    <div *ngFor="let item of listshipping.items">
       <ion-item>
         <ion-row>
           <ion-col width-15>
@@ -36,7 +36,7 @@
         </ion-row>
         <ion-row>
           <ion-col no-padding width-33 class="magin-right-10-custom">
-            <preload-image [ratio]="{w:1, h:1}" [src]="item.product.image[0].url"></preload-image>
+            <preload-image [ratio]="{w:1, h:1}" [src]="item.product.image"></preload-image>
           </ion-col>
           <ion-col>
             <p class="p-black">{{item.product.name}}</p>
@@ -64,28 +64,22 @@
     </div>
   </ion-list>
   <ion-grid>
-    <ion-row>
-      <ion-col width-50 text-left>
-        <h4>
-          รวมสุทธิ
-        </h4>
-      </ion-col>
-      <ion-col width-50 text-right>
-        <h4>
-          {{listshipping.amount | number}} Baht
-        </h4>
-      </ion-col>
-    </ion-row>
+    <div *ngIf="listshipping.items && listshipping.items.length > 0">
+      <ion-row>
+        <ion-col width-50>
+          <p class="p-black">ราคารวม</p>
+          <p class="p-black">ส่วนลด</p>
+          <p class="p-black">รวมสุทธิ</p>
+        </ion-col>
+        <ion-col width-50>
+          <p text-right class="p-black">{{listshipping.amount | number}} {{currency | translate}}</p>
+          <p text-right class="p-black">{{listshipping.discount | number}} {{currency | translate}}</p>
+          <p text-right class="p-black">{{listshipping.totalamount | number}} {{currency | translate}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-grid>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <button ion-button full color="danger" class="slide-next" (click)="stepValidation()">การชำระเงิน</button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-      </ion-col>
-    </ion-row>
+    <button ion-button full color="danger" class="slide-next" (click)="stepValidation()">การชำระเงิน</button>
   </ion-grid>
 </ion-content>
