@@ -1,6 +1,6 @@
 <!-- Generated template for the ShippingComponent component -->
 <ion-content>
-  <ion-label class="label label-ios"> ส่งที่ </ion-label>
+  <ion-label class="label label-ios"> {{'SHIPPING' | translate}} </ion-label>
   <ion-list class="radio-group" radio-group>
     <ion-item class="radio-item" *ngFor="let item of listaddress.address" (click)="selectaddress(item)">
       <ion-label class="detail-style">
@@ -23,8 +23,8 @@
       <ion-radio (click)="selectaddress(item)"></ion-radio>
     </ion-item>
   </ion-list>
-  <ion-label class="p-blue" (click)="showPrompt()">เพิ่มที่อยู่ใหม่</ion-label>
-  <ion-label class="label label-ios"> โปรดเลือกแบบของการส่งสินค้า </ion-label>
+  <ion-label class="p-blue" (click)="showPrompt()">{{'ADD_NEW_ADDRESS' | translate}}</ion-label>
+  <ion-label class="label label-ios"> {{'PLEASE_SELECT_THE_TYPE_OF_SHIPMENT' | translate}} </ion-label>
   <!--  -->
   <ion-list>
     <div *ngFor="let item of listshipping.items">
@@ -40,16 +40,16 @@
           </ion-col>
           <ion-col>
             <p class="p-black">{{item.product.name}}</p>
-            <p> {{item.qty}} Qty</p>
+            <p> {{item.qty}} {{'QTY' | translate}}</p>
             <p> {{item.product.price | number}} Baht</p>
-            <p text-right>รวม {{item.product.price * item.qty | number}} Baht</p>
+            <p text-right>รวม {{item.product.price * item.qty | number}} {{'CURRENCY' | translate}}</p>
 
           </ion-col>
         </ion-row>
       </ion-item>
       <ion-row>
         <ion-col width-100>
-          <p class="p-black">ตัวเลือกในการจัดส่ง</p>
+          <p class="p-black">{{'SHIPPINGMETHOD' | translate}}</p>
         </ion-col>
       </ion-row>
       <ion-list class="radio-tags" radio-group>
@@ -67,9 +67,9 @@
     <div *ngIf="listshipping.items && listshipping.items.length > 0">
       <ion-row>
         <ion-col width-50>
-          <p class="p-black">ราคารวม</p>
-          <p class="p-black">ส่วนลด</p>
-          <p class="p-black">รวมสุทธิ</p>
+          <p class="p-black">{{'TOTAL_PRICE' | translate}}</p>
+          <p class="p-black">{{'DISCOUNT' | translate}}</p>
+          <p class="p-black">{{'TOTAL_NET' | translate}}</p>
         </ion-col>
         <ion-col width-50>
           <p text-right class="p-black">{{listshipping.amount | number}} {{currency | translate}}</p>
@@ -80,6 +80,6 @@
     </div>
   </ion-grid>
   <ion-grid>
-    <button ion-button full color="danger" class="slide-next" (click)="stepValidation()">การชำระเงิน</button>
+    <button ion-button full color="danger" class="slide-next" (click)="stepValidation()">{{'PAYMENT' | translate}}</button>
   </ion-grid>
 </ion-content>

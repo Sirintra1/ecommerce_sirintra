@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { ProductModel } from "./product-form.model";
 import { ProductFormServiceProvider } from "./product-form-service";
 import { Category, Shipping } from "../../app/app.model";
+import { ListShopModel } from "../list-shop/list-shop.model";
+import { ListShopServiceProvider } from "../list-shop/list-shop.service";
 
 /**
  * Generated class for the ProductFormPage page.
@@ -16,19 +18,21 @@ import { Category, Shipping } from "../../app/app.model";
   templateUrl: 'product-form.html',
 })
 export class ProductFormPage {
-  shippings: Array<Shipping>=[];
-  categories: Array<Category>=[];
+  shippings: Array<Shipping> = [];
+  categories: Array<Category> = [];
   productForm: ProductModel = new ProductModel();
+  listShopData: ListShopModel = new ListShopModel();
   image: string;
   locations: any = [{
-    id:1,
+    id: 1,
     name: 'one'
   },
   {
-    id:2,
+    id: 2,
     name: 'two'
   }];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public productFormServiceProvider:ProductFormServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public productFormServiceProvider: ProductFormServiceProvider, public listShopService: 
+    ListShopServiceProvider) {
   }
 
   ionViewDidLoad() {
@@ -42,7 +46,12 @@ export class ProductFormPage {
       this.shippings = data;
     }, (err) => {
       console.log(err);
-    })
+    });
+    this.listShopService.getListShop().then((data) => {
+      this.listShopData = data;
+    }, (err) => {
+      console.log(err);      
+    });
   }
 
   createProduct() {

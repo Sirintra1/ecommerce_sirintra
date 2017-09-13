@@ -24,7 +24,6 @@ export class ShippingComponent {
       amount: 0,
       discount: 0,
       totalamount: 0,
-      cart: '',
       tran: 0
     }
   };
@@ -140,7 +139,6 @@ export class ShippingComponent {
           this.data.order.totalamount += itm.afterdiscount || 0;
           // console.log(this.data.order.tran);
         });
-        this.data.order.cart = this.listshipping._id;
         // this.data.order.amount = this.listshipping.amount;
         // this.data.order.discount = this.listshipping.discount;
         // this.data.order.totalamount = this.listshipping.totalamount;

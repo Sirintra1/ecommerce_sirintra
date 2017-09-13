@@ -1,4 +1,3 @@
-
 <!-- <ion-grid padding class="forms-examples-segment" *ngIf="parent.channel == value">
     <ion-row>
           <ion-col col-12>
@@ -25,21 +24,23 @@
           Review Order
         </button>
   </ion-grid> -->
-
-  <ion-grid text-right *ngIf="parent.channel == value">
+<ion-item-group *ngIf="parent.channel == value">
+    <ion-item-divider color="light"><b>bank</b></ion-item-divider>
+</ion-item-group>
+<ion-grid text-right *ngIf="parent.channel == value">
     <ion-row>
-      <ion-col>
-        <ion-row>
-          <ion-col text-center *ngFor="let counter of paymentgateway" (click)="selectcounter(counter)">
-            <ion-segment color="light" class="md" [(ngModel)]="counteractive">
-              <ion-segment-button [value]="counter.name" [ngClass]="counteractive >= counter.value ? 'active' : '' ">
-                <preload-image [ratio]="{w:1, h:1}" src="{{counter.img}}"></preload-image>
-              </ion-segment-button>
-            </ion-segment>
-            <p>{{counter.name}}</p>
-          </ion-col>
-        </ion-row>
-      </ion-col>
+        <ion-col>
+            <ion-row>
+                <ion-col text-center *ngFor="let counter of paymentgateway" (click)="selectcounter(counter)">
+                    <ion-segment color="light" class="md" [(ngModel)]="counteractive">
+                        <ion-segment-button [value]="counter.name" [ngClass]="counteractive >= counter.value ? 'active' : '' ">
+                            <preload-image [ratio]="{w:1, h:1}" src="{{counter.img}}"></preload-image>
+                        </ion-segment-button>
+                    </ion-segment>
+                    <p [ngClass]="counteractive >= counter.value ? 'active' : '' ">{{counter.name}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-col>
     </ion-row>
-  </ion-grid>
-  <ng-content></ng-content>
+</ion-grid>
+<ng-content></ng-content>

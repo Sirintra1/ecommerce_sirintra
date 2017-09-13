@@ -136,5 +136,15 @@
   "CHANGE_LANGUAGE": "Change Language",
   "POLICY": "Policy",
   "HELP": "Help",
-  "WELCOME": "Hello,"
+  "WELCOME": "Hello,",
+  "ADD_NEW_ADDRESS": "Add new address",
+  "SHIPPING": "Shipping",
+  "CONFIRM": "Confirm",
+  "PLEASE_SELECT_THE_TYPE_OF_SHIPMENT": "Please select the type of shipment",
+  "SHIPPINGMETHOD": "Select shipment",
+  "QTY": "Piece",
+  "TOTAL_PRICE": "Total Price",
+  "DISCOUNT": "Discount",
+  "TOTAL_NET": "Total Net",
+  "PAYMENT": "Payment"
 }
