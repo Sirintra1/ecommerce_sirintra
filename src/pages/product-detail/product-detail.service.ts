@@ -48,6 +48,16 @@ export class ProductDetailServiceProvider {
       .catch(this.handleError);
   }
 
+  addFavorite(id): Promise<ProductDetailModel> {
+    var user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    var favorite = {
+      user: user
+    };
+    return this.http.post('http://localhost:3000/api/products/favorite/' + id, favorite)
+      .toPromise()
+      .then(response => response.json() as ProductDetailModel)
+      .catch(this.handleError);
+  }
 
 
   private handleError(error: any): Promise<any> {

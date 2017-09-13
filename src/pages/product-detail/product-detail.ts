@@ -72,7 +72,7 @@ export class ProductDetailPage {
     if (user) {
       loadingCtrl.present();
       this.cartService.cookingLocalCart(product);
-      loadingCtrl.dismiss();      
+      loadingCtrl.dismiss();
     }
   }
 
@@ -87,6 +87,11 @@ export class ProductDetailPage {
   liked() {
     this.isLiked = !this.isLiked;
     this.nameOfLike = this.isLiked ? 'ios-heart' : 'ios-heart-outline';
+    this.productDetailService.addFavorite(this.product._id).then((data) => {
+      alert('add Favorite success');
+    }, (err) => {
+      console.log(err);
+    });
     //alert(this.isLiked);
   }
 
