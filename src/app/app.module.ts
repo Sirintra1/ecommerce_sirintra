@@ -129,6 +129,7 @@ import { HelpServiceProvider } from '../pages/help/help.service';
 import { HelpPage } from "../pages/help/help";
 import { MomentPipe } from '../pipes/moment/moment';
 import { ProductFormServiceProvider } from "../pages/product-form/product-form-service";
+import { FormAddressPage } from '../pages/form-address/form-address';
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -198,7 +199,8 @@ export function createTranslateLoader(http: Http) {
     TopbarshopComponent,
     SlideImagesComponent,
     ReviewComponent,
-    MomentPipe
+    MomentPipe,
+    FormAddressPage
   ],
   imports: [
     BrowserModule,
@@ -243,7 +245,8 @@ export function createTranslateLoader(http: Http) {
     SettingPage,
     LangaugePage,
     PolicyPage,
-    HelpPage
+    HelpPage,
+    FormAddressPage
   ],
   providers: [
     HomeService,

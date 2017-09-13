@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
@@ -13,6 +13,7 @@ import { CheckoutModel } from './checkout.model';
 // import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
+import { FormAddressPage } from '../form-address/form-address';
 
 
 /**
@@ -58,7 +59,8 @@ export class CheckoutPage {
     public checkoutServiceProvider: CheckoutServiceProvider,
     public loadingCtrl: LoadingController,
     public log: LogServiceProvider,
-    public authorizeProvider: AuthorizeProvider
+    public authorizeProvider: AuthorizeProvider,
+    public modalCtrl: ModalController
   ) {
     this.loading = loadingCtrl.create();
   }
@@ -94,7 +96,6 @@ export class CheckoutPage {
   getAddressData() {
     this.checkoutServiceProvider.getAddressData().then((data) => {
       this.address = data;
-      console.log(this.address);
       this.loading.dismiss();
     }, (error) => {
       this.log.error(error);
@@ -167,6 +168,18 @@ export class CheckoutPage {
     //   console.error(error);
     //   loading.dismiss();
     // });
+  }
+  openFormAddress(e) {
+    let modal = this.modalCtrl.create(FormAddressPage);
+    // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      this.checkoutServiceProvider.saveAddressData(data).then(resp => {
+        this.getAddressData();
+      })
+      console.log(data);
+
+    });
+    modal.present();
   }
 
 }
