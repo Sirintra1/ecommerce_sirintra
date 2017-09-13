@@ -9,8 +9,8 @@
   <ion-navbar>
     <ion-title>productForm</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="close" (click)="closeModal()"></ion-icon>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -59,11 +59,18 @@
     </ion-item>
 
     <ion-item>
-        <ion-label floating>Shippings</ion-label>
-        <ion-select [(ngModel)]="productForm.shippings" multiple="true">
-          <ion-option *ngFor="let shipping of shippings" [value]="shipping">{{shipping.name}}</ion-option>
-        </ion-select>
-      </ion-item>
+      <ion-label floating>Shippings</ion-label>
+      <ion-select [(ngModel)]="productForm.shippings" multiple="true">
+        <ion-option *ngFor="let shipping of shippings" [value]="shipping">{{shipping.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Shop</ion-label>
+      <ion-select [(ngModel)]="productForm.shop">
+        <ion-option *ngFor="let shop of listShopData.items" [value]="shop">{{shop.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
     <ion-item>
       <ion-label floating>Image</ion-label>
