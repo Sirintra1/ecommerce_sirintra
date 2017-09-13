@@ -21,7 +21,7 @@ export class RegisterServiceProvider {
 
   newAuthorization(user): Promise<AuthorizeModel> { // signup
     // return this.http.post(Constants.URL + '/api/auth/signup', user)
-    return this.http.post('http://localhost:3000/api/auth/signup', user)
+    return this.http.post(Constants.URL + '/api/auth/signup', user)
       .toPromise()
       .then(response => {
         let data = response.json() as AuthorizeModel;

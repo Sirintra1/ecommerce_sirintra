@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 
 
 import { HomeService } from './home.service';
@@ -9,6 +9,8 @@ import { ShopDetailPage } from "../shop-detail/shop-detail";
 import { ListProductPage } from '../list-product/list-product';
 import { ListShopPage } from '../list-shop/list-shop';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
+import { ShopFormPage } from "../shop-form/shop-form";
+import { ListShopServiceProvider } from "../list-shop/list-shop.service";
 /**
  * Generated class for the HomePage page.
  *
@@ -25,7 +27,9 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public homeService: HomeService,
     public loadingCtrl: LoadingController,
-    public log: LogServiceProvider
+    public log: LogServiceProvider,
+    public listShopService: ListShopServiceProvider,
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -62,4 +66,23 @@ export class HomePage {
     console.log(e);
     this.navCtrl.push(ListShopPage);
   }
+
+  createShop() {
+    let modal = this.modalCtrl.create(ShopFormPage);
+    // Getting data from the modal:
+    modal.onDidDismiss(data => {
+      console.log('MODAL DATA', data);
+      if (data) {
+        this.listShopService.addShop(data)
+          .then((resp) => {
+            console.log(resp);
+          }, (err) => {
+            console.log(err);
+          });
+      };
+    });
+    modal.present();
+  }
+
+
 }

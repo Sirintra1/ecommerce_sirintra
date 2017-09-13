@@ -24,7 +24,7 @@ export class SearchServiceProvider {
     // return this.http.get(Constants.URL + '/api/productmasters')
     //return this.http.get('./assets/example_data/search.json')
     //return this.http.get(Constants.URL + '/api/productlistbytitle/Searchlist')
-    return this.http.get('http://localhost:3000/api/products')
+    return this.http.get(Constants.URL + '/api/products')
       .toPromise()
       .then(response => response.json() as SearchModel)
       .catch(this.handleError);

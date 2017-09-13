@@ -27,14 +27,14 @@ export class ShopDetailServiceProvider {
   // }
   getShopDetail(id): Promise<ShopDetailModel> {
     // return this.http.get('./assets/example_data/shopdetail.json')
-    return this.http.get('http://localhost:3000/api/shops/' + id)
+    return this.http.get(Constants.URL + '/api/shops/' + id)
       .toPromise()
       .then(response => response.json() as ShopDetailModel)
       .catch(this.handleError);
   }
   writeReview(id, reviewData): Promise<ShopDetailModel> {
     // return this.http.get('./assets/example_data/shopdetail.json')
-    return this.http.post('http://localhost:3000/api/shop/review/' + id, reviewData)
+    return this.http.post(Constants.URL + '/api/shop/review/' + id, reviewData)
       .toPromise()
       .then(response => response.json() as ShopDetailModel)
       .catch(this.handleError);

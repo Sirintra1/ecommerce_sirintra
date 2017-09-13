@@ -26,7 +26,7 @@ export class ProductDetailServiceProvider {
   // }
   getProductDetail(id): Promise<ProductDetailModel> {
     // return this.http.get('./assets/example_data/productdetail.json')
-    return this.http.get('http://localhost:3000/api/products/' + id)
+    return this.http.get(Constants.URL + '/api/products/' + id)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
@@ -34,7 +34,7 @@ export class ProductDetailServiceProvider {
 
   postProductReview(id, review): Promise<ProductDetailModel> {
     // return this.http.get('./assets/example_data/productdetail.json')
-    return this.http.post('http://localhost:3000/api/products/review/' + id, review)
+    return this.http.post(Constants.URL + '/api/products/review/' + id, review)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
@@ -53,7 +53,7 @@ export class ProductDetailServiceProvider {
     var favorite = {
       user: user
     };
-    return this.http.post('http://localhost:3000/api/products/favorite/' + id, favorite)
+    return this.http.post(Constants.URL + '/api/products/favorite/' + id, favorite)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);

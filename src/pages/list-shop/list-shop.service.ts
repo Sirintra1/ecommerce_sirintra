@@ -23,14 +23,14 @@ export class ListShopServiceProvider {
   getListShop(): Promise<ListShopModel> {
     //return this.http.get(Constants.URL + '/api/shopmasters')
     // return this.http.get('./assets/example_data/listshop.json')
-    return this.http.get('http://localhost:3000/api/shops')
+    return this.http.get(Constants.URL + '/api/shops')
       .toPromise()
       .then(response => response.json() as ListShopModel)
       .catch(this.handleError);
   }
   addShop(shop): Promise<ShopModel> {
     //return this.http.get(Constants.URL + '/api/shopmasters')
-    return this.http.post('http://localhost:3000/api/shops', shop)
+    return this.http.post(Constants.URL + '/api/shops', shop)
       .toPromise()
       .then(response => shop as ShopModel)
       .catch(this.handleError);

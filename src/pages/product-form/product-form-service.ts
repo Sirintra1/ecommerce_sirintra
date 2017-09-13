@@ -26,7 +26,7 @@ export class ProductFormServiceProvider {
   // }
   getShippings(): Promise<Array<Shipping>> {
     // return this.http.get('./assets/example_data/productdetail.json')
-    return this.http.get('http://localhost:3000/api/shippings/')
+    return this.http.get(Constants.URL + '/api/shippings/')
       .toPromise()
       .then(response => response.json() as Array<Shipping>)
       .catch(this.handleError);
@@ -34,7 +34,7 @@ export class ProductFormServiceProvider {
 
   getCategories(): Promise<Array<Category>> {
     // return this.http.get('./assets/example_data/productdetail.json')
-    return this.http.get('http://localhost:3000/api/categories/')
+    return this.http.get(Constants.URL + '/api/categories/')
       .toPromise()
       .then(response => response.json() as Array<Category>)
       .catch(this.handleError);

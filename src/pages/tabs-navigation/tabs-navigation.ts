@@ -4,6 +4,7 @@ import { SearchPage } from "../search/search";
 import { CartPage } from "../cart/cart";
 import { ProfilePage } from "../profile/profile";
 import { FavoritePage } from "../favorite/favorite";
+import { ListProductPage } from "../list-product/list-product";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class TabsNavigationPage {
 
   constructor() {
     this.tab1Root = HomePage;
-    this.tab2Root = SearchPage;
+    this.tab2Root = ListProductPage;
     this.tab3Root = CartPage;
     this.tab4Root = FavoritePage;
     this.tab5Root = ProfilePage;

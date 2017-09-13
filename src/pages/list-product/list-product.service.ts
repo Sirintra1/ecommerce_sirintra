@@ -22,14 +22,14 @@ export class ListProductServiceProvider {
   }
   getProductList(): Promise<ListProductViewModel> {
     //return this.http.get(Constants.URL + '/api/productlistbytitle/Productlist')
-    return this.http.get('http://localhost:3000/api/products')
+    return this.http.get(Constants.URL + '/api/products')
       .toPromise()
       .then(response => response.json() as ListProductViewModel)
       .catch(this.handleError);
   }
 
   postProduct(product): Promise<ProductModel> {
-    return this.http.post('http://localhost:3000/api/products', product)
+    return this.http.post(Constants.URL + '/api/products', product)
       .toPromise()
       .then(response => response.json() as ProductModel)
       .catch(this.handleError);
