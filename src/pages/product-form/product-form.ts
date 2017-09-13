@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ProductModel } from "./product-form.model";
+import { ProductFormServiceProvider } from "./product-form-service";
+import { Category, Shipping } from "../../app/app.model";
 
 /**
  * Generated class for the ProductFormPage page.
@@ -14,16 +16,37 @@ import { ProductModel } from "./product-form.model";
   templateUrl: 'product-form.html',
 })
 export class ProductFormPage {
+  shippings: Array<Shipping>=[];
+  categories: Array<Category>=[];
   productForm: ProductModel = new ProductModel();
   image: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  locations: any = [{
+    id:1,
+    name: 'one'
+  },
+  {
+    id:2,
+    name: 'two'
+  }];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public productFormServiceProvider:ProductFormServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductFormPage');
+    this.productFormServiceProvider.getCategories().then(data => {
+      this.categories = data;
+    }, (err) => {
+      console.log(err);
+    });
+    this.productFormServiceProvider.getShippings().then(data => {
+      this.shippings = data;
+    }, (err) => {
+      console.log(err);
+    })
   }
 
   createProduct() {
+    console.log(this.productForm);
     this.viewCtrl.dismiss({ data: this.productForm });
   }
 

@@ -9,6 +9,19 @@ export class ProductItemModel {
   rate: number;
 }
 
+export class Category{
+  _id: string;
+  name: string;
+}
+
+export class Shipping{
+  _id:string;
+  name:string;
+  detail:string;
+  dudate: number;
+  price:number;
+}
+
 export class ReviewsModel {
   _id: string;
   topic: string;

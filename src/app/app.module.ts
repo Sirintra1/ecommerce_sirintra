@@ -128,6 +128,7 @@ import { PolicyPage } from "../pages/policy/policy";
 import { HelpServiceProvider } from '../pages/help/help.service';
 import { HelpPage } from "../pages/help/help";
 import { MomentPipe } from '../pipes/moment/moment';
+import { ProductFormServiceProvider } from "../pages/product-form/product-form-service";
 // import { RegisterServiceProvider } from "../pages/checkout/";
 
 export function createTranslateLoader(http: Http) {
@@ -284,7 +285,8 @@ export function createTranslateLoader(http: Http) {
     SettingServiceProvider,
     LangaugeServiceProvider,
     PolicyServiceProvider,
-    HelpServiceProvider
+    HelpServiceProvider,
+    ProductFormServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
