@@ -19,7 +19,7 @@ export class HomeService {
   // }
 
   getData(): Promise<HomeModel> {
-    return this.http.get('./assets/example_data/home.json')
+    return this.http.get('http://localhost:3000/api/dataofcategories')
      .toPromise()
      .then(response => response.json() as HomeModel)
      .catch(this.handleError);
