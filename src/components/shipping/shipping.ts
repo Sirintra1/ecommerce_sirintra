@@ -15,6 +15,8 @@ export class ShippingComponent {
   @Input() listaddress: Array<any>;
   @Input() listshipping: any;
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
+  @Output() createAddress: EventEmitter<any> = new EventEmitter<any>();
+
   address = {};
   data: any = {
     order: {
@@ -32,64 +34,10 @@ export class ShippingComponent {
     console.log('Hello ShippingComponent Component');
   }
 
-  showPrompt() {
-    let prompt = this.alertCtrl.create({
-      title: 'New Address',
-      inputs: [
-        {
-          name: 'firstname',
-          placeholder: 'Firstname'
-        },
-        {
-          name: 'lastname',
-          placeholder: 'Lastname'
-        },
-        {
-          name: 'tel',
-          placeholder: 'Tel'
-        },
-        {
-          name: 'address',
-          placeholder: 'Address'
-        },
-        {
-          name: 'subdistrict',
-          placeholder: 'Subdistrict'
-        },
-        {
-          name: 'district',
-          placeholder: 'District'
-        },
-        {
-          name: 'province',
-          placeholder: 'Province'
-        },
-        {
-          name: 'postcode',
-          placeholder: 'Postcode'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.listaddress.push(data);
-            this.saveAddressData(data)
-            console.log('Saved clicked');
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
+
 
   saveAddressData(data) {
+
     this.address = data;
     this.checkoutServiceProvider.saveAddressData(this.address).then((data) => {
     }, (error) => {
@@ -153,4 +101,7 @@ export class ShippingComponent {
     }
   }
 
+  openModal() {
+    this.createAddress.emit('push model');
+  }
 }

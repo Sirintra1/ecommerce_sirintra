@@ -37,7 +37,9 @@ export class CheckoutServiceProvider {
 
   getAddressData(): Promise<addressModel> {
     // return this.http.get(Constants.URL + '/api/addressesbyuser')
-    return this.http.get('./assets/example_data/address.json')
+    // return this.http.get('./assets/example_data/address.json')
+    return this.http.get('http://localhost:3000/api/addresses')
+    
       .toPromise()
       .then(response => response.json() as addressModel)
       .catch(this.handleError);
@@ -50,7 +52,8 @@ export class CheckoutServiceProvider {
   //     .catch(this.handleError);
   // }
   saveAddressData(address): Promise<address> {
-    return this.http.post(Constants.URL + '/api/addresses', address)
+    // return this.http.post(Constants.URL + '/api/addresses', address)http://localhost:3000/api/addresses
+    return this.http.post('http://localhost:3000/api/addresses', address)
       .toPromise()
       .then(response => response.json() as address)
       .catch(this.handleError);
