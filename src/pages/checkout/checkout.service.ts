@@ -39,7 +39,7 @@ export class CheckoutServiceProvider {
     // return this.http.get(Constants.URL + '/api/addressesbyuser')
     // return this.http.get('./assets/example_data/address.json')
     return this.http.get('http://localhost:3000/api/addresses')
-    
+
       .toPromise()
       .then(response => response.json() as addressModel)
       .catch(this.handleError);
@@ -60,7 +60,7 @@ export class CheckoutServiceProvider {
   }
 
   saveOrderData(order) {
-    return this.http.post(Constants.URL + '/api/order', order.order)
+    return this.http.post(Constants.URL + '/api/orders', order)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

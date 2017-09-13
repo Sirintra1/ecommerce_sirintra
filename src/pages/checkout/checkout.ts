@@ -157,7 +157,11 @@ export class CheckoutPage {
     this.dataconfirm = e;
     console.log(this.dataconfirm);
     if (this.dataconfirm && this.dataconfirm.order) {
-      this.navCtrl.push(CompleteOrderedPage);
+      this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
+        this.navCtrl.push(CompleteOrderedPage);
+      }, (error) => {
+        this.log.error(error);
+      });
     }
     // let loading = this.loadingCtrl.create();
     // loading.present();
