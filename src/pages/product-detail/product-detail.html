@@ -15,8 +15,8 @@
                 <p class="text-title">{{productdetailData.name}}</p>
                 <p>{{productdetailData.detail}}</p>
                 <p *ngIf="productdetailData.promotionprice">
-                    <span class="text-big-red">{{productdetailData.promotionprice}} {{productdetailData.currency | translate}}</span>
-                    <span class="text-decoration">{{productdetailData.price}} {{productdetailData.currency | translate}}</span>
+                    <span class="text-big-red">{{productdetailData.promotionprice | number}} {{productdetailData.currency | translate}}</span>
+                    <span class="text-decoration">{{productdetailData.price | number}} {{productdetailData.currency | translate}}</span>
                     <span>-{{productdetailData.percentofdiscount}} %</span>
                 </p>
                     <h4 *ngIf="!productdetailData.promotionprice">{{productdetailData.price}} {{productdetailData.currency | translate}}</h4>
