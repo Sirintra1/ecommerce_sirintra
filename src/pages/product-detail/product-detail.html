@@ -14,14 +14,16 @@
             <ion-col>
                 <p class="text-title">{{productdetailData.name}}</p>
                 <p>{{productdetailData.detail}}</p>
-                <p>
+                <p *ngIf="productdetailData.promotionprice">
                     <span class="text-big-red">{{productdetailData.promotionprice}} {{productdetailData.currency | translate}}</span>
                     <span class="text-decoration">{{productdetailData.price}} {{productdetailData.currency | translate}}</span>
                     <span>-{{productdetailData.percentofdiscount}} %</span>
                 </p>
+                    <h4 *ngIf="!productdetailData.promotionprice">{{productdetailData.price}} {{productdetailData.currency | translate}}</h4>
+
             </ion-col>
         </ion-row>
-        <ion-row *ngIf="productdetailData.rate" >
+        <ion-row *ngIf="productdetailData.rate">
             <ion-col width-50>
                 <rating [(ngModel)]="productdetailData.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
                     starIconName="star" nullable="false"></rating>
@@ -64,7 +66,7 @@
         </ion-col>
     </ion-row>
 
-    <ion-grid class="product-detail-card" (click)="goToShop()" *ngIf="productdetailData.shop" >
+    <ion-grid class="product-detail-card" (click)="goToShop()" *ngIf="productdetailData.shop">
 
         <ion-row>
             <ion-col>
@@ -72,17 +74,17 @@
             </ion-col>
 
         </ion-row>
-         <ion-row>
+        <ion-row>
             <ion-col text-left>
                 <rating [(ngModel)]="productdetailData.shop.rate" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
                     starIconName="star" nullable="false"></rating>
             </ion-col>
-        </ion-row> 
+        </ion-row>
 
     </ion-grid>
 
     <!-- reviews -->
-    <review [items]="productdetailData.reviews" [rate]="productdetailData.rate" (modalReview)="writeReview($event)" *ngIf="productdetailData.rate" ></review>
+    <review [items]="productdetailData.reviews" [rate]="productdetailData.rate" (modalReview)="writeReview($event)" *ngIf="productdetailData.rate"></review>
 
     <!-- other -->
     <ion-row class="promotion-row" *ngIf="productdetailData.other">
