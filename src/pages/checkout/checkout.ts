@@ -102,7 +102,7 @@ export class CheckoutPage {
 
   completedShippingStep(e) {
     this.order = e;
-    this.currentstep += 1;
+    this.currentstep = 2;
     console.log('------ 1 ------', this.order);
   }
 
@@ -112,8 +112,8 @@ export class CheckoutPage {
 
   completedPaymentStep(e) {
     this.order.payment = e;
-    console.log('------ 2 ------', this.order);    
-    this.currentstep += 1;
+    console.log('------ 2 ------', this.order);
+    this.currentstep = 3;
   }
 
   // end form function 2
@@ -121,7 +121,14 @@ export class CheckoutPage {
   // form function 3
 
   completedConfirmStep(e) {
-    console.log('completedConfirmStep');
+    this.order.payment = e;
+    console.log('------ 3 ------', this.order);
+    let myObjOrder = JSON.parse(JSON.stringify(this.order));
+    this.checkoutServiceProvider.saveOrderData(myObjOrder).then((data) => {
+      this.navCtrl.push(CompleteOrderedPage);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   // end form function 3

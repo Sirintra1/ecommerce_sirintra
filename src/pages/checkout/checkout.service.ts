@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { Constants } from "../../app/app.contants";
-import { AddressListModel, AddressModel, PaymentMasterModel } from "./checkout.model";
+import { AddressListModel, AddressModel, PaymentMasterModel, CheckoutModel } from "./checkout.model";
 
 /*
   Generated class for the CheckoutServiceProvider provider.
@@ -42,6 +42,16 @@ export class CheckoutServiceProvider {
     return this.http.get('./assets/example_data/payments.json')
       .toPromise()
       .then(response => response.json() as PaymentMasterModel)
+      .catch(this.handleError);
+  }
+
+  saveOrderData(order): Promise<CheckoutModel> {
+    // return this.http.get()    
+    let user = JSON.parse(window.localStorage.getItem('e7e_jjecommerce_buy_user'));
+    order.user = user;
+    return this.http.post(Constants.URL + '/api/orders', order)
+      .toPromise()
+      .then(response => response.json() as CheckoutModel)
       .catch(this.handleError);
   }
 

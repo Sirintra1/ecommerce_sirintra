@@ -15,13 +15,12 @@
           <ion-row>
             <ion-col col-8>
               <ion-item>
-                <!-- [(ngModel)]="confirm.discount" -->
-                <ion-input type="text"  (ngModelChange)="discount(confirm.discount)"
-                  placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
+                <!-- [(ngModel)]="confirm.discountcode" -->
+                <ion-input type="text" [(ngModel)]="confirm.discountcode" placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-4>
-              <button ion-button block color="warning" (click)="discount(confirm.discount)">ยืนยัน</button>
+              <button ion-button block color="warning" (click)="discount()">ยืนยัน</button>
             </ion-col>
           </ion-row>
           <ion-item>
@@ -42,7 +41,7 @@
               </ion-row>
               <ion-row no-padding>
                 <ion-col no-padding width-20 class="item-avatar">
-                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.image}}"></preload-image>
+                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.images[0]}}"></preload-image>
                 </ion-col>
                 <ion-col no-padding width-60 class="white-space">
                   <h3 class="item-title">{{item.product.name}}</h3>
@@ -64,8 +63,8 @@
             <p>ที่อยู่จัดส่ง</p>
             <ion-col col-12>
               <p class="review-address">{{confirm.shipping.firstname}} {{confirm.shipping.lastname}}</p>
-              <p class="review-address">{{confirm.shipping.address}} {{confirm.shipping.subdistrict}} {{confirm.shipping.district}}
-                {{confirm.shipping.province}} {{confirm.shipping.postcode}}
+              <p class="review-address">{{confirm.shipping.address}} {{confirm.shipping.subdistrict}} {{confirm.shipping.district}} {{confirm.shipping.province}}
+                {{confirm.shipping.postcode}}
               </p>
               <p class="review-address">โทร : {{confirm.shipping.tel}}</p>
             </ion-col>
