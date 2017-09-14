@@ -34,11 +34,11 @@
           <div>
             <div *ngFor="let item of confirm.items">
               <ion-list>
-                <b padding-left>{{item.product.shop.name}}</b>
                 <ion-item>
                   <ion-thumbnail item-start>
                     <preload-image [ratio]="{w:1, h:1}" [src]="item.product.images[0]"></preload-image>
                   </ion-thumbnail>
+                  <h2>{{item.product.shop.name}}</h2>
                   <h2>{{item.product.name}}</h2>
                   <p> {{item.qty}} {{'QTY' | translate}}</p>
                   <p class="color-orenge-custom" *ngIf="item.discount > 0">{{item.amount | number}} {{item.currency | translate}}</p>
@@ -67,7 +67,7 @@
           </ion-list>
           <ion-row class="marginB">
             <ion-col col-12>
-              <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>         
+              <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>
             </ion-col>
           </ion-row>
         </div>

@@ -38,6 +38,15 @@ export class CartService {
 
     let localCart = JSON.parse(window.localStorage.getItem('cart'));
 
+
+    if (!localCart) {
+      localCart = {
+        cart: {
+          items: []
+        }
+      }
+    }
+
     if (!localCart.cart) {
       localCart.cart = {
         items: []
