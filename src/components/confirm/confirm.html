@@ -15,7 +15,6 @@
           <ion-row>
             <ion-col col-8>
               <ion-item>
-                <!-- [(ngModel)]="confirm.discountcode" -->
                 <ion-input type="text" [(ngModel)]="confirm.discountcode" placeholder="ใส่โค้ดส่วนลดตรงนี้"></ion-input>
               </ion-item>
             </ion-col>
@@ -25,53 +24,50 @@
           </ion-row>
           <ion-item>
             <p><b>ยอดสุทธิ (รวมภาษีมูลค่าเพิ่ม)</b></p>
-            <p item-end><b>{{confirm.amount | number}} บาท</b></p>
+            <p item-end><b>{{confirm.totalamount | number}} บาท</b></p>
           </ion-item>
         </ion-list>
         <ion-item-group>
           <ion-item-divider color="light"><b>รายการ</b></ion-item-divider>
         </ion-item-group>
         <div class="list-mini">
-          <ion-list *ngFor="let item of confirm.items">
+          <div>
+            <div *ngFor="let item of confirm.items">
+              <ion-list>
+                <b padding-left>{{item.product.shop.name}}</b>
+                <ion-item>
+                  <ion-thumbnail item-start>
+                    <preload-image [ratio]="{w:1, h:1}" [src]="item.product.images[0]"></preload-image>
+                  </ion-thumbnail>
+                  <h2>{{item.product.name}}</h2>
+                  <p> {{item.qty}} {{'QTY' | translate}}</p>
+                  <p class="color-orenge-custom" *ngIf="item.discount > 0">{{item.amount | number}} {{item.currency | translate}}</p>
+                  <span class="text-decoration" *ngIf="item.discount > 0">{{item.discount | number}} {{item.currency | translate}} </span>
+                  <span *ngIf="item.discount > 0">  - {{item.product.percentofdiscount | number}}% </span>
+                  <p text-right>รวม {{item.totalamount | number}} {{'CURRENCY' | translate}}</p>
+                </ion-item>
+              </ion-list>
+              <ion-row class="shippings">
+                <ion-col text-left>
+                  <p class="p-black shipping">{{'SHIPPINGMETHOD' | translate}} : {{item.delivery.name}}</p>
+                </ion-col>
+              </ion-row>
+              <hr>
+            </div>
+          </div>
+          <ion-list>
             <ion-item>
-              <ion-row>
-                <ion-col col-12>
-                  <p>{{item.product.shop.name}}</p>
-                </ion-col>
-              </ion-row>
-              <ion-row no-padding>
-                <ion-col no-padding width-20 class="item-avatar">
-                  <preload-image class="avatar-image" [ratio]="{w:1, h:1}" src="{{item.product.images[0]}}"></preload-image>
-                </ion-col>
-                <ion-col no-padding width-60 class="white-space">
-                  <h3 class="item-title">{{item.product.name}}</h3>
-                  <p class="item-description">จำนวน: {{item.qty}}</p>
-                </ion-col>
-                <ion-col no-padding width-20>
-                  <p>{{item.product.price}} บาท</p>
-                </ion-col>
-              </ion-row>
-              <ion-row no-padding>
-                <ion-col padding width-100 text-center class="ion-col-deilvery">
-                  <p>{{item.delivery.name}}</p>
-                  <p>{{item.delivery.detail}}</p>
-                </ion-col>
-              </ion-row>
-            </ion-item>
-          </ion-list>
-          <ion-row>
-            <p>ที่อยู่จัดส่ง</p>
-            <ion-col col-12>
+              <p><b>ที่อยู่จัดส่ง</b></p>
               <p class="review-address">{{confirm.shipping.firstname}} {{confirm.shipping.lastname}}</p>
               <p class="review-address">{{confirm.shipping.address}} {{confirm.shipping.subdistrict}} {{confirm.shipping.district}} {{confirm.shipping.province}}
                 {{confirm.shipping.postcode}}
               </p>
               <p class="review-address">โทร : {{confirm.shipping.tel}}</p>
-            </ion-col>
-          </ion-row>
+            </ion-item>
+          </ion-list>
           <ion-row class="marginB">
             <ion-col col-12>
-              <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>
+              <button ion-button block color="warning" (click)="stepValidation()">สั่งสินค้า</button>         
             </ion-col>
           </ion-row>
         </div>

@@ -80,8 +80,10 @@ export class CheckoutPage {
   getCartData() {
     let loading = this.loadingCtrl.create();
     loading.present();
-    this.cartData = JSON.parse(window.localStorage.getItem('cart')).cart;
-    loading.dismiss();
+    setTimeout(() => {
+      this.cartData = JSON.parse(window.localStorage.getItem('cart')).cart;
+      loading.dismiss();
+    }, 2000);
   }
 
   getAddress() {
@@ -121,12 +123,13 @@ export class CheckoutPage {
   // form function 3
 
   completedConfirmStep(e) {
-    this.order.payment = e;
+    this.order = e;
+    this.order._id ? this.order._id = null : false;
     console.log('------ 3 ------', this.order);
-    let myObjOrder = JSON.parse(JSON.stringify(this.order));
-    this.checkoutServiceProvider.saveOrderData(myObjOrder).then((data) => {
+    this.checkoutServiceProvider.saveOrderData(this.order).then((data) => {
       this.navCtrl.push(CompleteOrderedPage);
     }, (error) => {
+      alert(JSON.stringify(error));
       console.log(error);
     });
   }

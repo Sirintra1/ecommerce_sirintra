@@ -4,6 +4,7 @@ export class CheckoutModel { // Order Schema Model
     _id: string;
     items: Array<CheckoutItemModel>;
     amount: number;
+    discountcode: string;
     discount: number;
     totalamount: number;
     deliveryprice: number;

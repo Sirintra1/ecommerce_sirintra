@@ -22,11 +22,15 @@ export class ShippingComponent {
 
   selectedaddress(address) {
     this.cartItems.shipping = address;
-    console.log(this.cartItems.shipping);    
+    console.log(this.cartItems.shipping);
   }
 
   selectedShipping(item, shipping) {
-    item.delivery = shipping;
+    item.delivery = {
+      detail: shipping.detail,
+      name: shipping.name,
+      price: shipping.price
+    };
     this.calculate();
     console.log(item);
   }
@@ -82,7 +86,8 @@ export class ShippingComponent {
 
   stepValidation() {
     let cart = this.cartItems;
-    if(!cart.shipping){
+    if (!cart.shipping) {
+      alert('กรุณาระบุที่อยู่จัดส่ง');
       return;
     }
     for (let i = 0; i < cart.items.length; i++) {
