@@ -1,6 +1,7 @@
 import { ProductItemModel } from "../../app/app.model";
 
 export class CheckoutModel { // Order Schema Model
+    _id: string;
     items: Array<CheckoutItemModel>;
     amount: number;
     discount: number;

@@ -13,9 +13,16 @@ export class ConfirmComponent {
   data: any;
   @Input() confirm: any;
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
-  confirmdiscount: string;
   constructor() {
     console.log('Hello ConfirmComponent Component');
+  }
+
+  discount(){
+    console.log(this.confirm.discountcode);
+  }
+
+  stepValidation(){
+    this.gotoNext.emit(this.confirm);
   }
 
 }
