@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController, App } from 'ionic-angular';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
@@ -61,7 +61,8 @@ export class CheckoutPage {
     public log: LogServiceProvider,
     public authorizeProvider: AuthorizeProvider,
     public modalCtrl: ModalController,
-    public cartService: CartService
+    public cartService: CartService,
+    public app: App
   ) {
   }
 
@@ -123,14 +124,19 @@ export class CheckoutPage {
   // form function 3
 
   completedConfirmStep(e) {
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.order = e;
     this.order._id ? this.order._id = null : false;
     console.log('------ 3 ------', this.order);
     this.checkoutServiceProvider.saveOrderData(this.order).then((data) => {
-      this.navCtrl.push(CompleteOrderedPage);
+      this.app.getRootNav().setRoot(CompleteOrderedPage); // set full page
+      loading.dismiss();
     }, (error) => {
+      loading.dismiss();
       alert(JSON.stringify(error));
       console.log(error);
+
     });
   }
 

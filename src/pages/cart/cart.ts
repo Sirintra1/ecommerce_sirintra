@@ -47,8 +47,8 @@ export class CartPage {
       console.log(this.cartData);
     }
   }
-
-  ionViewDidLeave() {
+  
+  ionViewWillLeave() {
     let user = this.authorizeProvider.getAuthorization()
     if (user && this.cartData.cart) {
       this.updateCartDataService();
