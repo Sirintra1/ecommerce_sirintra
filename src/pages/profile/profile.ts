@@ -37,14 +37,12 @@ export class ProfilePage {
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ProfilePage');
     this.getProfileData();
+    
   }
 
   ionViewWillEnter() {
     //this.getUser();
-  }
-
-  getUser() {
-    //this.profileData = this.authorizeProvider.getAuthorization();
+    this.getProfileData();
   }
 
   goLogin() {
@@ -54,16 +52,10 @@ export class ProfilePage {
   logout() {
     this.authorizeProvider.unAuthorization();
     window.localStorage.removeItem('cart');
-    this.getUser();
+    this.getProfileData();
   }
   getProfileData() {
-    this.profileService
-      .getProfile()
-      .then((data) => {
-        this.profileData = data;
-      }, (err) => {
-        this.log.error(err);
-      });
+    this.profileData = this.authorizeProvider.getAuthorization();
   }
 
   notification() {
