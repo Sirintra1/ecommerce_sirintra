@@ -10,6 +10,7 @@ export class ProductDetailModel {
     currency: string;
     images: Array<string>;
     rate: number; // calculate from reviews
+    isfavorite: boolean;
     reviews: Array<ReviewsModel>; // relate of Reviews
     shippings: Array<ShippingMethodModel>;
     shop: ShopModel = new ShopModel();

@@ -55,6 +55,8 @@ export class ProductDetailPage {
     this.productDetailService.getProductDetail(this.product._id).then((data) => {
       loadingCtrl.dismiss();
       this.productdetailData = data;
+      this.isLiked = data.isfavorite;
+      this.nameOfLike = this.isLiked ? 'ios-heart' : 'ios-heart-outline';
       // this.reviewSummary(this.productdetailData.reviews);
       console.log(this.productdetailData);
     }, (err) => {
@@ -87,11 +89,28 @@ export class ProductDetailPage {
   liked() {
     this.isLiked = !this.isLiked;
     this.nameOfLike = this.isLiked ? 'ios-heart' : 'ios-heart-outline';
-    this.productDetailService.addFavorite(this.product._id).then((data) => {
-      alert('add Favorite success');
-    }, (err) => {
-      console.log(err);
-    });
+
+    let loadingCtrl = this.loadingCtrl.create();
+    loadingCtrl.present();
+    if (this.isLiked) {
+      this.productDetailService.addFavorite(this.product._id).then((data) => {
+        loadingCtrl.dismiss();
+        this.getProductdetailData();
+      }, (err) => {
+        loadingCtrl.dismiss();
+        console.log(err);
+      });
+    } else {
+      this.productDetailService.unFavorite(this.product._id).then((data) => {
+        loadingCtrl.dismiss();
+        this.getProductdetailData();
+      }, (err) => {
+        loadingCtrl.dismiss();
+        console.log(err);
+      });
+
+    }
+
     //alert(this.isLiked);
   }
 

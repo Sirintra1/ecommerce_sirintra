@@ -26,7 +26,7 @@ export class ProductDetailServiceProvider {
   // }
   getProductDetail(id): Promise<ProductDetailModel> {
     // return this.http.get('./assets/example_data/productdetail.json')
-    return this.http.get(Constants.URL + '/api/products/' + id)
+      return this.http.get(Constants.URL + '/api/products/' + id)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
@@ -54,6 +54,13 @@ export class ProductDetailServiceProvider {
       user: user
     };
     return this.http.post(Constants.URL + '/api/products/favorite/' + id, favorite)
+      .toPromise()
+      .then(response => response.json() as ProductDetailModel)
+      .catch(this.handleError);
+  }
+
+  unFavorite(id): Promise<ProductDetailModel> {
+    return this.http.get(Constants.URL + '/api/products/unfavorite/' + id)
       .toPromise()
       .then(response => response.json() as ProductDetailModel)
       .catch(this.handleError);
