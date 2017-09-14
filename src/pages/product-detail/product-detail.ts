@@ -118,12 +118,13 @@ export class ProductDetailPage {
     let modal = this.modalCtrl.create(WriteReviewPage, { data: this.product }, );
     // Getting data from the modal:
     modal.onDidDismiss(data => {
-      this.productDetailService.postProductReview(this.product._id, data).then((resp) => {
-        this.getProductdetailData();
-      }, (error) => {
-        console.error(error);
-      });
-
+      if (data) {
+        this.productDetailService.postProductReview(this.product._id, data).then((resp) => {
+          this.getProductdetailData();
+        }, (error) => {
+          console.error(error);
+        });
+      }
     });
     modal.present();
   }
