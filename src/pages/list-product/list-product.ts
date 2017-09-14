@@ -26,37 +26,24 @@ export class ListProductPage {
 
   ionViewDidLoad() {
     this.log.info('ionViewDidLoad ListProductPage');
-    // let view = this.navParams.get('view');
-    // if (view === 'shop') {
-    //   let data = this.navParams.get('data');
-    //   this.getListProductByShop(data);
-    // } else {
-    //   this.getListProductByHome(view);
-    // }
     this.getListProduct();
   }
   getListProduct() {
     this.listProductService.getProductList().then(data => {
       this.listProductData = data;
+      console.log(this.listProductData);
     }, (err) => {
       this.log.error(err);
     })
   }
-  // getListProductByShop(data) {
-  //   this.listProductService.getProductListByShop(data).then((data) => {
-  //     this.listProductData = data;
-  //   }, (err) => {
-  //     this.log.error(err);
-  //   });
-  // }
-
-  // getListProductByHome(view) {
-  //   this.listProductService.getProductListByHome(view).then((data) => {
-  //     this.listProductData = data;
-  //   }, (err) => {
-  //     this.log.error(err);
-  //   });
-  // }
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getListProduct();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 
   selectedItem(e) {
     this.navCtrl.push(ProductDetailPage, { data: e });
