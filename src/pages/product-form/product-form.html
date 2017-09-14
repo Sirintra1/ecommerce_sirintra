@@ -78,7 +78,6 @@
     </ion-item>
 
   </ion-list>
-  {{productForm.categories ? productForm.categories.length : []}}
   <p *ngFor="let item of productForm.images">{{item}}</p>
 
   <button ion-button color="dark" round (click)="addImage()">Add Image</button>
