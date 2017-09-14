@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { address } from '../checkout/checkout.model';
-
+import { AddressModel } from "../checkout/checkout.model";
 /**
  * Generated class for the FormAddressPage page.
  *
@@ -14,7 +13,7 @@ import { address } from '../checkout/checkout.model';
   templateUrl: 'form-address.html',
 })
 export class FormAddressPage {
-  address: address = new address();
+  address: AddressModel = new AddressModel();
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
@@ -26,6 +25,7 @@ export class FormAddressPage {
   }
 
   saveAddress() {
-    this.viewCtrl.dismiss(this.address);
+    this.viewCtrl.dismiss({ address: this.address });
   }
+
 }

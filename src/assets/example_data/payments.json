@@ -1,32 +1,32 @@
 {
     "payment": [{
             "name": "credit",
-            "img": "./assets/images/payment/card.png"
+            "image": "./assets/images/payment/card.png"
         },
         {
             "name": "delivery",
-            "img": "./assets/images/payment/cashondelivery.png"
+            "image": "./assets/images/payment/cashondelivery.png"
         },
         {
             "name": "bank",
-            "img": "./assets/images/payment/bank-building.png"
+            "image": "./assets/images/payment/bank-building.png"
         }
     ],
     "counterservice": [{
             "name": "KTB",
-            "img": "./assets/images/payment/KTBB.jpg"
+            "image": "./assets/images/payment/KTBB.jpg"
         },
         {
             "name": "SCB",
-            "img": "./assets/images/payment/SCB.png"
+            "image": "./assets/images/payment/SCB.png"
         },
         {
             "name": "krungsri",
-            "img": "./assets/images/payment/krungsri.jpg"
+            "image": "./assets/images/payment/krungsri.jpg"
         },
         {
             "name": "bangkokbank",
-            "img": "./assets/images/payment/bangkokbank.png"
+            "image": "./assets/images/payment/bangkokbank.png"
         }
     ]
 }

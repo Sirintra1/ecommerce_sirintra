@@ -1,8 +1,7 @@
-<ion-payments [paymentgateway]="paymentgateway.payment" [datashipping]="datashipping" (datapayment)="paymentType($event)"
-  [(channel)]="channel">
+<ion-payments [paymentgateway]="paymentgateway.payment" (datapayment)="paymentType($event)" [(channel)]="channel">
   <credit [value]="'credit'" (datacredit)="formcredit($event)"></credit>
   <delivery [value]="'delivery'"></delivery>
-  <counterservice [value]="'bank'" [paymentgateway]="paymentgateway.counterservice" [datapayment]="datapayment"></counterservice>
+  <counterservice [value]="'bank'" [paymentgateway]="paymentgateway.counterservice" (datapayment)="counterservice($event)"></counterservice>
   <ion-grid>
     <ion-row>
       <ion-col>

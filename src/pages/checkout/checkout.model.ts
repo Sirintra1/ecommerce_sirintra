@@ -1,38 +1,36 @@
 import { ProductItemModel } from "../../app/app.model";
-// new checkoutmodel
 
-export class CheckoutModel {
-    _id: string;
+export class CheckoutModel { // Order Schema Model
     items: Array<CheckoutItemModel>;
     amount: number;
     discount: number;
     totalamount: number;
+    deliveryprice: number;
+    shipping: AddressModel = new AddressModel();
+    payment: PaymentModel = new PaymentModel();
 };
-export class CheckoutItemModel {
+
+export class CheckoutItemModel { //items form cart and create deliveryprice , delivery
     product: ProductItemModel;
     qty: number;
     amount: number;
     discount: number;
     totalamount: number;
+    deliveryprice: number;
+    delivery: DeliveryModel = new DeliveryModel();
 };
-// 
 
-export class ShippingModel {
-    _id: string;
-    products: Array<PaymentItemModel>;
-    amount: number;
-};
-export class PaymentItemModel {
-    product: ProductItemModel;
+export class DeliveryModel { // user select form product shipping
+    detail: string;
+    name: string;
     price: number;
-    qty: number;
-    itemamount: number;
-};
-
-export class addressModel {
-    address: Array<address>;
 }
-export class address {
+
+export class AddressListModel { // Address list bind address by user
+    address: Array<AddressModel>;
+}
+
+export class AddressModel { // Address Schema
     _id: string;
     address: string;
     subdistrict: string;
@@ -41,132 +39,23 @@ export class address {
     postcode: string;
     firstname: string;
     lastname: string;
-    tel: string;
 }
 
-export class paymentModel {
-    payment: Array<payment>;
-    counterservice: Array<counter>;
+export class PaymentModel { // Payment
+    paymenttype: string;
+    creditno: string;
+    creditname: string;
+    expdate: string;
+    creditcvc: string;
+    counterservice: string;
 }
 
-export class payment {
+export class PaymentMasterModel { // Payment master
+    payment: Array<PaymentItemModel>;
+    counterservice: Array<PaymentItemModel>;
+}
+
+export class PaymentItemModel { // Payment master
     name: string;
-    img: string;
+    image: string;
 }
-
-export class counter {
-    name: string;
-    img: string;
-}
-
-// export class confirmModel {
-//     confirm: confirmdata = new confirmdata();
-// }
-
-// export class confirmdata {
-//     price: number;
-//     total: number;
-//     amount: number;
-//     shop: string;
-//     deliveryprice: number;
-//     shippingtype: string;
-//     customer: customer = new customer();
-//     products: Array<product>;
-// }
-
-// export class customer {
-//     displayName: string;
-//     tel: string;
-//     address: address = new address();
-// }
-
-// export class product {
-//     name: string;
-//     img: string;
-//     qty: number;
-//     price: number;
-//     choice: Array<choice>;
-//     shopdetail: shopdetail = new shopdetail();
-
-// }
-// export class shopdetail {
-//     name: string;
-// }
-
-// export class choice {
-//     discription: string;
-//     type: string;
-// }
-
-// export class shippingModel {
-//     _id: string;
-//     user: customer = new customer();
-//     products: Array<product>;
-//     total: number
-// }
-
-// export class saveOrder {
-//     shipping: saveOrderShipping = new saveOrderShipping();
-//     items: Array<saveProducts>;
-//     payment: savePayment = new savePayment();
-//     amount: number;
-//     discount: number;
-//     cart: string;
-// }
-
-// export class saveOrderShipping {
-//     _id: string;
-//     firstname: string;
-//     lastname: string;
-//     tel: string;
-//     address: string;
-//     subdistrict: string;
-//     district: string;
-//     province: string;
-//     postcode: string;
-// }
-
-// export class saveProducts {
-//     product: ProductDetailModel = new ProductDetailModel();
-//     qty: number;
-//     amount: number;
-//     delivery: delivery = new delivery();
-// }
-
-// export class savePayment {
-//     paymenttype: string;
-//     creditno: string;
-//     creditname: string;
-//     expdate: string;
-//     creditcvc: string;
-//     counterservice: string;
-// }
-
-// export class delivery {
-//     description: string;
-//     deliverytype: string;
-// }
-
-// export class ProductDetailModel {
-//     _id: string;
-//     name: string;
-//     unitprice: number;
-//     img: Array<ImageModel>;
-//     size: SizeModel = new SizeModel();
-// }
-
-// export class ImageModel {
-//     id: string;
-//     url: string;
-// }
-
-// export class SizeModel {
-//     detail: string;
-//     sizedetail: Array<SizeDetailModel>;
-// }
-
-// export class SizeDetailModel {
-//     name: string;
-//     qty: number;
-// }
-

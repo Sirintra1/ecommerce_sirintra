@@ -7,6 +7,7 @@ shipping {
     }
     .p-black {
         color: black;
+        font-size: 100% !important;
     }
     .swiper-container {
         position: relative;
@@ -20,5 +21,14 @@ shipping {
         height: 200% !important;
         /* height: 5000px; */
     }
-    
+    .shippings {
+        margin-top: -50px !important;
+        padding: 16px 16px 0px 16px !important;
+    }
+    .color-orenge-custom {
+        color: #ff5722;
+    }
+    .text-decoration {
+        text-decoration: line-through;
+    }
 }

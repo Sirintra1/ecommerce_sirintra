@@ -12,16 +12,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class IonPaymentsComponent {
   @Input() paymentgateway: any;
-  @Input() datashipping: any;
   @Input() channel: any;
   @Output() datapayment: EventEmitter<any> = new EventEmitter<any>();
-
+  datashipping: any;
   constructor() {
     console.log('Hello IonPaymentsComponent Component');
   }
 
   selectpayment(data) {
-    this.datashipping.order.payment = {
+    this.datashipping = {
       paymenttype: data.name
     };
     this.datapayment.emit(this.datashipping);

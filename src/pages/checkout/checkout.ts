@@ -3,17 +3,13 @@ import { IonicPage, NavController, NavParams, LoadingController, ModalController
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 
 import { CheckoutServiceProvider } from './checkout.service';
-import { address } from './checkout.model';
-import { addressModel } from './checkout.model';
-import { paymentModel } from './checkout.model';
-import { ShippingModel } from './checkout.model';
+import { CheckoutModel, AddressListModel, PaymentMasterModel } from './checkout.model';
 
-import { CheckoutModel } from './checkout.model';
-
-// import { confirmModel } from './checkout.model';
 import { CompleteOrderedPage } from "../complete-ordered/complete-ordered";
 import { AuthorizeProvider } from "../../providers/authorize/authorize";
 import { FormAddressPage } from '../form-address/form-address';
+import { CartService } from "../cart/cart.service";
+import { CartModel } from "../cart/cart.model";
 
 
 /**
@@ -28,16 +24,6 @@ import { FormAddressPage } from '../form-address/form-address';
   templateUrl: 'checkout.html',
 })
 export class CheckoutPage {
-  loading: any;
-  address: addressModel = new addressModel();
-  // address: Array<address>;
-  payment: paymentModel = new paymentModel();
-  shipping: CheckoutModel = new CheckoutModel();
-  // confirm: confirmModel = new confirmModel();
-  // addressdata : Array<any> = [];
-  datashipping: any = {};
-  datapayment: any = {};
-  dataconfirm: any = {};
   steps: Array<any> = [
     {
       value: 1,
@@ -54,136 +40,106 @@ export class CheckoutPage {
   ];
   currentstep: number = 1;
 
+  // form variable 1
+  cartData: CartModel = new CartModel();
+  order: CheckoutModel = new CheckoutModel();
+  address: AddressListModel = new AddressListModel();
+  // end form variable 1
+  // ******************************************************************************************  
+  // form variable 2
+  payment: PaymentMasterModel = new PaymentMasterModel();
+  // end form variable 2
+  // ******************************************************************************************  
+  // form variable 3
+
+  // end form variable 4
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public checkoutServiceProvider: CheckoutServiceProvider,
     public loadingCtrl: LoadingController,
     public log: LogServiceProvider,
     public authorizeProvider: AuthorizeProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public cartService: CartService
   ) {
-    this.loading = loadingCtrl.create();
   }
 
   ionViewWillEnter() {
     this.authorizeProvider.isAuthorization();
     let user = this.authorizeProvider.getAuthorization()
     if (user) {
-      this.getShippingData();
-      this.getAddressData();
-      this.getPayment();
+      this.getCartData();
+      this.getAddress();
+      this.getPaymentGateway();
     }
   }
 
-  ionViewDidLeave() {
-    this.log.info('ionViewDidLoad CheckoutPage');
-    let user = this.authorizeProvider.getAuthorization()
-    if (user && this.shipping._id) {
-      // this.updateCartDataService();
-    }
+  // form function 1
+
+  getCartData() {
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.cartData = JSON.parse(window.localStorage.getItem('cart')).cart;
+    loading.dismiss();
   }
 
-  getShippingData() {
-    this.checkoutServiceProvider.getData().then((data) => {
-      this.shipping = data;
-      console.log(this.shipping);
-      this.loading.dismiss();
-    }, (error) => {
-      this.log.error(error);
-      this.loading.dismiss();
-    });
-  }
-  getAddressData() {
-    this.checkoutServiceProvider.getAddressData().then((data) => {
+  getAddress() {
+    this.checkoutServiceProvider.getAddressListData().then((data) => {
       this.address = data;
-      this.loading.dismiss();
     }, (error) => {
-      this.log.error(error);
-      this.loading.dismiss();
+      console.log(error);
     });
   }
 
-  // getConfirm() {
-  //   this.checkoutServiceProvider.getConfirm().then((data) => {
-  //     this.confirm = data;
-  //     this.log.info(this.confirm);
-  //   }, (err) => {
-  //     this.log.error(err);
-  //   });
-  // }
-  getPayment() {
-    this.checkoutServiceProvider.getPayment().then((data) => {
+  getPaymentGateway() {
+    this.checkoutServiceProvider.getPaymentGatewayData().then((data) => {
       this.payment = data;
-      console.log(this.payment);
-      this.log.info(this.payment);
-    }, (err) => {
-      this.log.error(err);
+    }, (error) => {
+      console.log(error);
     });
   }
-  // getAddress() {
-  //   this.checkoutServiceProvider
-  //     .getAddress()
-  //     .then((data) => {
-  //       this.address = data;
-  //       this.log.info(this.address);
-  //     }, (err) => {
-  //       this.log.error(err);
-  //     });
-  // }
-  // getShipping() {
-  //   this.checkoutServiceProvider
-  //     .getShipping()
-  //     .then((data) => {
-  //       this.shipping = data;
-  //       this.log.info(this.shipping);
-  //     }, (err) => {
-  //       this.log.error(err);
-  //     });
-  // }
 
   completedShippingStep(e) {
-    this.datashipping = e;
-    // alert('completedShippingStep');
+    this.order = e;
     this.currentstep += 1;
+    console.log('------ 1 ------', this.order);
   }
+
+  // end form function 1
+  // ******************************************************************************************
+  // form function 2
 
   completedPaymentStep(e) {
-    this.datapayment = e;
-    // alert('completedPaymentStep');
+    this.order.payment = e;
+    console.log('------ 2 ------', this.order);    
     this.currentstep += 1;
   }
 
-  completedConfirmStep(e) {
-    this.dataconfirm = e;
-    console.log(this.dataconfirm);
-    if (this.dataconfirm && this.dataconfirm.order) {
-      this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
-        this.navCtrl.push(CompleteOrderedPage);
-      }, (error) => {
-        this.log.error(error);
-      });
-    }
-    // let loading = this.loadingCtrl.create();
-    // loading.present();
-    // this.checkoutServiceProvider.saveOrderData(this.dataconfirm).then((data) => {
-    //   this.navCtrl.push(CompleteOrderedPage);
-    //   loading.dismiss();
-    // }, (error) => {
-    //   console.error(error);
-    //   loading.dismiss();
-    // });
-  }
-  openFormAddress(e) {
-    let modal = this.modalCtrl.create(FormAddressPage);
-    // Getting data from the modal:
-    modal.onDidDismiss(data => {
-      this.checkoutServiceProvider.saveAddressData(data).then(resp => {
-        this.getAddressData();
-      })
-      console.log(data);
+  // end form function 2
+  // ******************************************************************************************
+  // form function 3
 
-    });
-    modal.present();
+  completedConfirmStep(e) {
+    console.log('completedConfirmStep');
   }
+
+  // end form function 3
+
+
+
 
 }
+
+  // openFormAddress(e) {
+  //   let modal = this.modalCtrl.create(FormAddressPage);
+  //   // Getting data from the modal:
+  //   modal.onDidDismiss(data => {
+  //     this.checkoutServiceProvider.saveAddressData(data).then(resp => {
+  //       this.getAddressData();
+  //     })
+  //     console.log(data);
+  //   });
+  //   modal.present();
+  // }
+

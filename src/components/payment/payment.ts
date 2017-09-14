@@ -12,76 +12,49 @@ import { CheckoutServiceProvider } from '../../pages/checkout/checkout.service';
   templateUrl: 'payment.html'
 })
 export class PaymentComponent {
-  data: any = {};
   @Input() paymentgateway: any;
-  @Input() datashipping: any;
-  datapayment: any = {};
   @Output() gotoNext: EventEmitter<any> = new EventEmitter<any>();
-  @Output() datapaymentData: EventEmitter<any> = new EventEmitter<any>();
-
-
   channel: string = 'credit';
+  selectedGateway: any = {
+    paymenttype: this.channel
+  };
   constructor(public checkoutServiceProvider: CheckoutServiceProvider) {
     console.log('Hello PaymentComponent Component');
   }
 
-  formcredit(e) {
-    if (e.creditno) {
-      this.datashipping.order.payment.creditno = e.creditno
-    }
-    if (e.creditname) {
-      this.datashipping.order.payment.creditname = e.creditname
-    }
-    if (e.expdate) {
-      this.datashipping.order.payment.expdate = e.expdate
-    }
-    if (e.creditcvc) {
-      this.datashipping.order.payment.creditcvc = e.creditcvc
-    }
+
+  paymentType(paymentType) {
+    this.selectedGateway = paymentType;
+    console.log(this.selectedGateway);
+  }
+
+  formcredit(item) {
+    this.selectedGateway.creditno = item.creditno;
+    this.selectedGateway.creditname = item.creditname;
+    this.selectedGateway.expdate = item.expdate;
+    this.selectedGateway.creditcvc = item.creditcvc;
+    console.log(this.selectedGateway);
+  }
+
+  counterservice(counterservice) {
+    this.selectedGateway.counterservice = counterservice.name;
+    console.log(this.selectedGateway);
   }
 
   stepValidation() {
-    this.datapayment = this.datashipping;
-
-    console.log(this.datapayment);
-    var chk = false;
-    if (this.datapayment.order && this.datapayment.order.payment && this.datapayment.order.payment.paymenttype) {
-      if (this.datapayment.order.payment.paymenttype === 'credit') {
-        if (this.datapayment.order.payment.creditno && this.datapayment.order.payment.creditname && this.datapayment.order.payment.expdate && this.datapayment.order.payment.creditcvc) {
-          chk = true;
-        }
-      } else if (this.datapayment.order.payment.paymenttype === 'delivery') {
-        chk = true;
-      } else if (this.datapayment.order.payment.paymenttype === 'bank') {
-        if (this.datapayment.order.payment.counterservice) {
-          chk = true;
-        }
+    if (this.selectedGateway.paymenttype === 'credit') {
+      if (!this.selectedGateway.creditno || !this.selectedGateway.creditname || !this.selectedGateway.expdate || !this.selectedGateway.creditcvc) {
+        alert('กรุณาระบุข้อมูลบัตร');
+        return;
       }
-    } else {
-      this.datapayment.order.payment.paymenttype = this.channel;
+    } else if (this.selectedGateway.paymenttype === 'bank') {
+      if (!this.selectedGateway.counterservice) {
+        alert('กรุณาระบุข้อมูลแบงค์');
+        return;
+      }
     }
 
-    if (chk) {
-      // this.checkoutServiceProvider.saveOrderData(this.datapayment).then((data) => {
-      this.gotoNext.emit(this.datapayment);
-      // }, (error) => {
-      //   console.error(error);
-      // });
-    } else {
-      alert('Please enter your payment');
-    }
+    this.gotoNext.emit(this.selectedGateway);
   }
-
-  // paymenttype(type) {
-  //   this.data.paymenttype = type;
-  // }
-  countername(name) {
-    this.data.counterservice = name;
-  }
-
-  paymentType(e) {
-    this.datapayment = e;
-  }
-
 
 }

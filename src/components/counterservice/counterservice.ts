@@ -14,7 +14,7 @@ import { IonPaymentsComponent } from "../ion-payments/ion-payments";
 export class CounterserviceComponent {
   @Input() paymentgateway: any;
   @Input() value: string;
-  @Input() datapayment: any;
+  @Output() datapayment: EventEmitter<any> = new EventEmitter();
 
 
   constructor(public parent: IonPaymentsComponent) {
@@ -22,8 +22,7 @@ export class CounterserviceComponent {
   }
 
   selectcounter(data) {
-    this.datapayment = this.datapayment ? this.datapayment : {};
-    this.datapayment.order.payment.counterservice = data.name;
+    this.datapayment.emit(data);
   }
 
 
