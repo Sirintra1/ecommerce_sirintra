@@ -1,3 +1,27 @@
 page-write-review {
-
+    [ion-button].rating-icon {
+        flex: 1;
+        max-width: 2em;
+        margin: 0px;
+        padding: 0px 4px;
+        min-width: 0px;
+        background: none;
+        box-shadow: none;
+        ion-icon {
+            font-size: 1.6em;
+            padding: 0px;
+        }
+        ul {
+            padding: 0px;
+            margin-top: -15px;
+            &.rating li {
+                padding: 0px 0px !important;
+                background: none;
+                color: #ffb400;
+                ion-icon {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }
