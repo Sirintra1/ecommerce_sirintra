@@ -6,6 +6,7 @@
     "promotionprice": 50,
     "percentofdiscount": 50,
     "currency": "THB",
+    "isfavorite": true,
     "images": [
         "https://assets.wired.com/photos/w_1534/wp-content/uploads/2016/09/ff_nike-hyperadapt_angle_front.jpg",
         "http://www.sportsdirect.com/images/marketing/nikelanding-tainers.jpg"
@@ -41,7 +42,7 @@
         "name": "Adidas Thailand",
         "rate": 4
     },
-    "other":{
+    "other": {
         "name": "LASTVIEWS",
         "products": [
             {
