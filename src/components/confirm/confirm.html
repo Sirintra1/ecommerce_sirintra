@@ -12,6 +12,10 @@
             <p>ค่าธรรมเนียมการจัดส่งสินค้า</p>
             <p item-end>{{confirm.deliveryprice | number}} บาท</p>
           </ion-item>
+          <ion-item>
+            <p>ส่วนลดสินค้า</p>
+            <p item-end>{{confirm.discount | number}} บาท</p>
+          </ion-item>
           <ion-row>
             <ion-col col-8>
               <ion-item>
@@ -42,7 +46,7 @@
                   <h2>{{item.product.name}}</h2>
                   <p> {{item.qty}} {{'QTY' | translate}}</p>
                   <p class="color-orenge-custom" *ngIf="item.discount > 0">{{item.amount | number}} {{item.currency | translate}}</p>
-                  <span class="text-decoration" *ngIf="item.discount > 0">{{item.discount | number}} {{item.currency | translate}} </span>
+                  <span *ngIf="item.discount > 0">{{item.discount | number}} {{item.currency | translate}} </span>
                   <span *ngIf="item.discount > 0">  - {{item.product.percentofdiscount | number}}% </span>
                   <p text-right>รวม {{item.totalamount | number}} {{'CURRENCY' | translate}}</p>
                 </ion-item>
