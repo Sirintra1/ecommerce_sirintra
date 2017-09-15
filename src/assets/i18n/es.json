@@ -124,5 +124,9 @@
   "BASIC_VALIDATIONS": "Validaciones Básicas",
   "PHONE_VALIDATIONS": "Validaciones de Teléfono",
   "PASSWORD_VALIDATIONS": "Validaciones de Contraseña",
-  "ACCEPT_TERMS_VALIDATIONS": "Validaciones de Términos"
+  "ACCEPT_TERMS_VALIDATIONS": "Validaciones de Términos",
+  "COMPLETE": "Complete",
+  "CONGRATULATIONS": "Congratulations",
+  "CHECKOUT":"Checkout"
+  
 }

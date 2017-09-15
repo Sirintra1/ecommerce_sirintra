@@ -155,10 +155,17 @@
     "CONFIRM": "ยืนยัน",
     "ADD_NEW_ADDRESS": "เพิ่มที่อยู่ใหม่",
     "PLEASE_SELECT_THE_TYPE_OF_SHIPMENT": "เลือกรูปแบบการส่งสินค้า",
-    "TOTAL_DELIVERYPRICE":"ราคาค่าขนส่งรวม",
+    "TOTAL_DELIVERYPRICE": "ราคาค่าขนส่งรวม",
     "QTY": "ชิ้น",
     "TOTAL_PRICE": "ราคารวม",
     "DISCOUNT": "ส่วนลด",
     "TOTAL_NET": "รวมสุทธิ",
-    "FORM_ADDRESS": "เพิ่มที่อยู่"
+    "FORM_ADDRESS": "เพิ่มที่อยู่",
+    "THANKYOU": "ขอบคุณ คุณ",
+    "COMPLETE1": "ทางเราขอขอบคุณที่ท่านให้ความไว้วางใจในการเลือกซื้อสินค้ากับเรา",
+    "COMPLETE2": "หมายเลขสั่งซื้อสินค้าของท่านคือ",
+    "COMPLETE3": "ขอบคุณที่ท่านให้ความสนใจและเลือกใช้บริการจากเรา",
+    "COMPLETE": "สำเร็จ",
+    "CONGRATULATIONS": "ยินดีด้วย",
+    "CHECKOUT":"ยืนยันการสั่งซื้อ"
 }

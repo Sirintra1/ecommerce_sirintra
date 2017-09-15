@@ -127,9 +127,20 @@ export class CheckoutPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.order = e;
-    this.order._id ? this.order._id = null : false;
-    console.log('------ 3 ------', this.order);
-    this.checkoutServiceProvider.saveOrderData(this.order).then((data) => {
+    let order = {
+      items: this.order.items,
+      amount: this.order.amount,
+      discountcode: this.order.discountcode,
+      discount: this.order.discount,
+      totalamount: this.order.totalamount,
+      deliveryprice: this.order.deliveryprice,
+      shipping: this.order.shipping,
+      payment: this.order.payment
+    }
+    console.log('------ 3 ------', order);
+    this.checkoutServiceProvider.saveOrderData(order).then((data) => {
+      data.shipping = order.shipping;
+      window.localStorage.setItem('order', JSON.stringify(data));
       this.app.getRootNav().setRoot(CompleteOrderedPage); // set full page
       loading.dismiss();
     }, (error) => {

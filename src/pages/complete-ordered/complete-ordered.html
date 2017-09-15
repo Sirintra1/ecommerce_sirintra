@@ -7,12 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>completeOrdered</ion-title>
+    <ion-title>{{'COMPLETE' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <button ion-button full color="danger" (click)="goHome()">{{"HOME" | translate}}</button>
+<ion-content>
+  <ion-card>
+
+    <ion-card-header>
+        {{'CONGRATULATIONS' | translate}}
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{'THANKYOU' | translate}} <b>{{ completeOrder.shipping.firstname}} {{ completeOrder.shipping.lastname}}</b></p>
+      <p>{{'COMPLETE1' | translate}}</p>
+      <p>{{'COMPLETE2' | translate}} <b>{{ completeOrder._id}}</b></p>
+      <p>{{'COMPLETE3' | translate}}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+  <div padding>
+    <button ion-button block color="danger" (click)="goHome()">{{"HOME" | translate}}</button>
+  </div>
 </ion-content>

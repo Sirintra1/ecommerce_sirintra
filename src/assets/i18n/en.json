@@ -146,5 +146,10 @@
   "TOTAL_PRICE": "Total Price",
   "DISCOUNT": "Discount",
   "TOTAL_NET": "Total Net",
-  "PAYMENT": "Payment"
+  "PAYMENT": "Payment",
+  "THANKYOU":"Thank you",
+  "COMPLETE1": "We thank you for your trust in our products.",
+  "COMPLETE2": "Your order number is",
+  "COMPLETE3": "Thank you for your interest in our service."
+
 }

@@ -14,8 +14,10 @@ import { TabsNavigationPage } from "../tabs-navigation/tabs-navigation";
   templateUrl: 'complete-ordered.html',
 })
 export class CompleteOrderedPage {
-
+  completeOrder: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+    this.completeOrder = JSON.parse(window.localStorage.getItem('order'));
+    console.log(this.completeOrder);
   }
 
   ionViewDidLoad() {
