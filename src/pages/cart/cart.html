@@ -24,19 +24,22 @@
 </ion-content>
 
 <ion-footer>
-  <div *ngIf="cartData && cartData.cart && cartData.cart.items && cartData.cart.items.length > 0">
-    <ion-row class="categories-title">
-      <ion-col width-60>
-        <p class="color-black-custom font-bold">ราคารวมโดยประมาณ</p>
-        <p class="color-black-custom font-bold">ส่วนลดโดยประมาณ</p>
-        <p class="color-black-custom font-bold">รวมสุทธิโดยประมาณ</p>
-      </ion-col>
-      <ion-col width-40 text-right>
-        <p class="color-black-custom font-bold">{{cartData.cart.amount | number}} {{'CURRENCY' | translate}}</p>
-        <p class="color-black-custom font-bold">{{cartData.cart.discount | number}} {{'CURRENCY' | translate}}</p>
-        <p class="color-black-custom font-bold">{{cartData.cart.totalamount | number}} {{'CURRENCY' | translate}}</p>
-      </ion-col>
-    </ion-row>
-    <button ion-button full color="danger" (click)="gotocheckout()">{{"PAYMENT" | translate}}</button>
-  </div>
+  <ion-toolbar>
+     <button ion-button clear full color="light" class="btn-top-footer"></button> 
+    <div *ngIf="cartData && cartData.cart && cartData.cart.items && cartData.cart.items.length > 0">
+      <ion-row class="categories-title">
+        <ion-col col-7>
+          <p class="color-black-custom font-bold">ราคารวมโดยประมาณ</p>
+          <p class="color-black-custom font-bold">ส่วนลดโดยประมาณ</p>
+          <p class="color-black-custom font-bold">รวมสุทธิโดยประมาณ</p>
+        </ion-col>
+        <ion-col col-5 text-right>
+          <p class="color-black-custom font-bold">{{cartData.cart.amount | number}} {{'CURRENCY' | translate}}</p>
+          <p class="color-black-custom font-bold">{{cartData.cart.discount | number}} {{'CURRENCY' | translate}}</p>
+          <p class="color-black-custom font-bold">{{cartData.cart.totalamount | number}} {{'CURRENCY' | translate}}</p>
+        </ion-col>
+      </ion-row>
+      <button ion-button full color="danger" (click)="gotocheckout()">{{"PAYMENT" | translate}}</button>
+    </div>
+  </ion-toolbar>
 </ion-footer>

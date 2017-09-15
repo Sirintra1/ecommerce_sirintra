@@ -1,4 +1,7 @@
 page-cart {
+    .btn-top-footer{
+        max-height: 1px;
+    }
     .counter-list {
         @include counter-item-styles($white-d, $theme-color-1, $white);
     }

@@ -12,7 +12,12 @@
                 <ion-radio [value]="shipping"></ion-radio>
             </ion-item>
         </ion-list>
-        <ion-label padding class="p-blue" (click)="openModal()">{{'ADD_NEW_ADDRESS' | translate}}</ion-label>
+        <ion-row>
+            <ion-col col-12 text-center>
+                <button ion-button small color="default" (click)="openModal()">{{'ADD_NEW_ADDRESS' | translate}}</button>
+            </ion-col>
+        </ion-row>
+        <!-- <ion-label padding class="p-blue" (click)="openModal()">{{'ADD_NEW_ADDRESS' | translate}}</ion-label> -->
     </div>
     <div>
         <ion-item-divider color="light">{{'PLEASE_SELECT_THE_TYPE_OF_SHIPMENT' | translate}}</ion-item-divider>
@@ -25,10 +30,7 @@
                     </ion-thumbnail>
                     <h2>{{item.product.name}}</h2>
                     <p> {{item.qty}} {{'QTY' | translate}}</p>
-                    <p class="color-orenge-custom" *ngIf="item.discount > 0">{{item.amount | number}} {{item.currency | translate}}</p>
-                    <span class="text-decoration" *ngIf="item.discount > 0">{{item.discount | number}} {{item.currency | translate}} </span>
-                    <span *ngIf="item.discount > 0">  - {{item.product.percentofdiscount | number}}% </span>
-                    <p text-right>รวม {{item.totalamount | number}} {{'CURRENCY' | translate}}</p>
+                    <h3 text-right>รวม {{item.totalamount | number}} {{'CURRENCY' | translate}}</h3>
                 </ion-item>
             </ion-list>
             <ion-row class="shippings">
@@ -37,7 +39,8 @@
                     <ion-list radio-group>
                         <ion-item *ngFor="let shipping of item.product.shippings" (tap)="selectedShipping(item,shipping)">
                             <ion-label>
-                                <p>{{shipping.name}}</p>
+                                <p *ngIf="shipping.price > 0">{{shipping.name}} ({{shipping.price}} {{'CURRENCY' | translate}})</p>
+                                <p *ngIf="shipping.price === 0">{{shipping.name}} (ฟรี)</p>
                                 <p>{{shipping.detail}}</p>
                             </ion-label>
                             <ion-radio [value]="shipping"></ion-radio>
@@ -59,10 +62,10 @@
                         <p class="p-black">{{'TOTAL_NET' | translate}}</p>
                     </ion-col>
                     <ion-col width-50>
-                        <p text-right class="p-black">{{cartItems.amount | number}} {{currency | translate}}</p>
-                        <p text-right class="p-black" *ngIf="cartItems.deliveryprice">{{cartItems.deliveryprice | number}} {{currency | translate}}</p>
-                        <p text-right class="p-black">{{cartItems.discount | number}} {{currency | translate}}</p>
-                        <p text-right class="p-black">{{cartItems.totalamount | number}} {{currency | translate}}</p>
+                        <p text-right class="p-black">{{cartItems.amount | number}} {{'CURRENCY' | translate}}</p>
+                        <p text-right class="p-black" *ngIf="cartItems.deliveryprice">{{cartItems.deliveryprice | number}} {{'CURRENCY' | translate}}</p>
+                        <p text-right class="p-black">{{cartItems.discount | number}} {{'CURRENCY' | translate}}</p>
+                        <p text-right class="p-black">{{cartItems.totalamount | number}} {{'CURRENCY' | translate}}</p>
                     </ion-col>
                 </ion-row>
             </div>
