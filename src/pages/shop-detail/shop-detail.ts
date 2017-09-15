@@ -48,6 +48,15 @@ export class ShopDetailPage {
     });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getShopDetailData();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   // getShopAddressData() {
   //   let loadingCtrl = this.loadingCtrl.create();
   //   loadingCtrl.present();

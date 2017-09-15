@@ -13,6 +13,10 @@
 </ion-header>
 
 <ion-content class="contact-card-content">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <topbarshop [dataTopBar]="shopDetailData"></topbarshop>
   <div class="button-bar">
     <button ion-button primary>

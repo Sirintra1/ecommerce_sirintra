@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content class="contact-card-content">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
     <!-- product images -->
     <slide-images [images]="productdetailData.images"></slide-images>
 
@@ -19,7 +23,7 @@
                     <span class="text-decoration">{{productdetailData.price | number}} {{productdetailData.currency | translate}}</span>
                     <span>-{{productdetailData.percentofdiscount}} %</span>
                 </p>
-                    <h4 *ngIf="!productdetailData.promotionprice">{{productdetailData.price}} {{productdetailData.currency | translate}}</h4>
+                <h4 *ngIf="!productdetailData.promotionprice">{{productdetailData.price}} {{productdetailData.currency | translate}}</h4>
 
             </ion-col>
         </ion-row>

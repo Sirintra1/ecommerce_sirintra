@@ -19,5 +19,9 @@
 
 
 <ion-content>
-<list-shops [items]="listShopData ? listShopData.items : []" (itemClicked)="selectShop($event)"></list-shops>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <list-shops [items]="listShopData ? listShopData.items : []" (itemClicked)="selectShop($event)"></list-shops>
 </ion-content>
