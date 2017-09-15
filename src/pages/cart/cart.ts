@@ -68,6 +68,15 @@ export class CartPage {
     });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getCartData();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   updateCartDataService() {
     this.cartService.updateCartData(this.cartData.cart).then((data) => {
       window.localStorage.setItem('cart', JSON.stringify(data));
