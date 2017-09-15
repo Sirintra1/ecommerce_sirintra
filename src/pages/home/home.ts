@@ -33,7 +33,7 @@ export class HomePage {
   ) {
   }
 
-  ionViewWillEnter() {
+  ionViewDidLoad() {
     this.getHomeData();
   }
 
@@ -48,6 +48,15 @@ export class HomePage {
       console.error(error);
       loading.dismiss();
     });
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getHomeData();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   selectedItem(e) {
