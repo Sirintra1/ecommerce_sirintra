@@ -46,7 +46,6 @@
     "bourbon": "4.2.7",
     "com.synconset.imagepicker": "https://github.com/ionicthemes/ImagePicker.git",
     "cordova-admob-sdk": "^0.7.0",
-    "cordova-android": "^6.2.3",
     "cordova-ios": "^4.4.0",
     "cordova-plugin-admob-free": "^0.9.0",
     "cordova-plugin-apprate": "^1.3.0",
@@ -126,7 +125,6 @@
       }
     },
     "platforms": [
-      "android",
       "ios"
     ]
   }
