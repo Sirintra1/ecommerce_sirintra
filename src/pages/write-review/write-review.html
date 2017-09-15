@@ -28,10 +28,10 @@
       <ion-label>Comment</ion-label>
       <ion-textarea [(ngModel)]="reviewData.comment" name="Comment"></ion-textarea>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
        <ion-label name="Rate" >Rate</ion-label> 
-       <!-- <ion-label [(ngModel)]="reviewData.rate" type="number" name="Comment" >Rate</ion-label>         -->
-    </ion-item>
+        <ion-label [(ngModel)]="reviewData.rate" type="number" name="Comment" >Rate</ion-label>         
+    </ion-item> -->
      <rating [(ngModel)]="reviewData.rate" name="Rate" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
       nullable="false"></rating> 
     <button ion-button full type="submit">{{'WRITEREVIEW' | translate}}</button>
