@@ -36,6 +36,15 @@ export class FavoritePage {
       });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getSearchData();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   selectedItem(e) {
     console.log(e);
     this.navCtrl.push(ProductDetailPage, { data: e });

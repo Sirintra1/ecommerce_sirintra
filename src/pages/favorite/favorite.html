@@ -6,15 +6,19 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-        <ion-title>{{'FAVORITE' | translate}}</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>{{'FAVORITE' | translate}}</ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <!--<ion-segment [(ngModel)]="tabs">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--<ion-segment [(ngModel)]="tabs">
     <ion-segment-button value="0" (click)="selectTab(0)">
       1
     </ion-segment-button>
@@ -49,5 +53,5 @@
       <h1>ContentTab 5</h1>
     </ion-slide>
   </ion-slides>-->
-    <list-items [items]="favoriteData.items" (itemClicked)="selectedItem($event)"></list-items>
+  <list-items [items]="favoriteData.items" (itemClicked)="selectedItem($event)"></list-items>
 </ion-content>
