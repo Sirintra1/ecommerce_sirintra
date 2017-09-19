@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { ListShopModel } from '../list-shop/list-shop.model';
 import { ListShopServiceProvider } from '../list-shop/list-shop.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
@@ -19,7 +19,7 @@ import { ShopFormPage } from '../shop-form/shop-form';
 })
 export class ListShopPage {
   listShopData: ListShopModel = new ListShopModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listShopService: ListShopServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController,public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -27,11 +27,15 @@ export class ListShopPage {
     this.getListShopData();
   }
   getListShopData() {
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.listShopService.getListShop().then((data) => {
       this.listShopData = data;
       this.log.info(this.listShopData);
+      loading.dismiss();      
     }, (err) => {
       this.log.error(err);
+      loading.dismiss();      
     });
   }
 
@@ -57,10 +61,7 @@ export class ListShopPage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.getListShopData();
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    refresher.complete();
   }
 
 }

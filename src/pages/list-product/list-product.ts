@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { ListProductServiceProvider } from '../list-product/list-product.service';
 import { LogServiceProvider } from '../../providers/log-service/log-service';
 import { ProductDetailPage } from "../product-detail/product-detail";
@@ -20,7 +20,7 @@ import { ProductFormPage } from "../product-form/product-form";
 export class ListProductPage {
   // listProductData: Array<ProductItemModel>;
   listProductData: ListProductViewModel = new ListProductViewModel();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController, public listProductServiceProvider: ListProductServiceProvider
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listProductService: ListProductServiceProvider, public log: LogServiceProvider, public modalCtrl: ModalController, public listProductServiceProvider: ListProductServiceProvider,public loadingCtrl: LoadingController
   ) {
   }
 
@@ -29,20 +29,21 @@ export class ListProductPage {
     this.getListProduct();
   }
   getListProduct() {
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.listProductService.getProductList().then(data => {
       this.listProductData = data;
       console.log(this.listProductData);
+      loading.dismiss();
     }, (err) => {
       this.log.error(err);
+      loading.dismiss();
     })
   }
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.getListProduct();
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    refresher.complete();
   }
 
   selectedItem(e) {

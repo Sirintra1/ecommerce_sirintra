@@ -68,10 +68,7 @@ export class ProductDetailPage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.getProductdetailData();
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    refresher.complete();
   }
 
 

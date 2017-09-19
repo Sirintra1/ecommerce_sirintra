@@ -53,10 +53,7 @@ export class HomePage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.getHomeData();
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    refresher.complete();
   }
 
   selectedItem(e) {
